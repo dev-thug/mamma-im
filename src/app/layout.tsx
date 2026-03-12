@@ -16,6 +16,20 @@ export const metadata: Metadata = {
     "육아일기",
     "수유기록",
   ],
+  icons: {
+    icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+    ],
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180" },
+    ],
+    other: [
+      { rel: "mask-icon", url: "/safari-pinned-tab.svg", color: "#FF4757" },
+    ],
+  },
+  manifest: "/site.webmanifest",
   openGraph: {
     title: "맘마 - 우리 가족의 육아 파트너",
     description:

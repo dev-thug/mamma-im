@@ -14,28 +14,56 @@ const navLinks = [
 function LogoIcon() {
   return (
     <svg
-      width="20"
-      height="20"
-      viewBox="0 0 20 20"
-      fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 400 120"
+      width="160"
+      height="48"
+      fill="none"
       aria-hidden="true"
     >
-      {/* Heart shape */}
-      <path
-        d="M10 17s-7-5.333-7-9.5C3 5.015 5.015 3 7.5 3c1.38 0 2.607.62 3.5 1.607A4.496 4.496 0 0 1 12.5 3C14.985 3 17 5.015 17 7.5 17 11.667 10 17 10 17z"
-        fill="#f43f5e"
-      />
-      {/* Baby face dots */}
-      <circle cx="8" cy="8" r="0.8" fill="white" />
-      <circle cx="12" cy="8" r="0.8" fill="white" />
-      <path
-        d="M8.5 10.5 Q10 11.8 11.5 10.5"
-        stroke="white"
-        strokeWidth="0.8"
-        strokeLinecap="round"
-        fill="none"
-      />
+      <defs>
+        <linearGradient id="brandGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#FF6B6B" />
+          <stop offset="100%" stopColor="#FF4757" />
+        </linearGradient>
+        <linearGradient id="milkGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stopColor="#FFF0F0" />
+          <stop offset="100%" stopColor="#FFE4E4" />
+        </linearGradient>
+        <filter id="dropShadow" x="-10%" y="-10%" width="120%" height="120%">
+          <feDropShadow dx="2" dy="4" stdDeviation="4" floodColor="#FF4757" floodOpacity="0.15" />
+        </filter>
+      </defs>
+
+      <g transform="translate(35, 8) rotate(12, 45, 45)" filter="url(#dropShadow)">
+        <path d="M35 30 C35 5, 55 5, 55 30" fill="#FFA502" />
+        <rect x="20" y="45" width="50" height="60" rx="15" fill="#FFFFFF" stroke="#2F3542" strokeWidth="4" />
+        <path d="M22 70 Q 32 65, 45 72 T 68 70 L 68 90 A 13 13 0 0 1 55 103 L 35 103 A 13 13 0 0 1 22 90 Z" fill="url(#milkGradient)" />
+        <rect x="15" y="30" width="60" height="15" rx="6" fill="url(#brandGradient)" stroke="#2F3542" strokeWidth="4" />
+        <line x1="28" y1="55" x2="38" y2="55" stroke="#2F3542" strokeWidth="3" strokeLinecap="round" />
+        <line x1="28" y1="65" x2="35" y2="65" stroke="#2F3542" strokeWidth="3" strokeLinecap="round" />
+        <line x1="28" y1="75" x2="38" y2="75" stroke="#2F3542" strokeWidth="3" strokeLinecap="round" />
+        <path d="M41 82 C 41 82, 38 79, 41 77 C 44 75, 48 78, 45 82 C 43 85, 41 82, 41 82 Z" fill="#FF4757" />
+      </g>
+
+      <path d="M105 18 L108 25 L115 28 L108 31 L105 38 L102 31 L95 28 L102 25 Z" fill="#FFA502" opacity="0.8" />
+      <circle cx="25" cy="13" r="4" fill="#FF4757" opacity="0.6" />
+
+      <g transform="translate(128, 62)">
+        <text
+          x="0"
+          y="20"
+          fontFamily="'Nunito', 'Arial Rounded MT Bold', sans-serif"
+          fontSize="52"
+          fontWeight="900"
+          fill="#2F3542"
+          letterSpacing="-1.5"
+        >
+          mamma
+        </text>
+        <circle cx="209" cy="28" r="6" fill="#FF4757" />
+        
+      </g>
     </svg>
   );
 }
@@ -91,9 +119,6 @@ export default function Header() {
               aria-label="맘마 홈으로 이동"
             >
               <LogoIcon />
-              <span className="text-2xl font-bold text-primary-500 tracking-tight">
-                맘마
-              </span>
             </a>
 
             {/* Desktop nav */}
@@ -152,9 +177,6 @@ export default function Header() {
                 aria-label="맘마 홈으로 이동"
               >
                 <LogoIcon />
-                <span className="text-2xl font-bold text-primary-500 tracking-tight">
-                  맘마
-                </span>
               </a>
               <button
                 onClick={() => setMobileOpen(false)}
