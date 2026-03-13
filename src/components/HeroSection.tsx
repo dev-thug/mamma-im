@@ -35,7 +35,7 @@ export default function HeroSection() {
     const intervalId = setInterval(() => {
       idx = (idx + 1) % AUTO_CYCLE_TABS.length;
       setActiveTab(AUTO_CYCLE_TABS[idx]);
-    }, 3000);
+    }, 2000);
     return () => {
       clearInterval(intervalId);
     };
