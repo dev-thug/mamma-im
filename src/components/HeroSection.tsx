@@ -1,7 +1,10 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { motion, type Variants } from "framer-motion";
 import AppMockup from "./mockup/AppMockup";
+
+const AUTO_CYCLE_TABS = [0, 1, 2, 3];
 
 const fadeInUp: Variants = {
   hidden: { opacity: 0, y: 32 },
@@ -13,6 +16,31 @@ const staggerChildren: Variants = {
 };
 
 export default function HeroSection() {
+  const [userInteracted, setUserInteracted] = useState(false);
+  const [activeTab, setActiveTab] = useState(0);
+
+  const handleInteraction = () => setUserInteracted(true);
+  const handleTabChange = (tab: number) => {
+    setUserInteracted(true);
+    setActiveTab(tab);
+  };
+
+  const prefersReducedMotion =
+    typeof window !== "undefined" &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  useEffect(() => {
+    if (userInteracted || prefersReducedMotion) return;
+    let idx = 0;
+    const intervalId = setInterval(() => {
+      idx = (idx + 1) % AUTO_CYCLE_TABS.length;
+      setActiveTab(AUTO_CYCLE_TABS[idx]);
+    }, 3000);
+    return () => {
+      clearInterval(intervalId);
+    };
+  }, [userInteracted, prefersReducedMotion]);
+
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-b from-primary-50 via-white to-white">
       <div aria-hidden="true" className="absolute top-[-80px] left-[-80px] w-[360px] h-[360px] rounded-full opacity-30" style={{ background: "var(--primary-100)" }} />
@@ -70,10 +98,54 @@ export default function HeroSection() {
             </motion.div>
           </motion.div>
 
-          <motion.div className="flex-shrink-0"
-            initial={{ opacity: 0, y: 48 }} animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}>
-            <AppMockup />
+          <motion.div
+            className="flex-shrink-0"
+            style={{ position: "relative" }}
+            onPointerDown={handleInteraction}
+            initial={{ opacity: 0, y: 48 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
+          >
+            {/* 글로우 펄스 wrapper */}
+            <div
+              style={{
+                borderRadius: 30,
+                padding: 2,
+                animation: userInteracted
+                  ? "none"
+                  : "glowPulse 2.5s ease-in-out infinite",
+                transition: "box-shadow 0.3s",
+              }}
+            >
+              <AppMockup activeTab={activeTab} onTabChange={handleTabChange} />
+            </div>
+
+            {/* CTA 배지 */}
+            <div
+              style={{
+                position: "absolute",
+                bottom: -32,
+                left: "50%",
+                transform: "translateX(-50%)",
+                background: "var(--primary-500)",
+                color: "#fff",
+                fontSize: 12,
+                fontWeight: 600,
+                padding: "8px 20px",
+                borderRadius: 20,
+                whiteSpace: "nowrap",
+                boxShadow: "0 4px 16px rgba(244, 63, 94, 0.3)",
+                zIndex: 30,
+                animation: userInteracted
+                  ? "none"
+                  : "badgeBounce 2s ease-in-out infinite",
+                opacity: userInteracted ? 0 : 1,
+                transition: "opacity 0.3s",
+                pointerEvents: "none",
+              }}
+            >
+            직접 체험해보세요
+            </div>
           </motion.div>
         </div>
       </div>

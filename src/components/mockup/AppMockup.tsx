@@ -16,8 +16,14 @@ const TAB_ICONS = [
 ];
 const TAB_LABELS = ["홈", "커뮤니티", "놀이지도", "맘마톡", "나의정보"];
 
-export default function AppMockup() {
-  const [activeTab, setActiveTab] = useState(0);
+interface AppMockupProps {
+  activeTab?: number;
+  onTabChange?: (tab: number) => void;
+}
+
+export default function AppMockup({ activeTab: controlledTab, onTabChange }: AppMockupProps) {
+  const [internalTab, setInternalTab] = useState(0);
+  const activeTab = controlledTab ?? internalTab;
   const [now, setNow] = useState(new Date());
 
   useEffect(() => {
@@ -78,7 +84,10 @@ export default function AppMockup() {
           {TAB_LABELS.map((label, i) => {
             const active = activeTab === i;
             return (
-              <button key={label} onClick={() => setActiveTab(i)}
+              <button key={label} onClick={() => {
+                if (onTabChange) onTabChange(i);
+                else setInternalTab(i);
+              }}
                 className="flex flex-col items-center gap-0.5 cursor-pointer">
                 {TAB_ICONS[i](active)}
                 <span className="text-[7px]" style={{ color: active ? "var(--primary-500)" : "#9CA3AF" }}>{label}</span>
