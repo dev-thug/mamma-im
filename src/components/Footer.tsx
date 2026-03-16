@@ -1,4 +1,6 @@
+import Link from "next/link";
 import { Instagram, Youtube, Globe, Heart, Mail } from "lucide-react";
+import { siteConfig } from "@/config/site";
 
 function FooterLogoIcon() {
   return (
@@ -157,11 +159,11 @@ export default function Footer() {
               ))}
               <li className="pt-2">
                 <a
-                  href="mailto:support@mamma.im"
+                  href={`mailto:${siteConfig.email}`}
                   className="text-primary-400 hover:text-primary-300 transition-colors text-sm py-1 flex items-center gap-1.5"
                 >
                   <Mail className="w-4 h-4" />
-                  support@mamma.im
+                  {siteConfig.email}
                 </a>
               </li>
             </ul>
@@ -173,14 +175,18 @@ export default function Footer() {
               법적고지
             </h3>
             <ul className="space-y-1">
-              {["이용약관", "개인정보처리방침", "오픈소스 라이선스"].map((item) => (
-                <li key={item}>
-                  <a
-                    href="#"
+              {[
+                { label: "이용약관", href: "/terms" },
+                { label: "개인정보처리방침", href: "/privacy" },
+                { label: "오픈소스 라이선스", href: "/licenses" },
+              ].map((item) => (
+                <li key={item.href}>
+                  <Link
+                    href={item.href}
                     className="text-neutral-400 hover:text-white transition-colors text-sm py-1 block"
                   >
-                    {item}
-                  </a>
+                    {item.label}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -190,7 +196,7 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="mt-12 pt-8 border-t border-neutral-800 flex flex-col sm:flex-row justify-between items-center gap-4">
           <p className="text-neutral-500 text-sm">
-            © 2026 Mamma. All rights reserved.
+            © {new Date().getFullYear()} {siteConfig.nameEn}. All rights reserved.
           </p>
           <p className="text-neutral-500 text-sm flex items-center gap-1">
             Made with{" "}
