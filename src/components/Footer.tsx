@@ -98,6 +98,7 @@ export default function Footer() {
             <div className="flex items-center gap-3 mt-6">
               <a
                 href="#"
+                title="준비 중"
                 aria-label="Instagram"
                 className="w-10 h-10 bg-neutral-800 rounded-full flex items-center justify-center hover:bg-neutral-700 transition-colors"
               >
@@ -105,6 +106,7 @@ export default function Footer() {
               </a>
               <a
                 href="#"
+                title="준비 중"
                 aria-label="YouTube"
                 className="w-10 h-10 bg-neutral-800 rounded-full flex items-center justify-center hover:bg-neutral-700 transition-colors"
               >
@@ -112,6 +114,7 @@ export default function Footer() {
               </a>
               <a
                 href="#"
+                title="준비 중"
                 aria-label="Blog"
                 className="w-10 h-10 bg-neutral-800 rounded-full flex items-center justify-center hover:bg-neutral-700 transition-colors"
               >
@@ -126,18 +129,39 @@ export default function Footer() {
               서비스
             </h3>
             <ul className="space-y-1">
-              {["기능 소개", "앱 다운로드", "업데이트 소식", "자주 묻는 질문"].map(
-                (item) => (
-                  <li key={item}>
-                    <a
-                      href="#"
-                      className="text-neutral-400 hover:text-white transition-colors text-sm py-1 block"
-                    >
-                      {item}
-                    </a>
-                  </li>
-                )
-              )}
+              <li>
+                <Link
+                  href="/#features"
+                  className="text-neutral-400 hover:text-white transition-colors text-sm py-1 block"
+                >
+                  기능 소개
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/#download"
+                  className="text-neutral-400 hover:text-white transition-colors text-sm py-1 block"
+                >
+                  앱 다운로드
+                </Link>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  title="준비 중"
+                  className="text-neutral-400 hover:text-white transition-colors text-sm py-1 block"
+                >
+                  업데이트 소식
+                </a>
+              </li>
+              <li>
+                <Link
+                  href="/faq"
+                  className="text-neutral-400 hover:text-white transition-colors text-sm py-1 block"
+                >
+                  자주 묻는 질문
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -147,16 +171,30 @@ export default function Footer() {
               고객지원
             </h3>
             <ul className="space-y-1">
-              {["공지사항", "1:1 문의", "피드백 보내기"].map((item) => (
-                <li key={item}>
-                  <a
-                    href="#"
-                    className="text-neutral-400 hover:text-white transition-colors text-sm py-1 block"
-                  >
-                    {item}
-                  </a>
-                </li>
-              ))}
+              <li>
+                <Link
+                  href="/notices"
+                  className="text-neutral-400 hover:text-white transition-colors text-sm py-1 block"
+                >
+                  공지사항
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/contact"
+                  className="text-neutral-400 hover:text-white transition-colors text-sm py-1 block"
+                >
+                  1:1 문의
+                </Link>
+              </li>
+              <li>
+                <a
+                  href={`mailto:${siteConfig.email}?subject=피드백`}
+                  className="text-neutral-400 hover:text-white transition-colors text-sm py-1 block"
+                >
+                  피드백 보내기
+                </a>
+              </li>
               <li className="pt-2">
                 <a
                   href={`mailto:${siteConfig.email}`}

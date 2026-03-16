@@ -168,6 +168,8 @@ export default function DownloadCTA() {
             <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
               <motion.a
                 href="#"
+                title="준비 중"
+                onClick={(e) => e.preventDefault()}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: visible, y: isInView ? 0 : 20 }}
                 transition={{ duration: 0.45, ease, delay: 0.55 }}
@@ -189,6 +191,8 @@ export default function DownloadCTA() {
 
               <motion.a
                 href="#"
+                title="준비 중"
+                onClick={(e) => e.preventDefault()}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: visible, y: isInView ? 0 : 20 }}
                 transition={{ duration: 0.45, ease, delay: 0.65 }}

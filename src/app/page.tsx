@@ -11,7 +11,7 @@ export default function Home() {
       <Header />
       <main>
         <HeroSection />
-        {/* <FeaturesSection /> */}
+        <FeaturesSection />
         <ScreenshotGallery />
         <DownloadCTA />
       </main>

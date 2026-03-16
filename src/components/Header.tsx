@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import Link from "next/link";
 import { cn } from "@/lib/utils";
 
 const navLinks = [
@@ -118,14 +119,14 @@ export default function Header() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 md:h-20">
             {/* Logo */}
-            <a
-              href="#"
+            <Link
+              href="/"
               className="flex items-center gap-2 group"
               aria-label="맘마 홈으로 이동"
             >
               <span className="md:hidden"><LogoIcon compact uid="mobile" /></span>
               <span className="hidden md:inline"><LogoIcon uid="desktop" /></span>
-            </a>
+            </Link>
 
             {/* Desktop nav */}
             <nav className="hidden md:flex items-center gap-8" aria-label="주요 메뉴">
@@ -176,14 +177,14 @@ export default function Header() {
           >
             {/* Mobile menu header */}
             <div className="flex items-center justify-between h-16 px-4 sm:px-6 border-b border-neutral-100">
-              <a
-                href="#"
+              <Link
+                href="/"
                 className="flex items-center gap-2"
                 onClick={() => setMobileOpen(false)}
                 aria-label="맘마 홈으로 이동"
               >
                 <LogoIcon compact uid="menu" />
-              </a>
+              </Link>
               <button
                 onClick={() => setMobileOpen(false)}
                 className="flex items-center justify-center w-10 h-10 text-neutral-900 hover:text-primary-500 transition-colors duration-200"
