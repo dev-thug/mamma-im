@@ -1,8 +1,18 @@
 # 맘마 (Mamma) — mamma.im
 
+## 🌐 서비스 바로가기
+
+# **[https://mamma.im](https://mamma.im)**
+
+<p align="center">
+  <img src="./public/readme-landing.png" alt="mamma.im 랜딩 페이지" width="900" />
+</p>
+
 우리 가족의 육아 파트너, **맘마**의 랜딩 페이지입니다.
 
 태어나는 순간부터 초등학교 졸업까지, 아이의 모든 성장을 함께하는 스마트 육아 앱을 소개합니다.
+
+안드로이드, 애플 스토어 심사진행중입니다. 4월 초 정식에 서비스 예정입니다.
 
 ## 기술 스택
 
