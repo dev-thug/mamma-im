@@ -60,11 +60,12 @@ export default function HeroSection() {
             </motion.div>
             <motion.h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-neutral-900 leading-tight whitespace-pre-line mb-5"
               variants={fadeInUp}>
-              {"우리 가족의\n육아 파트너, "}
+              {"우리 아기 첫 기록,\n"}
               <span className="gradient-text">맘마</span>
+              {"와 함께"}
             </motion.h1>
             <motion.p className="text-lg text-neutral-600 whitespace-pre-line mb-10 max-w-lg" variants={fadeInUp}>
-              {"태어나는 순간부터 초등학교 졸업까지,\n아이의 모든 성장을 함께합니다"}
+              {"하루하루 쌓여가는 기록이\n우리 아이의 소중한 성장 일기가 됩니다."}
             </motion.p>
             <motion.div className="flex flex-col sm:flex-row gap-3 mb-10 w-full sm:w-auto" variants={fadeInUp}>
               <button className="flex items-center justify-center gap-3 px-6 py-3 rounded-2xl text-white font-semibold text-sm transition-opacity hover:opacity-85 active:opacity-70"

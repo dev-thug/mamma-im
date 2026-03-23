@@ -4,10 +4,11 @@ import { useRef } from "react";
 import { motion, useInView, type Variants, type Easing } from "framer-motion";
 import {
   ClipboardList,
-  MessageCircle,
+  Sparkles,
   MapPin,
   Users,
   TrendingUp,
+  MessageCircle,
   Check,
 } from "lucide-react";
 
@@ -49,20 +50,79 @@ interface Feature {
 const features: Feature[] = [
   {
     icon: ClipboardList,
-    title: "스마트 육아 기록",
-    description: "수유, 수면, 기저귀 등 7종 기록을 한눈에",
+    title: "터치 한 번, 빠른 기록",
+    description: "수유, 수면, 기저귀? 한눈에 쏙! 잊지 말고 꼼꼼하게",
     iconBgClass: "bg-primary-50",
     iconColorClass: "text-primary-500",
     features: [
-      "수유·이유식 기록",
-      "수면 패턴 분석",
-      "기저귀·목욕 기록",
+      "수유·수면·기저귀 빠른 기록",
+      "체온·투약·활동 기록",
       "오늘의 요약 대시보드",
+      "동기화팀 실시간 공유",
+    ],
+  },
+  {
+    icon: Sparkles,
+    title: "AI 스마트 분석",
+    description: "모든 데이터를 기반으로 맞춤 육아 가이드 제공",
+    iconBgClass: "",
+    iconColorClass: "",
+    iconBgStyle: "#eef2ff",
+    iconColorStyle: "#6366f1",
+    features: [
+      "수유 패턴 분석",
+      "수면 습관 분석",
+      "발달 과정 체크",
+      "활동량·위생 데이터 분석",
+    ],
+  },
+  {
+    icon: TrendingUp,
+    title: "AI 성장 관리",
+    description: "발달 체크부터 AI 맞춤 분석까지, 완벽한 성장 관리",
+    iconBgClass: "",
+    iconColorClass: "",
+    iconBgStyle: "#fffbeb",
+    iconColorStyle: "#f59e0b",
+    features: [
+      "AI 종합 분석 점수",
+      "대근육·소근육 발달 체크",
+      "인지·언어 발달 추적",
+      "월령별 맞춤 체크리스트",
+    ],
+  },
+  {
+    icon: MapPin,
+    title: "놀이지도",
+    description: "우리 동네 키즈카페, 놀이터를 한눈에 찾아보세요",
+    iconBgClass: "",
+    iconColorClass: "",
+    iconBgStyle: "#ecfdf5",
+    iconColorStyle: "#10b981",
+    features: [
+      "키즈카페·놀이터 검색",
+      "박물관·문화센터 찾기",
+      "거리순 정렬·지도 보기",
+      "즐겨찾기 저장",
+    ],
+  },
+  {
+    icon: Users,
+    title: "육아 커뮤니티",
+    description: "육아 동지들과 나누는 따뜻한 소통",
+    iconBgClass: "",
+    iconColorClass: "",
+    iconBgStyle: "#faf5ff",
+    iconColorStyle: "#a855f7",
+    features: [
+      "동네 육아 커뮤니티",
+      "가족 피드 공유",
+      "육아 꿀팁 교환",
     ],
   },
   {
     icon: MessageCircle,
-    title: "AI 육아 코치",
+    title: "맘마톡 AI 코치",
     description: "24시간 AI가 맞춤형 육아 상담을 제공합니다",
     iconBgClass: "bg-secondary-50",
     iconColorClass: "text-secondary-500",
@@ -72,41 +132,6 @@ const features: Feature[] = [
       "사진으로 질문하기",
       "육아 팁 추천",
     ],
-  },
-  {
-    icon: MapPin,
-    title: "놀이지도",
-    description: "우리 동네 아이와 갈 곳을 한눈에 찾아보세요",
-    iconBgClass: "",
-    iconColorClass: "",
-    iconBgStyle: "#ecfdf5",
-    iconColorStyle: "#10b981",
-    features: [
-      "키즈카페·놀이터 검색",
-      "연령별 추천 장소",
-      "실시간 리뷰",
-      "즐겨찾기 저장",
-    ],
-  },
-  {
-    icon: Users,
-    title: "육아 커뮤니티",
-    description: "같은 또래 부모님들과 육아 이야기를 나눠요",
-    iconBgClass: "",
-    iconColorClass: "",
-    iconBgStyle: "#faf5ff",
-    iconColorStyle: "#a855f7",
-    features: ["가족 피드 공유", "또래 맘카페", "육아 꿀팁 교환"],
-  },
-  {
-    icon: TrendingUp,
-    title: "성장 관리 허브",
-    description: "발달 체크부터 예방접종까지 한 곳에서 관리",
-    iconBgClass: "",
-    iconColorClass: "",
-    iconBgStyle: "#fffbeb",
-    iconColorStyle: "#f59e0b",
-    features: ["K-DST 발달 체크", "예방접종 스케줄", "키·몸무게 성장 차트"],
   },
 ];
 
@@ -155,9 +180,6 @@ export default function FeaturesSection() {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-80px" });
 
-  const firstRow = features.slice(0, 3);
-  const secondRow = features.slice(3);
-
   return (
     <section id="features" className="py-24 bg-neutral-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -167,7 +189,7 @@ export default function FeaturesSection() {
             {"맘마와 함께하는\n스마트 육아"}
           </h2>
           <p className="text-neutral-500">
-            육아의 모든 순간을 더 쉽고, 더 스마트하게
+            기록부터 AI 분석까지, 육아의 모든 순간을 더 스마트하게
           </p>
         </div>
 
@@ -177,25 +199,11 @@ export default function FeaturesSection() {
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
         >
-          {/* Row 1: 3 cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
-            {firstRow.map((feature) => (
-              <FeatureCard key={feature.title} feature={feature} />
-            ))}
-          </div>
-
-          {/* Row 2: 2 cards centered */}
-          <div className="flex flex-col md:flex-row justify-center gap-6">
-            {secondRow.map((feature) => (
-              <div
-                key={feature.title}
-                className="w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]"
-              >
-                <FeatureCard feature={feature} />
-              </div>
-            ))}
-          </div>
+          {features.map((feature) => (
+            <FeatureCard key={feature.title} feature={feature} />
+          ))}
         </motion.div>
       </div>
     </section>

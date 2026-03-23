@@ -151,7 +151,7 @@ export default function DownloadCTA() {
               transition={{ duration: 0.5, ease, delay: 0.35 }}
               className="text-3xl sm:text-4xl font-bold text-white text-center whitespace-pre-line leading-tight"
             >
-              {"지금 맘마와 함께\n시작하세요"}
+              {"오늘도 사랑해,\n우리 아가"}
             </motion.h2>
 
             {/* Subtext */}
@@ -161,7 +161,7 @@ export default function DownloadCTA() {
               transition={{ duration: 0.5, ease, delay: 0.45 }}
               className="text-white/80 text-center mt-4 text-base sm:text-lg"
             >
-              10만 가족이 선택한 스마트 육아 파트너
+              하루하루 쌓여가는 기록이 우리 아이의 소중한 성장 일기가 됩니다
             </motion.p>
 
             {/* Download buttons */}

@@ -57,7 +57,7 @@ export default function ScreenshotGallery() {
             앱 미리보기
           </h2>
           <p className="mt-3 text-neutral-500">
-            직관적이고 아름다운 인터페이스로 육아를 더 쉽게
+            수유, 수면, 기저귀부터 AI 분석까지 한눈에
           </p>
         </motion.div>
 
