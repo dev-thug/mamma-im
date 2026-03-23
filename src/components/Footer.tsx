@@ -89,6 +89,7 @@ export default function Footer() {
   return (
     <footer className="bg-neutral-900 text-white py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <nav aria-label="푸터 메뉴">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Column 1 - Brand */}
           <div>
@@ -129,40 +130,40 @@ export default function Footer() {
               서비스
             </h3>
             <ul className="space-y-1">
-              <li>
-                <Link
-                  href="/#features"
-                  className="text-neutral-400 hover:text-white transition-colors text-sm py-1 block"
-                >
-                  기능 소개
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/#download"
-                  className="text-neutral-400 hover:text-white transition-colors text-sm py-1 block"
-                >
-                  앱 다운로드
-                </Link>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  title="준비 중"
-                  className="text-neutral-400 hover:text-white transition-colors text-sm py-1 block"
-                >
-                  업데이트 소식
-                </a>
-              </li>
-              <li>
-                <Link
-                  href="/faq"
-                  className="text-neutral-400 hover:text-white transition-colors text-sm py-1 block"
-                >
-                  자주 묻는 질문
-                </Link>
-              </li>
-            </ul>
+                <li>
+                  <Link
+                    href="/#features"
+                    className="text-neutral-400 hover:text-white transition-colors text-sm py-1 block"
+                  >
+                    기능 소개
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/#download"
+                    className="text-neutral-400 hover:text-white transition-colors text-sm py-1 block"
+                  >
+                    앱 다운로드
+                  </Link>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    title="준비 중"
+                    className="text-neutral-400 hover:text-white transition-colors text-sm py-1 block"
+                  >
+                    업데이트 소식
+                  </a>
+                </li>
+                <li>
+                  <Link
+                    href="/faq"
+                    className="text-neutral-400 hover:text-white transition-colors text-sm py-1 block"
+                  >
+                    자주 묻는 질문
+                  </Link>
+                </li>
+              </ul>
           </div>
 
           {/* Column 3 - 고객지원 */}
@@ -171,40 +172,40 @@ export default function Footer() {
               고객지원
             </h3>
             <ul className="space-y-1">
-              <li>
-                <Link
-                  href="/notices"
-                  className="text-neutral-400 hover:text-white transition-colors text-sm py-1 block"
-                >
-                  공지사항
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/contact"
-                  className="text-neutral-400 hover:text-white transition-colors text-sm py-1 block"
-                >
-                  1:1 문의
-                </Link>
-              </li>
-              <li>
-                <a
-                  href={`mailto:${siteConfig.email}?subject=피드백`}
-                  className="text-neutral-400 hover:text-white transition-colors text-sm py-1 block"
-                >
-                  피드백 보내기
-                </a>
-              </li>
-              <li className="pt-2">
-                <a
-                  href={`mailto:${siteConfig.email}`}
-                  className="text-primary-400 hover:text-primary-300 transition-colors text-sm py-1 flex items-center gap-1.5"
-                >
-                  <Mail className="w-4 h-4" />
-                  {siteConfig.email}
-                </a>
-              </li>
-            </ul>
+                <li>
+                  <Link
+                    href="/notices"
+                    className="text-neutral-400 hover:text-white transition-colors text-sm py-1 block"
+                  >
+                    공지사항
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/contact"
+                    className="text-neutral-400 hover:text-white transition-colors text-sm py-1 block"
+                  >
+                    1:1 문의
+                  </Link>
+                </li>
+                <li>
+                  <a
+                    href={`mailto:${siteConfig.email}?subject=피드백`}
+                    className="text-neutral-400 hover:text-white transition-colors text-sm py-1 block"
+                  >
+                    피드백 보내기
+                  </a>
+                </li>
+                <li className="pt-2">
+                  <a
+                    href={`mailto:${siteConfig.email}`}
+                    className="text-primary-400 hover:text-primary-300 transition-colors text-sm py-1 flex items-center gap-1.5"
+                  >
+                    <Mail className="w-4 h-4" />
+                    {siteConfig.email}
+                  </a>
+                </li>
+              </ul>
           </div>
 
           {/* Column 4 - 법적고지 */}
@@ -230,6 +231,7 @@ export default function Footer() {
             </ul>
           </div>
         </div>
+        </nav>
 
         {/* Bottom bar */}
         <div className="mt-12 pt-8 border-t border-neutral-800 flex flex-col sm:flex-row justify-between items-center gap-4">
