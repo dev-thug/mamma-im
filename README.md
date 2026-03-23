@@ -14,6 +14,35 @@
 
 안드로이드, 애플 스토어 심사진행중입니다. 4월 초 정식에 서비스 예정입니다.
 
+## 주요 화면 미리보기
+
+### 1) 오늘의 기록과 육아 루틴
+
+<p align="center">
+  <img src="./public/readme/01-daily-record.png" alt="오늘도 사랑해, 우리 아기 - 오늘의 기록 화면" width="280" />
+  <img src="./public/readme/07-first-record.png" alt="우리 아기 첫 기록, 맘마와 함께 화면" width="280" />
+</p>
+
+### 2) 육아 커뮤니티와 소통
+
+<p align="center">
+  <img src="./public/readme/02-community-feed.png" alt="육아 동지들과 나누는 소통 - 맘피드 화면" width="280" />
+</p>
+
+### 3) AI 성장/패턴 분석
+
+<p align="center">
+  <img src="./public/readme/03-ai-growth-check.png" alt="AI 발달 체크리스트 분석 화면" width="280" />
+  <img src="./public/readme/04-ai-smart-analysis.png" alt="수유 수면 발달 통합 AI 분석 화면" width="280" />
+</p>
+
+### 4) 빠른 기록과 생활 편의
+
+<p align="center">
+  <img src="./public/readme/06-quick-log.png" alt="수유 수면 기저귀 빠른 기록 화면" width="280" />
+  <img src="./public/readme/05-play-map.png" alt="동네 놀이지도 및 육아 장소 탐색 화면" width="280" />
+</p>
+
 ## 기술 스택
 
 | 영역 | 기술 |
