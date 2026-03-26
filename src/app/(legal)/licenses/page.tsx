@@ -3,6 +3,10 @@ import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
   title: `오픈소스 라이선스 | ${siteConfig.name}`,
+  alternates: {
+    canonical: `${siteConfig.url}/licenses`,
+    languages: { ko: `${siteConfig.url}/licenses` },
+  },
 };
 
 const libraries = [

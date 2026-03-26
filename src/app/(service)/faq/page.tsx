@@ -5,6 +5,10 @@ import { siteConfig } from "@/config/site";
 export const metadata: Metadata = {
   title: "자주 묻는 질문 | 맘마",
   description: "맘마 앱에 대해 자주 묻는 질문과 답변을 확인하세요.",
+  alternates: {
+    canonical: `${siteConfig.url}/faq`,
+    languages: { ko: `${siteConfig.url}/faq` },
+  },
 };
 
 const faqs: { question: string; answerText: string; answer?: React.ReactNode }[] = [

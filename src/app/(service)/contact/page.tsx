@@ -5,6 +5,10 @@ import { siteConfig } from "@/config/site";
 export const metadata: Metadata = {
   title: "1:1 문의 | 맘마",
   description: "맘마 앱 관련 문의사항을 보내주세요.",
+  alternates: {
+    canonical: `${siteConfig.url}/contact`,
+    languages: { ko: `${siteConfig.url}/contact` },
+  },
 };
 
 const checklistItems = [

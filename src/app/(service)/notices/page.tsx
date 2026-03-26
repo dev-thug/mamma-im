@@ -1,8 +1,13 @@
 import type { Metadata } from "next";
+import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
   title: "공지사항 | 맘마",
   description: "맘마 앱의 공지사항과 업데이트 소식을 확인하세요.",
+  alternates: {
+    canonical: `${siteConfig.url}/notices`,
+    languages: { ko: `${siteConfig.url}/notices` },
+  },
 };
 
 const notices = [

@@ -16,10 +16,6 @@ export const metadata: Metadata = {
   title: siteConfig.seo.title,
   description: "수유부터 수면, 기저귀까지 AI가 기록을 분석하고 맞춤 놀이지도와 육아 커뮤니티를 제공하는 스마트 육아 앱",
   keywords: [...siteConfig.seo.keywords],
-  alternates: {
-    canonical: siteConfig.url,
-    languages: { ko: siteConfig.url },
-  },
   icons: {
     icon: [
       { url: "/favicon.svg", type: "image/svg+xml" },

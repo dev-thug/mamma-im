@@ -182,6 +182,14 @@ export default function Footer() {
                 </li>
                 <li>
                   <Link
+                    href="/team"
+                    className="text-neutral-400 hover:text-white transition-colors text-sm py-1 block"
+                  >
+                    팀 소개
+                  </Link>
+                </li>
+                <li>
+                  <Link
                     href="/contact"
                     className="text-neutral-400 hover:text-white transition-colors text-sm py-1 block"
                   >

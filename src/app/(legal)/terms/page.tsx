@@ -4,6 +4,10 @@ import { siteConfig } from "@/config/site";
 export const metadata: Metadata = {
   title: `이용약관 | ${siteConfig.name}`,
   description: `${siteConfig.nameWithEn} 서비스 이용약관입니다. 서비스 이용에 관한 제반 사항을 규정합니다.`,
+  alternates: {
+    canonical: `${siteConfig.url}/terms`,
+    languages: { ko: `${siteConfig.url}/terms` },
+  },
 };
 
 export default function TermsPage() {
