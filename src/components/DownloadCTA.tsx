@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import { siteConfig } from "@/config/site";
 
 function HeartIcon() {
   return (
@@ -167,9 +168,10 @@ export default function DownloadCTA() {
             {/* Download buttons */}
             <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
               <motion.a
-                href="#"
-                title="준비 중"
-                onClick={(e) => e.preventDefault()}
+                href={siteConfig.appStoreUrl}
+                title="App Store로 이동"
+                target="_blank"
+                rel="noopener noreferrer"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: visible, y: isInView ? 0 : 20 }}
                 transition={{ duration: 0.45, ease, delay: 0.55 }}

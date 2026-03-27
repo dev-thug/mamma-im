@@ -9,6 +9,8 @@ export const siteConfig = {
   company: "맘마",
   /** 서비스 URL */
   url: "https://mamma.im",
+  /** iOS App Store URL */
+  appStoreUrl: "https://apps.apple.com/kr/app/mamma/id6760751452",
   /** 고객지원 이메일 */
   email: "de0978@gmail.com",
   /** 서비스 설명 (한글) */
