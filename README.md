@@ -9,6 +9,9 @@
 <a href="https://apps.apple.com/kr/app/mamma/id6760751452">
   <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83" alt="Download on the App Store" width="180" />
 </a>
+<a href="https://play.google.com/store/apps/details?id=im.mamma.app">
+  <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play" width="203" />
+</a>
 
 <p align="center">
   <img src="./public/readme-landing.png" alt="mamma.im 랜딩 페이지" width="900" />
@@ -18,7 +21,7 @@
 
 태어나는 순간부터 초등학교 졸업까지, 아이의 모든 성장을 함께하는 스마트 육아 앱을 소개합니다.
 
-iOS 앱은 App Store에서 다운로드할 수 있으며, 안드로이드는 출시 준비 중입니다.
+iOS 앱은 App Store에서, 안드로이드 앱은 Google Play에서 다운로드할 수 있습니다.
 
 ## 주요 화면 미리보기
 

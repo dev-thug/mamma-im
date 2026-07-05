@@ -192,9 +192,10 @@ export default function DownloadCTA() {
               </motion.a>
 
               <motion.a
-                href="#"
-                title="준비 중"
-                onClick={(e) => e.preventDefault()}
+                href={siteConfig.playStoreUrl}
+                title="Google Play로 이동"
+                target="_blank"
+                rel="noopener noreferrer"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: visible, y: isInView ? 0 : 20 }}
                 transition={{ duration: 0.45, ease, delay: 0.65 }}

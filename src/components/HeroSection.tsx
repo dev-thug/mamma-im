@@ -85,8 +85,14 @@ export default function HeroSection() {
                   <div>App Store에서 다운로드</div>
                 </div>
               </a>
-              <button className="flex items-center justify-center gap-3 px-6 py-3 rounded-2xl text-white font-semibold text-sm transition-opacity hover:opacity-85 active:opacity-70"
-                style={{ background: "#000" }}>
+              <a
+                href={siteConfig.playStoreUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-3 px-6 py-3 rounded-2xl text-white font-semibold text-sm transition-opacity hover:opacity-85 active:opacity-70"
+                style={{ background: "#000" }}
+                aria-label="Google Play에서 맘마 다운로드"
+              >
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                   <path d="M3.18 23.76C3.06 23.83 2.94 23.87 2.82 23.87C2.59 23.87 2.36 23.78 2.18 23.6L2.11 23.53L13.06 12L2.11 0.47L2.18 0.4C2.52 0.06 3.06 0 3.46 0.22L3.53 0.26L20.47 9.63L20.41 9.69L3.18 23.76ZM3.53 1.48L3.35 1.38V22.62L3.53 22.52L19.23 13.56L13.8 12L3.53 1.48Z" />
                 </svg>
@@ -94,7 +100,7 @@ export default function HeroSection() {
                   <div className="text-xs opacity-80">GET IT ON</div>
                   <div>Google Play에서 다운로드</div>
                 </div>
-              </button>
+              </a>
             </motion.div>
             <motion.div className="flex items-center gap-0 divide-x divide-neutral-200" variants={fadeInUp}>
               {[{ value: "10만+", label: "가족" }, { value: "4.8★", label: "평점" }, { value: "24시간", label: "AI 코치" }].map(stat => (

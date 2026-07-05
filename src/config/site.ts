@@ -11,6 +11,8 @@ export const siteConfig = {
   url: "https://mamma.im",
   /** iOS App Store URL */
   appStoreUrl: "https://apps.apple.com/kr/app/mamma/id6760751452",
+  /** Android Google Play URL */
+  playStoreUrl: "https://play.google.com/store/apps/details?id=im.mamma.app",
   /** 고객지원 이메일 */
   email: "de0978@gmail.com",
   /** 서비스 설명 (한글) */
