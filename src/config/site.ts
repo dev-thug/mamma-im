@@ -15,6 +15,8 @@ export const siteConfig = {
   playStoreUrl: "https://play.google.com/store/apps/details?id=im.mamma.app",
   /** 고객지원 이메일 */
   email: "support@mamma.im",
+  /** Google Analytics 4 측정 ID */
+  gaMeasurementId: "G-39P8T0W65L",
   /** 서비스 설명 (한글) */
   description:
     "태어나는 순간부터 초등학교 졸업까지, 아이의 모든 성장을 함께하는 스마트 육아 앱",
