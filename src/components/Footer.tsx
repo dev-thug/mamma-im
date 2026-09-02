@@ -245,15 +245,23 @@ export default function Footer() {
         </nav>
 
         {/* Bottom bar */}
-        <div className="mt-12 pt-8 border-t border-neutral-800 flex flex-col sm:flex-row justify-between items-center gap-4">
-          <p className="text-neutral-500 text-sm">
-            © {new Date().getFullYear()} {siteConfig.nameEn}. All rights reserved.
+        <div className="mt-12 pt-8 border-t border-neutral-800">
+          <p className="text-neutral-500 text-xs leading-relaxed">
+            {siteConfig.company} · 대표 {siteConfig.business.representative} ·
+            사업자등록번호 {siteConfig.business.registrationNumber}
+            <br />
+            {siteConfig.business.address} · {siteConfig.email}
           </p>
-          <p className="text-neutral-500 text-sm flex items-center gap-1">
-            Made with{" "}
-            <Heart className="w-4 h-4 text-primary-400 fill-primary-400" />{" "}
-            for families
-          </p>
+          <div className="mt-4 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <p className="text-neutral-500 text-sm">
+              © {new Date().getFullYear()} {siteConfig.nameEn}. All rights reserved.
+            </p>
+            <p className="text-neutral-500 text-sm flex items-center gap-1">
+              Made with{" "}
+              <Heart className="w-4 h-4 text-primary-400 fill-primary-400" />{" "}
+              for families
+            </p>
+          </div>
         </div>
       </div>
     </footer>

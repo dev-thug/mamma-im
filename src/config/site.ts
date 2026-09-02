@@ -5,8 +5,8 @@ export const siteConfig = {
   nameEn: "Mamma",
   /** 서비스명 (한글+영문) */
   nameWithEn: "맘마(Mamma)",
-  /** 운영사명 */
-  company: "맘마",
+  /** 운영사명 (사업자등록증 상호) */
+  company: "스페시파이(specify)",
   /** 서비스 URL */
   url: "https://mamma.im",
   /** iOS App Store URL */
@@ -14,7 +14,7 @@ export const siteConfig = {
   /** Android Google Play URL */
   playStoreUrl: "https://play.google.com/store/apps/details?id=im.mamma.app",
   /** 고객지원 이메일 */
-  email: "de0978@gmail.com",
+  email: "support@mamma.im",
   /** 서비스 설명 (한글) */
   description:
     "태어나는 순간부터 초등학교 졸업까지, 아이의 모든 성장을 함께하는 스마트 육아 앱",
@@ -22,6 +22,16 @@ export const siteConfig = {
   themeColor: "#FF4757",
   /** 앱 플랫폼 */
   appPlatform: "React Native",
+
+  /** 사업자 정보 (사업자등록증 기준) */
+  business: {
+    /** 대표자 */
+    representative: "김현중",
+    /** 사업자등록번호 */
+    registrationNumber: "656-14-02899",
+    /** 사업장 소재지 */
+    address: "서울특별시 동대문구 왕산로 288, 902호(전농동, 에스앤제이프리미안)",
+  },
 
   legal: {
     /** 약관/방침 시행일자 */

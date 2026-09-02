@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 };
 
 export default function TermsPage() {
-  const { name, nameEn, nameWithEn, email, company, legal } = siteConfig;
+  const { name, nameEn, nameWithEn, email, company, business, legal } = siteConfig;
 
   return (
     <>
@@ -394,7 +394,13 @@ export default function TermsPage() {
               <p className="text-sm text-neutral-600">
                 서비스명: {name} ({nameEn})
                 <br />
-                운영사: {company}
+                운영사(상호): {company}
+                <br />
+                대표자: {business.representative}
+                <br />
+                사업자등록번호: {business.registrationNumber}
+                <br />
+                사업장 소재지: {business.address}
                 <br />
                 문의: {email}
               </p>

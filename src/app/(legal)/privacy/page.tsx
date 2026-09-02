@@ -231,7 +231,16 @@ export default function PrivacyPage() {
         <p className="text-sm text-neutral-500">
           본 방침은 <strong>{legal.effectiveDate}</strong>부터 시행됩니다.
         </p>
-        <p className="text-sm text-neutral-500 mt-1">운영사: {siteConfig.company} &nbsp;|&nbsp; 서비스: {nameWithEn} &nbsp;|&nbsp; URL: {url}</p>
+        <p className="text-sm text-neutral-500 mt-1">
+          운영사(상호): {siteConfig.company} &nbsp;|&nbsp; 대표자: {siteConfig.business.representative}
+          &nbsp;|&nbsp; 사업자등록번호: {siteConfig.business.registrationNumber}
+        </p>
+        <p className="text-sm text-neutral-500 mt-1">
+          사업장 소재지: {siteConfig.business.address}
+        </p>
+        <p className="text-sm text-neutral-500 mt-1">
+          서비스: {nameWithEn} &nbsp;|&nbsp; URL: {url}
+        </p>
       </div>
     </article>
   );

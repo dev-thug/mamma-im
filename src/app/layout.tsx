@@ -6,9 +6,20 @@ const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
   name: siteConfig.company,
+  legalName: siteConfig.company,
   url: siteConfig.url,
   email: siteConfig.email,
   logo: `${siteConfig.url}/logo.png`,
+  taxID: siteConfig.business.registrationNumber,
+  founder: {
+    "@type": "Person",
+    name: siteConfig.business.representative,
+  },
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: siteConfig.business.address,
+    addressCountry: "KR",
+  },
 };
 
 export const metadata: Metadata = {
