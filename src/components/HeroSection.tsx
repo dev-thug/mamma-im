@@ -61,7 +61,7 @@ export default function HeroSection() {
             </motion.div>
             <motion.h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-neutral-900 leading-tight whitespace-pre-line mb-5"
               variants={fadeInUp}>
-              {"우리 아기 첫 기록,\n"}
+              {"우리 아기 첫 기록,\n육아앱 "}
               <span className="gradient-text">맘마</span>
               {"와 함께"}
             </motion.h1>
