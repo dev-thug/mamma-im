@@ -150,7 +150,7 @@ export default async function BlogPostPage({
           수유·수면·발달 기록, 이제 맘마와 함께 하세요
         </p>
         <p className="text-sm text-neutral-500 mb-5">
-          AI 분석과 놀이지도까지, 하나의 앱에서 관리할 수 있어요.
+          기록에 답하는 AI 맘마톡까지, 하나의 앱에서 관리할 수 있어요.
         </p>
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
           <a

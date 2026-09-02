@@ -7,16 +7,12 @@ export default function MyInfoTab() {
         <div>
           <div className="text-[11px] font-bold text-neutral-900">김민준 엄마</div>
           <div className="text-[9px] text-neutral-500">쿵쾅이 (D+41)</div>
-          <div className="flex gap-1 mt-1">
-            <span className="text-[8px] bg-primary-50 text-primary-600 px-1.5 py-0.5 rounded-full font-medium">프리미엄</span>
-          </div>
         </div>
       </div>
       {[
         { icon: "👶", label: "아기 프로필 관리" },
-        { icon: "👨‍👩‍👧", label: "가족 초대 관리" },
+        { icon: "🧒", label: "아이 추가하기" },
         { icon: "🔔", label: "알림 설정" },
-        { icon: "🌙", label: "다크 모드" },
         { icon: "📊", label: "성장 리포트" },
         { icon: "🛡", label: "개인정보 보호" },
       ].map((item, i) => (

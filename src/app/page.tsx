@@ -23,9 +23,9 @@ const softwareApplicationSchema = {
 };
 
 export const metadata: Metadata = {
-  title: "맘마 - 육아 기록, AI 분석, 놀이지도까지 | 스마트 육아 앱 No.1",
+  title: "맘마 - 육아 기록부터 AI 상담까지 | 스마트 육아 앱",
   description:
-    "신생아부터 초등학생까지, 수유기록·수면기록·기저귀기록·성장발달 체크를 AI가 분석하고 맞춤 놀이지도까지 제공하는 스마트 육아 앱 맘마.",
+    "신생아부터 초등학생까지, 수유·수면·기저귀·성장·발달 체크를 한 곳에 기록하고, 아이의 실제 기록을 바탕으로 답하는 AI 맘마톡과 함께하는 육아 앱 맘마.",
   alternates: {
     canonical: siteConfig.url,
     languages: { ko: siteConfig.url },

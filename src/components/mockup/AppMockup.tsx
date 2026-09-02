@@ -2,19 +2,19 @@
 
 import { useState, useEffect } from "react";
 import HomeTab from "./tabs/HomeTab";
-import CommunityTab from "./tabs/CommunityTab";
-import PlayMapTab from "./tabs/PlayMapTab";
+import DevelopmentTab from "./tabs/DevelopmentTab";
+import ReportTab from "./tabs/ReportTab";
 import AIChatTab from "./tabs/AIChatTab";
 import MyInfoTab from "./tabs/MyInfoTab";
 
 const TAB_ICONS = [
   (a: boolean) => <svg width="18" height="18" viewBox="0 0 24 24" fill={a ? "var(--primary-500)" : "#9CA3AF"}><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" /></svg>,
-  (a: boolean) => <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={a ? "var(--primary-500)" : "#9CA3AF"} strokeWidth="2" strokeLinecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" /></svg>,
-  (a: boolean) => <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={a ? "var(--primary-500)" : "#9CA3AF"} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6" /><line x1="8" y1="2" x2="8" y2="18" /><line x1="16" y1="6" x2="16" y2="22" /></svg>,
+  (a: boolean) => <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={a ? "var(--primary-500)" : "#9CA3AF"} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 11l3 3L22 4" /><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" /></svg>,
+  (a: boolean) => <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={a ? "var(--primary-500)" : "#9CA3AF"} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 3v18h18" /><path d="M18.7 8l-5.1 5.2-3-3L7 14" /></svg>,
   (a: boolean) => <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={a ? "var(--primary-500)" : "#9CA3AF"} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" /></svg>,
   (a: boolean) => <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={a ? "var(--primary-500)" : "#9CA3AF"} strokeWidth="2" strokeLinecap="round"><line x1="3" y1="12" x2="21" y2="12" /><line x1="3" y1="6" x2="21" y2="6" /><line x1="3" y1="18" x2="21" y2="18" /></svg>,
 ];
-const TAB_LABELS = ["홈", "커뮤니티", "놀이지도", "맘마톡", "나의정보"];
+const TAB_LABELS = ["홈", "발달체크", "리포트", "맘마톡", "더보기"];
 
 interface AppMockupProps {
   activeTab?: number;
@@ -72,8 +72,8 @@ export default function AppMockup({ activeTab: controlledTab, onTabChange }: App
           <HomeTab now={now} />
         ) : (
           <div className="flex-1 overflow-y-auto" style={{ scrollbarWidth: "none" } as React.CSSProperties}>
-            {activeTab === 1 && <CommunityTab />}
-            {activeTab === 2 && <PlayMapTab />}
+            {activeTab === 1 && <DevelopmentTab />}
+            {activeTab === 2 && <ReportTab />}
             {activeTab === 3 && <AIChatTab />}
             {activeTab === 4 && <MyInfoTab />}
           </div>

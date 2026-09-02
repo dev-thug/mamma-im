@@ -7,9 +7,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const screens = [
   { id: "home", label: "홈", image: "/preview/home.png", alt: "맘마 앱 홈 화면 - 수유, 수면, 기저귀 기록 대시보드" },
-  { id: "community", label: "커뮤니티", image: "/preview/mamma-feed.png", alt: "맘마 앱 커뮤니티 화면 - 육아 정보 공유 피드" },
-  { id: "map", label: "놀이지도", image: "/preview/play-map.png", alt: "맘마 앱 놀이지도 화면 - 주변 놀이터 및 키즈 공간 지도" },
-  { id: "talk", label: "맘마톡", image: "/preview/mamma-talk.png", alt: "맘마 앱 맘마톡 화면 - 부모 간 실시간 채팅 기능" },
+  { id: "talk", label: "맘마톡", image: "/preview/mamma-talk.png", alt: "맘마 앱 맘마톡 화면 - 아이 기록을 바탕으로 답하는 AI 상담" },
   { id: "profile", label: "나의정보", image: "/preview/my-info.png", alt: "맘마 앱 나의정보 화면 - 아이 성장 기록 및 프로필 관리" },
 ] as const;
 
@@ -57,7 +55,7 @@ export default function ScreenshotGallery() {
             앱 미리보기
           </h2>
           <p className="mt-3 text-neutral-500">
-            수유, 수면, 기저귀부터 AI 분석까지 한눈에
+            수유, 수면, 기저귀부터 맘마톡 AI 상담까지 한눈에
           </p>
         </motion.div>
 

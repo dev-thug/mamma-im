@@ -26,7 +26,7 @@ const organizationSchema = {
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: siteConfig.seo.title,
-  description: "수유부터 수면, 기저귀까지 AI가 기록을 분석하고 맞춤 놀이지도와 육아 커뮤니티를 제공하는 스마트 육아 앱",
+  description: "수유부터 수면, 기저귀, 발달 체크까지 세세하게 기록하고, 아이의 실제 기록을 바탕으로 답하는 AI 맘마톡과 함께하는 육아 앱",
   keywords: [...siteConfig.seo.keywords],
   icons: {
     icon: [

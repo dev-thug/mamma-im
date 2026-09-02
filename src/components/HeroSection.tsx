@@ -56,7 +56,7 @@ export default function HeroSection() {
             <motion.div variants={fadeInUp}>
               <span className="inline-block px-4 py-1.5 rounded-full text-sm font-semibold mb-6"
                 style={{ background: "var(--primary-50)", color: "var(--primary-500)", border: "1px solid var(--primary-100)" }}>
-                No.1 스마트 육아 앱
+                기록 기반 AI 육아 상담
               </span>
             </motion.div>
             <motion.h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-neutral-900 leading-tight whitespace-pre-line mb-5"
@@ -103,7 +103,7 @@ export default function HeroSection() {
               </a>
             </motion.div>
             <motion.div className="flex items-center gap-0 divide-x divide-neutral-200" variants={fadeInUp}>
-              {[{ value: "10만+", label: "가족" }, { value: "4.8★", label: "평점" }, { value: "24시간", label: "AI 코치" }].map(stat => (
+              {[{ value: "12종+", label: "기록 항목" }, { value: "무료", label: "기본 기능" }, { value: "24시간", label: "AI 상담" }].map(stat => (
                 <div key={stat.label} className="px-5 first:pl-0 last:pr-0 text-center lg:text-left">
                   <div className="text-xl font-bold text-neutral-900">{stat.value}</div>
                   <div className="text-xs text-neutral-600 mt-0.5">{stat.label}</div>
