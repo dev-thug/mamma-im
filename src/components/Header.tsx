@@ -9,6 +9,7 @@ import { cn } from "@/lib/utils";
 const navLinks = [
   { label: "기능 소개", href: "#features" },
   { label: "스크린샷", href: "#screenshots" },
+  { label: "블로그", href: "/blog" },
   { label: "다운로드", href: "#download" },
 ];
 
@@ -130,15 +131,25 @@ export default function Header() {
 
             {/* Desktop nav */}
             <nav className="hidden md:flex items-center gap-8" aria-label="주요 메뉴">
-              {navLinks.map((link) => (
-                <button
-                  key={link.href}
-                  onClick={() => handleNavClick(link.href)}
-                  className="text-neutral-600 hover:text-neutral-900 font-medium transition-colors duration-200 cursor-pointer"
-                >
-                  {link.label}
-                </button>
-              ))}
+              {navLinks.map((link) =>
+                link.href.startsWith("#") ? (
+                  <button
+                    key={link.href}
+                    onClick={() => handleNavClick(link.href)}
+                    className="text-neutral-600 hover:text-neutral-900 font-medium transition-colors duration-200 cursor-pointer"
+                  >
+                    {link.label}
+                  </button>
+                ) : (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className="text-neutral-600 hover:text-neutral-900 font-medium transition-colors duration-200"
+                  >
+                    {link.label}
+                  </Link>
+                )
+              )}
             </nav>
 
             {/* Desktop CTA */}
@@ -200,17 +211,30 @@ export default function Header() {
               aria-label="모바일 메뉴"
             >
               {navLinks.map((link, i) => (
-                <motion.button
+                <motion.div
                   key={link.href}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: 20 }}
                   transition={{ delay: 0.08 * (i + 1), duration: 0.25, ease: "easeOut" }}
-                  onClick={() => handleNavClick(link.href)}
-                  className="text-2xl font-semibold text-neutral-900 hover:text-primary-500 transition-colors duration-200 cursor-pointer"
                 >
-                  {link.label}
-                </motion.button>
+                  {link.href.startsWith("#") ? (
+                    <button
+                      onClick={() => handleNavClick(link.href)}
+                      className="text-2xl font-semibold text-neutral-900 hover:text-primary-500 transition-colors duration-200 cursor-pointer"
+                    >
+                      {link.label}
+                    </button>
+                  ) : (
+                    <Link
+                      href={link.href}
+                      onClick={() => setMobileOpen(false)}
+                      className="text-2xl font-semibold text-neutral-900 hover:text-primary-500 transition-colors duration-200"
+                    >
+                      {link.label}
+                    </Link>
+                  )}
+                </motion.div>
               ))}
 
               <motion.button

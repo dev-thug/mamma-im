@@ -1,9 +1,17 @@
 import type { MetadataRoute } from 'next'
 import { siteConfig } from '@/config/site'
+import { getAllPosts } from '@/content/blog'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = siteConfig.url
   const now = new Date()
+
+  const blogEntries: MetadataRoute.Sitemap = getAllPosts().map((post) => ({
+    url: `${base}/blog/${post.slug}`,
+    lastModified: new Date(post.updatedAt ?? post.publishedAt),
+    changeFrequency: 'monthly',
+    priority: 0.6,
+  }))
 
   return [
     {
@@ -12,6 +20,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'daily',
       priority: 1,
     },
+    {
+      url: `${base}/blog`,
+      lastModified: now,
+      changeFrequency: 'weekly',
+      priority: 0.7,
+    },
+    ...blogEntries,
     {
       url: `${base}/privacy`,
       lastModified: now,

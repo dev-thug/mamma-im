@@ -113,14 +113,13 @@ export default function Footer() {
               >
                 <Youtube className="w-5 h-5 text-neutral-300" />
               </a>
-              <a
-                href="#"
-                title="준비 중"
-                aria-label="Blog"
+              <Link
+                href="/blog"
+                aria-label="블로그"
                 className="w-10 h-10 bg-neutral-800 rounded-full flex items-center justify-center hover:bg-neutral-700 transition-colors"
               >
                 <Globe className="w-5 h-5 text-neutral-300" />
-              </a>
+              </Link>
             </div>
           </div>
 
@@ -144,6 +143,14 @@ export default function Footer() {
                     className="text-neutral-400 hover:text-white transition-colors text-sm py-1 block"
                   >
                     앱 다운로드
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/blog"
+                    className="text-neutral-400 hover:text-white transition-colors text-sm py-1 block"
+                  >
+                    블로그
                   </Link>
                 </li>
                 <li>
