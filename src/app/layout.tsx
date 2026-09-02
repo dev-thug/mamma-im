@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { siteConfig } from "@/config/site";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
 import "./globals.css";
 
 const organizationSchema = {
@@ -86,6 +87,7 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
         />
+        <GoogleAnalytics />
       </head>
       <body className="antialiased">{children}</body>
     </html>
