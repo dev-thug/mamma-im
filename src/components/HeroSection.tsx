@@ -60,13 +60,13 @@ export default function HeroSection() {
                 기록 기반 AI 육아 상담
               </span>
             </motion.div>
-            <motion.h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-neutral-900 leading-tight whitespace-pre-line mb-5"
+            <motion.h1 className="text-[2rem] sm:text-5xl lg:text-6xl font-bold text-neutral-900 leading-tight whitespace-pre-line [word-break:keep-all] mb-5"
               variants={fadeInUp}>
               {"기록은 터치 한 번,\n답은 "}
               <span className="gradient-text">우리 아이</span>
               {" 기준으로"}
             </motion.h1>
-            <motion.p className="text-lg text-neutral-600 whitespace-pre-line mb-10 max-w-lg" variants={fadeInUp}>
+            <motion.p className="text-lg text-neutral-600 whitespace-pre-line [word-break:keep-all] mb-10 max-w-lg" variants={fadeInUp}>
               {"수유·수면·기저귀·발달을 빠르게 기록하면,\n맘마톡이 우리 아이의 실제 기록을 보고 답해줍니다."}
             </motion.p>
             <motion.div className="flex flex-col sm:flex-row gap-3 mb-10 w-full sm:w-auto" variants={fadeInUp}>
