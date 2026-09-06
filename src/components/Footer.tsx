@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Instagram, Youtube, Globe, Heart, Mail } from "lucide-react";
+import { Globe, Heart, Mail } from "lucide-react";
 import { siteConfig } from "@/config/site";
 
 function FooterLogoIcon() {
@@ -97,22 +97,6 @@ export default function Footer() {
               <FooterLogoIcon />
             </div>
             <div className="flex items-center gap-3 mt-6">
-              <a
-                href="#"
-                title="준비 중"
-                aria-label="Instagram"
-                className="w-10 h-10 bg-neutral-800 rounded-full flex items-center justify-center hover:bg-neutral-700 transition-colors"
-              >
-                <Instagram className="w-5 h-5 text-neutral-300" />
-              </a>
-              <a
-                href="#"
-                title="준비 중"
-                aria-label="YouTube"
-                className="w-10 h-10 bg-neutral-800 rounded-full flex items-center justify-center hover:bg-neutral-700 transition-colors"
-              >
-                <Youtube className="w-5 h-5 text-neutral-300" />
-              </a>
               <Link
                 href="/blog"
                 aria-label="블로그"
@@ -152,15 +136,6 @@ export default function Footer() {
                   >
                     블로그
                   </Link>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    title="준비 중"
-                    className="text-neutral-400 hover:text-white transition-colors text-sm py-1 block"
-                  >
-                    업데이트 소식
-                  </a>
                 </li>
                 <li>
                   <Link

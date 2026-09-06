@@ -454,7 +454,7 @@ export const blogPosts: BlogPost[] = [
       "산후 우울감과 산후우울증의 차이, 흔한 증상, 그리고 도움을 받을 수 있는 곳을 정리했습니다. 혼자 견디지 않아도 됩니다.",
     category: "육아 정보",
     keywords: ["산후우울증", "산후우울증 체크리스트", "산후우울증 증상", "산모 우울증"],
-    publishedAt: "2026-09-07",
+    publishedAt: "2026-09-06",
     readingMinutes: 6,
     content: [
       {

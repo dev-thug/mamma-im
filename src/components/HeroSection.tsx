@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { motion, type Variants } from "framer-motion";
 import AppMockup from "./mockup/AppMockup";
 import { siteConfig } from "@/config/site";
+import { trackStoreClick } from "@/lib/analytics";
 
 const AUTO_CYCLE_TABS = [0, 1, 2, 3];
 
@@ -61,12 +62,12 @@ export default function HeroSection() {
             </motion.div>
             <motion.h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-neutral-900 leading-tight whitespace-pre-line mb-5"
               variants={fadeInUp}>
-              {"우리 아기 첫 기록,\n육아앱 "}
-              <span className="gradient-text">맘마</span>
-              {"와 함께"}
+              {"기록은 터치 한 번,\n답은 "}
+              <span className="gradient-text">우리 아이</span>
+              {" 기준으로"}
             </motion.h1>
             <motion.p className="text-lg text-neutral-600 whitespace-pre-line mb-10 max-w-lg" variants={fadeInUp}>
-              {"하루하루 쌓여가는 기록이\n우리 아이의 소중한 성장 일기가 됩니다."}
+              {"수유·수면·기저귀·발달을 빠르게 기록하면,\n맘마톡이 우리 아이의 실제 기록을 보고 답해줍니다."}
             </motion.p>
             <motion.div className="flex flex-col sm:flex-row gap-3 mb-10 w-full sm:w-auto" variants={fadeInUp}>
               <a
@@ -76,6 +77,7 @@ export default function HeroSection() {
                 className="flex items-center justify-center gap-3 px-6 py-3 rounded-2xl text-white font-semibold text-sm transition-opacity hover:opacity-85 active:opacity-70"
                 style={{ background: "#000" }}
                 aria-label="App Store에서 맘마 다운로드"
+                onClick={() => trackStoreClick("ios", "hero")}
               >
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                   <path d="M18.71 19.5C17.88 20.74 17 21.95 15.66 21.97C14.32 22 13.89 21.18 12.37 21.18C10.84 21.18 10.37 21.95 9.1 22C7.79 22.05 6.8 20.68 5.96 19.47C4.25 17 2.94 12.45 4.7 9.39C5.57 7.87 7.13 6.91 8.82 6.88C10.1 6.86 11.32 7.75 12.11 7.75C12.89 7.75 14.37 6.68 15.92 6.84C16.57 6.87 18.39 7.1 19.56 8.82C19.47 8.88 17.39 10.1 17.41 12.63C17.44 15.65 20.06 16.66 20.09 16.67C20.06 16.74 19.67 18.11 18.71 19.5ZM13 3.5C13.73 2.67 14.94 2.04 15.94 2C16.07 3.17 15.6 4.35 14.9 5.19C14.21 6.04 13.07 6.7 11.95 6.61C11.8 5.46 12.36 4.26 13 3.5Z" />
@@ -92,6 +94,7 @@ export default function HeroSection() {
                 className="flex items-center justify-center gap-3 px-6 py-3 rounded-2xl text-white font-semibold text-sm transition-opacity hover:opacity-85 active:opacity-70"
                 style={{ background: "#000" }}
                 aria-label="Google Play에서 맘마 다운로드"
+                onClick={() => trackStoreClick("android", "hero")}
               >
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                   <path d="M3.18 23.76C3.06 23.83 2.94 23.87 2.82 23.87C2.59 23.87 2.36 23.78 2.18 23.6L2.11 23.53L13.06 12L2.11 0.47L2.18 0.4C2.52 0.06 3.06 0 3.46 0.22L3.53 0.26L20.47 9.63L20.41 9.69L3.18 23.76ZM3.53 1.48L3.35 1.38V22.62L3.53 22.52L19.23 13.56L13.8 12L3.53 1.48Z" />

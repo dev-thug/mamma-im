@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { getAllPosts, getPostBySlug, getRelatedPosts } from "@/content/blog";
 import { siteConfig } from "@/config/site";
 import PostContent from "@/components/blog/PostContent";
+import TrackedStoreLink from "@/components/TrackedStoreLink";
 
 export function generateStaticParams() {
   return getAllPosts().map((post) => ({ slug: post.slug }));
@@ -153,24 +154,26 @@ export default async function BlogPostPage({
           기록에 답하는 AI 맘마톡까지, 하나의 앱에서 관리할 수 있어요.
         </p>
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
-          <a
+          <TrackedStoreLink
             href={siteConfig.appStoreUrl}
-            target="_blank"
-            rel="noopener noreferrer"
+            store="ios"
+            placement="blog_cta"
             className="px-6 py-3 rounded-2xl text-white font-semibold text-sm transition-opacity hover:opacity-85"
             style={{ background: "#000" }}
+            aria-label="App Store에서 맘마 다운로드"
           >
             App Store에서 다운로드
-          </a>
-          <a
+          </TrackedStoreLink>
+          <TrackedStoreLink
             href={siteConfig.playStoreUrl}
-            target="_blank"
-            rel="noopener noreferrer"
+            store="android"
+            placement="blog_cta"
             className="px-6 py-3 rounded-2xl text-white font-semibold text-sm transition-opacity hover:opacity-85"
             style={{ background: "#000" }}
+            aria-label="Google Play에서 맘마 다운로드"
           >
             Google Play에서 다운로드
-          </a>
+          </TrackedStoreLink>
         </div>
       </div>
 

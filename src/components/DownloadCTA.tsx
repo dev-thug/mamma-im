@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { siteConfig } from "@/config/site";
+import { trackStoreClick } from "@/lib/analytics";
 
 function HeartIcon() {
   return (
@@ -179,6 +180,7 @@ export default function DownloadCTA() {
                 whileTap={{ scale: 0.98 }}
                 className="bg-white text-neutral-900 rounded-2xl px-8 py-4 flex items-center gap-3 shadow-md hover:shadow-lg transition-shadow duration-200 cursor-pointer"
                 aria-label="App Store에서 맘마 다운로드"
+                onClick={() => trackStoreClick("ios", "download_cta")}
               >
                 <AppleIcon />
                 <div className="flex flex-col items-start">
@@ -203,6 +205,7 @@ export default function DownloadCTA() {
                 whileTap={{ scale: 0.98 }}
                 className="bg-white text-neutral-900 rounded-2xl px-8 py-4 flex items-center gap-3 shadow-md hover:shadow-lg transition-shadow duration-200 cursor-pointer"
                 aria-label="Google Play에서 맘마 다운로드"
+                onClick={() => trackStoreClick("android", "download_cta")}
               >
                 <PlayStoreIcon />
                 <div className="flex flex-col items-start">
