@@ -57,7 +57,7 @@ export default function HeroSection() {
             <motion.div variants={fadeInUp}>
               <span className="inline-block px-4 py-1.5 rounded-full text-sm font-semibold mb-6"
                 style={{ background: "var(--primary-50)", color: "var(--primary-500)", border: "1px solid var(--primary-100)" }}>
-                기록 기반 AI 육아 상담
+                육아앱 맘마 · 기록 기반 AI 상담
               </span>
             </motion.div>
             <motion.h1 className="text-[2rem] sm:text-5xl lg:text-6xl font-bold text-neutral-900 leading-tight whitespace-pre-line [word-break:keep-all] mb-5"
