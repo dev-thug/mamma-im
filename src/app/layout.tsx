@@ -11,6 +11,7 @@ const organizationSchema = {
   url: siteConfig.url,
   email: siteConfig.email,
   logo: `${siteConfig.url}/logo.png`,
+  sameAs: [siteConfig.social.x],
   taxID: siteConfig.business.registrationNumber,
   founder: {
     "@type": "Person",

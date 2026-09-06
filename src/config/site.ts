@@ -25,6 +25,11 @@ export const siteConfig = {
   /** 앱 플랫폼 */
   appPlatform: "React Native",
 
+  /** 공식 소셜 계정 */
+  social: {
+    x: "https://x.com/de0978",
+  },
+
   /** 사업자 정보 (사업자등록증 기준) */
   business: {
     /** 대표자 */

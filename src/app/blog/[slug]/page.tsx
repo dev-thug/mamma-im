@@ -36,20 +36,12 @@ export async function generateMetadata({
       url,
       publishedTime: post.publishedAt,
       modifiedTime: post.updatedAt ?? post.publishedAt,
-      images: [
-        {
-          url: "/og-image.png",
-          width: 1200,
-          height: 630,
-          alt: post.title,
-        },
-      ],
+      // og:image / twitter:image는 opengraph-image.tsx가 글마다 생성합니다.
     },
     twitter: {
       card: "summary_large_image",
       title: post.title,
       description: post.description,
-      images: ["/og-image.png"],
     },
   };
 }
