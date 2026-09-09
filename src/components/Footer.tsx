@@ -101,7 +101,7 @@ function FooterLogoIcon() {
 
 export default function Footer() {
   return (
-    <footer className="bg-neutral-900 text-white py-16">
+    <footer data-ga-nav="footer" className="bg-neutral-900 text-white py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <nav aria-label="푸터 메뉴">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">

@@ -102,9 +102,13 @@ export default function PrivacyPage() {
                 <td className="px-4 py-3">Amazon Web Services (AWS)</td>
                 <td className="px-4 py-3">서버 인프라 운영 및 데이터 저장</td>
               </tr>
-              <tr>
+              <tr className="border-b border-neutral-100">
                 <td className="px-4 py-3">Google Firebase</td>
                 <td className="px-4 py-3">푸시 알림 발송, 앱 분석</td>
+              </tr>
+              <tr>
+                <td className="px-4 py-3">Google Analytics</td>
+                <td className="px-4 py-3">웹사이트 이용 통계 분석</td>
               </tr>
             </tbody>
           </table>

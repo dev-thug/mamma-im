@@ -56,10 +56,13 @@ export default function BlogIndexPage() {
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-        {posts.map((post) => (
+        {posts.map((post, index) => (
           <Link
             key={post.slug}
             href={`/blog/${post.slug}`}
+            data-ga-event="blog_card_click"
+            data-ga-p-post_slug={post.slug}
+            data-ga-p-list_position={index + 1}
             className="group flex flex-col rounded-2xl border border-neutral-100 p-6 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300"
           >
             <span

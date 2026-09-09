@@ -4,9 +4,11 @@ import { useState, useEffect } from "react";
 import { motion, type Variants } from "framer-motion";
 import AppMockup from "./mockup/AppMockup";
 import { siteConfig } from "@/config/site";
-import { trackStoreClick } from "@/lib/analytics";
+import { trackDemoInteract, trackStoreClick } from "@/lib/analytics";
 
 const AUTO_CYCLE_TABS = [0, 1, 2, 3];
+/** AppMockup 하단 탭바와 같은 순서 — GA4에 숫자 대신 이름으로 보냅니다 */
+const DEMO_TAB_LABELS = ["홈", "발달체크", "리포트", "맘마톡", "더보기"];
 
 const fadeInUp: Variants = {
   hidden: { opacity: 0, y: 32 },
@@ -21,8 +23,18 @@ export default function HeroSection() {
   const [userInteracted, setUserInteracted] = useState(false);
   const [activeTab, setActiveTab] = useState(0);
 
-  const handleInteraction = () => setUserInteracted(true);
+  /** 목업 조작은 세션당 1회만 보냅니다 — 탭 전환마다 보내면 신호 대비 양이 너무 많습니다 */
+  const reportDemoInteract = (tab: number) => {
+    if (userInteracted) return;
+    trackDemoInteract(DEMO_TAB_LABELS[tab] ?? String(tab));
+  };
+
+  const handleInteraction = () => {
+    reportDemoInteract(activeTab);
+    setUserInteracted(true);
+  };
   const handleTabChange = (tab: number) => {
+    reportDemoInteract(tab);
     setUserInteracted(true);
     setActiveTab(tab);
   };
@@ -44,7 +56,10 @@ export default function HeroSection() {
   }, [userInteracted, prefersReducedMotion]);
 
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-b from-primary-50 via-white to-white">
+    <section
+      data-ga-section="hero"
+      className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-b from-primary-50 via-white to-white"
+    >
       <div aria-hidden="true" className="absolute top-[-80px] left-[-80px] w-[360px] h-[360px] rounded-full opacity-30" style={{ background: "var(--primary-100)" }} />
       <div aria-hidden="true" className="absolute top-[20%] right-[-60px] w-[260px] h-[260px] rounded-full opacity-20" style={{ background: "var(--primary-200)" }} />
       <div aria-hidden="true" className="absolute bottom-[15%] left-[10%] w-[180px] h-[180px] rounded-full opacity-20" style={{ background: "var(--secondary-100)" }} />
