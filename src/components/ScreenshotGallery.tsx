@@ -6,9 +6,9 @@ import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const screens = [
-  { id: "home", label: "홈", image: "/preview/home.png", alt: "맘마 앱 홈 화면 - 수유, 수면, 기저귀 기록 대시보드" },
+  { id: "home", label: "홈", image: "/preview/home.png", alt: "맘마 앱 오늘 기록 화면 - 수유, 수면, 기저귀 기록 대시보드" },
   { id: "talk", label: "맘마톡", image: "/preview/mamma-talk.png", alt: "맘마 앱 맘마톡 화면 - 아이 기록을 바탕으로 답하는 AI 상담" },
-  { id: "profile", label: "나의정보", image: "/preview/my-info.png", alt: "맘마 앱 나의정보 화면 - 아이 성장 기록 및 프로필 관리" },
+  { id: "profile", label: "나의정보", image: "/preview/my-info.png", alt: "맘마 앱 아기 정보 관리 화면 - 여러 아이 프로필 등록 및 전환" },
 ] as const;
 
 const CARD_W = 260;
