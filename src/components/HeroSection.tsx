@@ -79,7 +79,7 @@ export default function HeroSection() {
             <motion.div variants={fadeInUp}>
               <span className="inline-block px-4 py-1.5 rounded-full text-sm font-semibold mb-6"
                 style={{ background: "var(--primary-50)", color: "var(--primary-500)", border: "1px solid var(--primary-100)" }}>
-                육아앱 맘마 · 기록 기반 AI 상담
+                육아앱 맘마 · AI 육아 에이전트
               </span>
             </motion.div>
             <motion.h1 className="text-[2rem] sm:text-5xl lg:text-6xl font-bold text-neutral-900 leading-tight whitespace-pre-line [word-break:keep-all] mb-5"
@@ -89,7 +89,7 @@ export default function HeroSection() {
               {" 기준으로"}
             </motion.h1>
             <motion.p className="text-lg text-neutral-600 whitespace-pre-line [word-break:keep-all] mb-10 max-w-lg" variants={fadeInUp}>
-              {"수유·수면·기저귀·발달을 빠르게 기록하면,\n맘마톡이 우리 아이의 실제 기록을 보고 답해줍니다."}
+              {"수유·수면·기저귀·발달을 빠르게 기록하면,\n우리 아이 기록을 읽는 AI 육아 에이전트 맘마톡이 답해줍니다."}
             </motion.p>
             <motion.div className="flex flex-col sm:flex-row gap-3 mb-10 w-full sm:w-auto" variants={fadeInUp}>
               <a

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
 import FeaturesSection from "@/components/FeaturesSection";
+import AgentSection from "@/components/AgentSection";
 import ScreenshotGallery from "@/components/ScreenshotGallery";
 import DownloadCTA from "@/components/DownloadCTA";
 import Footer from "@/components/Footer";
@@ -12,10 +13,17 @@ const softwareApplicationSchema = {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
   name: siteConfig.name,
+  alternateName: ["Mamma", "맘마 AI 육아 에이전트"],
   operatingSystem: "iOS, Android",
   applicationCategory: "LifestyleApplication",
+  applicationSubCategory: "AI 육아 에이전트",
   description: siteConfig.description,
   url: siteConfig.url,
+  featureList: [
+    "수유·수면·기저귀 기록",
+    "성장 곡선 및 발달 체크",
+    "아이의 실제 기록을 근거로 답하는 AI 상담(맘마톡)",
+  ],
   offers: {
     "@type": "Offer",
     price: "0",
@@ -36,7 +44,7 @@ const websiteSchema = {
 export const metadata: Metadata = {
   title: siteConfig.seo.title,
   description:
-    "신생아부터 초등학생까지, 수유·수면·기저귀·성장·발달 체크를 한 곳에 기록하고, 아이의 실제 기록을 바탕으로 답하는 AI 맘마톡과 함께하는 육아 앱 맘마.",
+    "맘마는 수유·수면·기저귀·성장 기록을 스스로 읽고 다음 할 일을 제안하는 AI 육아 에이전트입니다. 신생아부터 초등학생까지, 기록과 AI 상담을 한 앱에서.",
   alternates: {
     canonical: siteConfig.url,
     languages: { ko: siteConfig.url },
@@ -68,6 +76,7 @@ export default function Home() {
       <main>
         <HeroSection />
         <FeaturesSection />
+        <AgentSection />
         <ScreenshotGallery />
         <DownloadCTA />
       </main>

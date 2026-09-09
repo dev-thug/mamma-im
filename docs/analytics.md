@@ -16,7 +16,7 @@ GA4 측정 ID: `G-39P8T0W65L` · 속성 `mamma.im` (속성 ID `552469899`, 웹 �
 | `scroll_depth` | 25 / 50 / 75 / 100% 도달 시 각 1회 | `percent_scrolled`, `page_type` |
 | `section_view` | 랜딩 섹션이 화면의 절반 이상 보일 때 1회 | `section_id`, `page_type` |
 | `article_complete` | 블로그 본문 끝(하단 CTA 직전)이 화면에 들어올 때 1회 | `post_slug`, `page_type` |
-| `nav_click` | 헤더·푸터 내비게이션 클릭 | `link_label`, `link_location`, `page_type` |
+| `nav_click` | 헤더·푸터·본문 내비게이션 클릭 | `link_label`, `link_location`, `page_type` |
 | `blog_card_click` | 블로그 목록/관련글 카드 클릭 | `post_slug`, `list_position`, `link_location`, `page_type` |
 | `faq_open` | FAQ 아코디언 펼침 | `faq_question`, `page_type` |
 | `contact_click` | `mailto:` 링크 클릭 | `contact_channel`, `page_type` |
@@ -27,7 +27,8 @@ GA4 측정 ID: `G-39P8T0W65L` · 속성 `mamma.im` (속성 ID `552469899`, 웹 �
 | `web_vitals` | LCP/CLS/INP/FCP/TTFB 측정 시 | `metric_name`, `metric_value`, `metric_rating`, `metric_id`, `page_type` |
 
 - `page_type` 값: `home` / `blog_index` / `blog_post` / `legal` / `service` / `other` (`pageTypeFromPath()` 참고)
-- `section_id` 값: `hero` / `features` / `screenshots` / `download`
+- `section_id` 값: `hero` / `features` / `agent` / `screenshots` / `download`
+- 홈 `agent` 섹션의 가이드 링크는 `nav_click`(`link_location` = `home_agent`)으로 잡힙니다.
 - `article_complete`는 하단 CTA·관련 글·푸터까지 포함하는 `scroll_depth` 100%와 달리 "본문을 끝까지 읽음"만 잽니다.
   블로그 글별 완독률 = `article_complete` 수 ÷ 해당 글 `page_view` 수.
 - `page_not_found`의 깨진 경로와 유입 경로는 GA4 기본 측정기준 **페이지 경로**, **페이지 리퍼러**로 봅니다.
@@ -161,6 +162,8 @@ dataLayer.filter(a => a[0] === 'event').map(a => [a[1], a[2]])
 ### 일부러 하지 않은 것
 
 - **Google 신호 데이터**: 주간 사용자 100명대 규모에서 켜면 데이터 임계값이 적용되어 보고서 행이 가려집니다.
+  나중에 켠다면 `next.config.ts` CSP의 `connect-src`에 막히는 도메인이 생길 수 있으니, DevTools에서 차단을
+  확인하고 실제로 막히는 호스트만 추가하세요.
 - **내부 트래픽 필터**: 사무실·자택 고정 IP가 정해지면 관리 → 데이터 스트림 → 태그 설정 → 내부 트래픽 정의에서 추가.
 
 ---
