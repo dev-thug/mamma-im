@@ -14,7 +14,7 @@ export const siteConfig = {
   /** Android Google Play URL */
   playStoreUrl: "https://play.google.com/store/apps/details?id=im.mamma.app",
   /** 고객지원 이메일 */
-  email: "support@mamma.im",
+  email: "support@specify.app",
   /** Google Analytics 4 측정 ID */
   gaMeasurementId: "G-39P8T0W65L",
   /** 서비스 설명 (한글) */
