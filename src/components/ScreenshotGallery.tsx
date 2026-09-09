@@ -6,9 +6,13 @@ import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const screens = [
-  { id: "home", label: "홈", image: "/preview/home.png", alt: "맘마 앱 오늘 기록 화면 - 수유, 수면, 기저귀 기록 대시보드" },
-  { id: "talk", label: "맘마톡", image: "/preview/mamma-talk.png", alt: "맘마 앱 맘마톡 화면 - 아이 기록을 바탕으로 답하는 AI 상담" },
-  { id: "profile", label: "나의정보", image: "/preview/my-info.png", alt: "맘마 앱 아기 정보 관리 화면 - 여러 아이 프로필 등록 및 전환" },
+  { id: "home", label: "홈", image: "/preview/record.png", alt: "맘마 앱 오늘 기록 화면 - 수유, 수면, 기저귀 기록 대시보드" },
+  { id: "talk", label: "맘마톡", image: "/preview/chat.png", alt: "맘마 앱 맘마톡 화면 - 아이 기록을 바탕으로 답하는 AI 상담" },
+  { id: "timer", label: "타이머", image: "/preview/timer.png", alt: "맘마 앱 수유 타이머 화면 - 진행 중인 수유를 실시간으로 기록" },
+  { id: "growth", label: "성장", image: "/preview/growth.png", alt: "맘마 앱 성장 리포트 화면 - 몸무게, 키 등 성장 추이 그래프" },
+  { id: "development", label: "발달체크", image: "/preview/development.png", alt: "맘마 앱 발달 체크 화면 - 월령별 발달 단계 체크리스트" },
+  { id: "care", label: "육아팁", image: "/preview/care.png", alt: "맘마 앱 육아 팁 화면 - 월령별 맞춤 육아 정보와 조언" },
+  { id: "profile", label: "나의정보", image: "/preview/babies.png", alt: "맘마 앱 아기 정보 관리 화면 - 여러 아이 프로필 등록 및 전환" },
 ] as const;
 
 const CARD_W = 260;
@@ -55,7 +59,7 @@ export default function ScreenshotGallery() {
             앱 미리보기
           </h2>
           <p className="mt-3 text-neutral-500">
-            수유, 수면, 기저귀부터 맘마톡 AI 상담까지 한눈에
+            수유·수면 기록부터 성장 리포트, 발달 체크, 맘마톡 AI 상담까지 한눈에
           </p>
         </motion.div>
 
