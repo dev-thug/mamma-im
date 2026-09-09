@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="분유 수유 기록을 남기는 스마트폰 일러스트">
+  <rect width="1200" height="630" rx="32" fill="#F0FDF4"/>
+  <circle cx="150" cy="120" r="70" fill="#DCFCE7"/>
+  <circle cx="1060" cy="520" r="80" fill="#DCFCE7"/>
+  <circle cx="1010" cy="130" r="22" fill="#86EFAC"/>
+  <circle cx="190" cy="510" r="18" fill="#86EFAC"/>
+  <!-- phone -->
+  <rect x="330" y="90" width="230" height="450" rx="44" fill="#111827"/>
+  <rect x="346" y="108" width="198" height="414" rx="30" fill="#FFFFFF"/>
+  <!-- checklist rows -->
+  <g>
+    <rect x="366" y="150" width="158" height="52" rx="14" fill="#F0FDF4"/>
+    <circle cx="392" cy="176" r="13" fill="#22C55E"/>
+    <path d="M386 176 l4 5 8 -10" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+    <rect x="412" y="168" width="90" height="16" rx="8" fill="#86EFAC"/>
+    <rect x="366" y="216" width="158" height="52" rx="14" fill="#F0FDF4"/>
+    <circle cx="392" cy="242" r="13" fill="#22C55E"/>
+    <path d="M386 242 l4 5 8 -10" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+    <rect x="412" y="234" width="70" height="16" rx="8" fill="#86EFAC"/>
+    <rect x="366" y="282" width="158" height="52" rx="14" fill="#FFF1F2"/>
+    <circle cx="392" cy="308" r="13" fill="none" stroke="#FF4757" stroke-width="4"/>
+    <rect x="412" y="300" width="80" height="16" rx="8" fill="#FECDD3"/>
+  </g>
+  <!-- mini chart -->
+  <polyline points="366,440 400,420 430,430 465,395 500,405" fill="none" stroke="#FF4757" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="500" cy="405" r="9" fill="#FF4757"/>
+  <rect x="366" y="460" width="158" height="14" rx="7" fill="#E5E7EB"/>
+  <!-- text -->
+  <text x="620" y="280" font-family="sans-serif" font-size="64" font-weight="bold" fill="#1F2937">먹인 양·시간 기록</text>
+  <text x="620" y="345" font-family="sans-serif" font-size="38" fill="#6B7280">며칠만 적어도</text>
+  <text x="620" y="400" font-family="sans-serif" font-size="38" fill="#6B7280">우리 아기 패턴이 보여요</text>
+</svg>

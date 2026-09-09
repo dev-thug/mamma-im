@@ -1,3 +1,4 @@
+import Image from "next/image";
 import type { PostBlock } from "@/content/blog";
 
 export default function PostContent({ blocks }: { blocks: PostBlock[] }) {
@@ -75,6 +76,26 @@ export default function PostContent({ blocks }: { blocks: PostBlock[] }) {
                   </tbody>
                 </table>
               </div>
+            );
+          case "image":
+            return (
+              <figure key={i} className="my-8">
+                <div className="overflow-hidden rounded-2xl border border-neutral-100">
+                  <Image
+                    src={block.src}
+                    alt={block.alt}
+                    width={1200}
+                    height={630}
+                    className="h-auto w-full"
+                    sizes="(max-width: 768px) 100vw, 768px"
+                  />
+                </div>
+                {block.caption && (
+                  <figcaption className="mt-2 text-center text-sm text-neutral-400">
+                    {block.caption}
+                  </figcaption>
+                )}
+              </figure>
             );
           default:
             return null;

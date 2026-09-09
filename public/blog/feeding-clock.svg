@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="분유 수유 간격을 보여주는 시계 일러스트">
+  <rect width="1200" height="630" rx="32" fill="#FFF7ED"/>
+  <circle cx="1050" cy="120" r="80" fill="#FFEDD5"/>
+  <circle cx="140" cy="520" r="60" fill="#FFEDD5"/>
+  <circle cx="180" cy="120" r="22" fill="#FDBA74"/>
+  <circle cx="1030" cy="520" r="18" fill="#FDBA74"/>
+  <!-- clock -->
+  <circle cx="420" cy="315" r="170" fill="#FFFFFF" stroke="#FB923C" stroke-width="12"/>
+  <circle cx="420" cy="315" r="12" fill="#FB923C"/>
+  <g stroke="#1F2937" stroke-width="12" stroke-linecap="round">
+    <line x1="420" y1="315" x2="420" y2="195"/>
+    <line x1="420" y1="315" x2="505" y2="355"/>
+  </g>
+  <g fill="#9CA3AF" font-family="sans-serif" font-size="34" font-weight="bold" text-anchor="middle">
+    <text x="420" y="185">12</text>
+    <text x="555" y="325">3</text>
+    <text x="420" y="470">6</text>
+    <text x="285" y="325">9</text>
+  </g>
+  <!-- text -->
+  <text x="660" y="280" font-family="sans-serif" font-size="72" font-weight="bold" fill="#1F2937">3~4시간</text>
+  <text x="660" y="350" font-family="sans-serif" font-size="40" fill="#6B7280">분유 수유텀 참고 간격</text>
+  <text x="660" y="410" font-family="sans-serif" font-size="40" fill="#6B7280">아기 신호를 함께 보세요</text>
+</svg>
