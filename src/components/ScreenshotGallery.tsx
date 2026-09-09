@@ -4,6 +4,7 @@ import { useState, useRef, useEffect, useCallback } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { trackGalleryInteract } from "@/lib/analytics";
 
 const screens = [
   { id: "home", label: "홈", image: "/preview/record.png", alt: "맘마 앱 오늘 기록 화면 - 수유, 수면, 기저귀 기록 대시보드" },
@@ -29,6 +30,7 @@ export default function ScreenshotGallery() {
 
   const go = (dir: -1 | 1) => {
     const next = Math.min(Math.max(activeIndex + dir, 0), screens.length - 1);
+    trackGalleryInteract("arrow", screens[next].id);
     setActiveIndex(next);
     scrollToIndex(next);
   };
@@ -45,7 +47,7 @@ export default function ScreenshotGallery() {
   }, []);
 
   return (
-    <section id="screenshots" className="py-24 bg-neutral-50">
+    <section id="screenshots" data-ga-section="screenshots" className="py-24 bg-neutral-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Heading */}
         <motion.div
@@ -75,6 +77,7 @@ export default function ScreenshotGallery() {
             <button
               key={s.id}
               onClick={() => {
+                trackGalleryInteract("dot", s.id);
                 setActiveIndex(i);
                 scrollToIndex(i);
               }}

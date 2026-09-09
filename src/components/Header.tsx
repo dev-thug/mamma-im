@@ -5,6 +5,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+import { trackEvent, trackNavClick, type LinkLocation } from "@/lib/analytics";
 
 const navLinks = [
   { label: "기능 소개", href: "#features" },
@@ -99,7 +100,12 @@ export default function Header() {
     };
   }, [mobileOpen]);
 
-  const handleNavClick = (href: string) => {
+  const handleNavClick = (
+    href: string,
+    label: string,
+    location: LinkLocation,
+  ) => {
+    trackNavClick(label, location);
     setMobileOpen(false);
     const target = document.querySelector(href);
     if (target) {
@@ -135,7 +141,7 @@ export default function Header() {
                 link.href.startsWith("#") ? (
                   <button
                     key={link.href}
-                    onClick={() => handleNavClick(link.href)}
+                    onClick={() => handleNavClick(link.href, link.label, "header")}
                     className="text-neutral-600 hover:text-neutral-900 font-medium transition-colors duration-200 cursor-pointer"
                   >
                     {link.label}
@@ -144,6 +150,9 @@ export default function Header() {
                   <Link
                     key={link.href}
                     href={link.href}
+                    data-ga-event="nav_click"
+                    data-ga-p-link_label={link.label}
+                    data-ga-p-link_location="header"
                     className="text-neutral-600 hover:text-neutral-900 font-medium transition-colors duration-200"
                   >
                     {link.label}
@@ -155,7 +164,7 @@ export default function Header() {
             {/* Desktop CTA */}
             <div className="hidden md:flex items-center">
               <button
-                onClick={() => handleNavClick("#download")}
+                onClick={() => handleNavClick("#download", "앱 다운로드", "header")}
                 className="bg-primary-500 hover:bg-primary-600 text-white font-semibold px-6 py-2.5 rounded-full transition-colors duration-200 cursor-pointer"
               >
                 앱 다운로드
@@ -164,7 +173,10 @@ export default function Header() {
 
             {/* Mobile hamburger */}
             <button
-              onClick={() => setMobileOpen(true)}
+              onClick={() => {
+                trackEvent("mobile_menu_open");
+                setMobileOpen(true);
+              }}
               className="md:hidden flex items-center justify-center w-10 h-10 text-neutral-900 hover:text-primary-500 transition-colors duration-200"
               aria-label="메뉴 열기"
               aria-expanded={mobileOpen}
@@ -220,7 +232,9 @@ export default function Header() {
                 >
                   {link.href.startsWith("#") ? (
                     <button
-                      onClick={() => handleNavClick(link.href)}
+                      onClick={() =>
+                        handleNavClick(link.href, link.label, "header_mobile")
+                      }
                       className="text-2xl font-semibold text-neutral-900 hover:text-primary-500 transition-colors duration-200 cursor-pointer"
                     >
                       {link.label}
@@ -228,6 +242,9 @@ export default function Header() {
                   ) : (
                     <Link
                       href={link.href}
+                      data-ga-event="nav_click"
+                      data-ga-p-link_label={link.label}
+                      data-ga-p-link_location="header_mobile"
                       onClick={() => setMobileOpen(false)}
                       className="text-2xl font-semibold text-neutral-900 hover:text-primary-500 transition-colors duration-200"
                     >
@@ -242,7 +259,9 @@ export default function Header() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 20 }}
                 transition={{ delay: 0.08 * (navLinks.length + 1), duration: 0.25, ease: "easeOut" }}
-                onClick={() => handleNavClick("#download")}
+                onClick={() =>
+                  handleNavClick("#download", "앱 다운로드", "header_mobile")
+                }
                 className="mt-4 bg-primary-500 hover:bg-primary-600 text-white font-semibold text-lg px-10 py-3.5 rounded-full transition-colors duration-200 cursor-pointer"
               >
                 앱 다운로드

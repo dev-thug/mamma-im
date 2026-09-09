@@ -173,10 +173,14 @@ export default async function BlogPostPage({
         <div className="mt-14">
           <h2 className="text-xl font-bold text-neutral-900 mb-5">함께 보면 좋은 글</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-            {related.map((r) => (
+            {related.map((r, index) => (
               <Link
                 key={r.slug}
                 href={`/blog/${r.slug}`}
+                data-ga-event="blog_card_click"
+                data-ga-p-post_slug={r.slug}
+                data-ga-p-list_position={index + 1}
+                data-ga-p-link_location="blog_post"
                 className="group rounded-2xl border border-neutral-100 p-5 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300"
               >
                 <h3 className="font-bold text-neutral-900 group-hover:text-primary-500 transition-colors mb-1">

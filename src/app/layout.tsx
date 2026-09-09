@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { siteConfig } from "@/config/site";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
+import AnalyticsProvider from "@/components/AnalyticsProvider";
 import "./globals.css";
 
 const organizationSchema = {
@@ -45,6 +46,9 @@ export const metadata: Metadata = {
   manifest: "/site.webmanifest",
   verification: {
     google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
+    other: {
+      "naver-site-verification": siteConfig.naverSiteVerification,
+    },
   },
   openGraph: {
     title: siteConfig.seo.title,
@@ -88,9 +92,12 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
         />
-        <GoogleAnalytics />
       </head>
-      <body className="antialiased">{children}</body>
+      <body className="antialiased">
+        {children}
+        <GoogleAnalytics />
+        <AnalyticsProvider />
+      </body>
     </html>
   );
 }
