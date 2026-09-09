@@ -28,5 +28,18 @@
       "type": "image/png",
       "sizes": "180x180"
     }
-  ]
+  ],
+  "related_applications": [
+    {
+      "platform": "play",
+      "id": "im.mamma.app",
+      "url": "https://play.google.com/store/apps/details?id=im.mamma.app"
+    },
+    {
+      "platform": "itunes",
+      "id": "6760751452",
+      "url": "https://apps.apple.com/kr/app/id6760751452"
+    }
+  ],
+  "prefer_related_applications": true
 }

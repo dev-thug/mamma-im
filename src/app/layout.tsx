@@ -45,6 +45,10 @@ export const metadata: Metadata = {
     ],
   },
   manifest: "/site.webmanifest",
+  // Safari 스마트 앱 배너: 랜딩을 연 iPhone 사용자에게 App Store 설치 배너를 띄운다.
+  itunes: {
+    appId: "6760751452",
+  },
   verification: {
     google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
     other: {
