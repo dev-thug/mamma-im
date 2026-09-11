@@ -135,6 +135,14 @@ export default async function BlogPostPage({
 
       <PostContent blocks={post.content} />
 
+      {/* 본문 끝 도달 — 아래 CTA·관련 글까지 포함하는 scroll_depth 100%와 달리 '끝까지 읽음'만 잽니다 */}
+      <div
+        aria-hidden="true"
+        data-ga-view="article_complete"
+        data-ga-p-post_slug={post.slug}
+        className="h-px"
+      />
+
       <div
         className="mt-12 rounded-2xl p-8 text-center"
         style={{ background: "var(--primary-50)" }}
