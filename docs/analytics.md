@@ -141,11 +141,13 @@ dataLayer.filter(a => a[0] === 'event').map(a => [a[1], a[2]])
 - 모든 항목 켜짐. 페이지 조회 고급 설정의 **"브라우저 방문 기록 이벤트를 토대로 한 페이지 변경사항" 체크됨** —
   클라이언트 라우팅 `page_view`가 여기서 나옵니다. **끄지 마세요.**
 
-### 미완료
+### 데이터 필터
 
-- **개발자 트래픽 데이터 필터**(관리 → 데이터 필터 → 필터 만들기 → 개발자 트래픽 → 활성): `ga_debug=1`로 보낸
-  `debug_mode` 이벤트를 보고서에서 빼 줍니다(DebugView에는 계속 보임). 지금은 없으므로 운영 도메인에서
-  `ga_debug`로 검증하면 그 이벤트가 보고서에도 집계됩니다.
+- **Developer Traffic** (개발자 트래픽, 제외, **활성** — 2026-09-11): `debug_mode`/`debug_event`가 붙은 이벤트를
+  보고서에서 뺍니다. `ga_debug=1` 검증 이벤트는 DebugView에서만 보입니다. 소급 적용되지 않으므로
+  필터 활성화(15:54 KST) 전인 2026-09-11 15:29~15:35 KST에 localhost 검증으로 들어간 debug 이벤트
+  십수 건(사용자 2명, 소스 direct)은 보고서에 남아 있습니다.
+- Internal Traffic (내부 트래픽, 테스트): GA4 기본값. 내부 IP 정의가 없어 아무것도 걸러지지 않습니다.
 
 ### 일부러 하지 않은 것
 
@@ -161,8 +163,12 @@ dataLayer.filter(a => a[0] === 'event').map(a => [a[1], a[2]])
 - 속성: **`sc-domain:mamma.im` (도메인 속성)**, 소유권은 **DNS TXT** 방식으로 확인됨.
   그래서 `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` 메타 태그는 필요 없습니다(비워 두면 태그가 렌더되지 않음).
 - GA4 ↔ Search Console 연결 완료 (GA4 보고서 → Search Console 컬렉션).
-- 제출된 사이트맵: `https://mamma.im/sitemap.xml` (2026-03-23 제출, Google이 주기적으로 다시 읽음)
-- **미완료**: `https://mamma.im/rss.xml`을 Sitemaps에 추가 제출 — 새 글 발견을 앞당기는 용도
+- 제출된 사이트맵: `https://mamma.im/sitemap.xml` (2026-03-23 제출, Google이 주기적으로 다시 읽음),
+  `https://mamma.im/rss.xml` (2026-09-11 제출 — 새 글 발견을 앞당기는 용도)
+  - rss.xml은 제출 직후 상태가 "가져올 수 없음"으로 표시됐습니다. Googlebot UA로 200·`application/rss+xml`·
+    유효한 XML임을 확인했으므로 첫 처리 전 표시로 보고, 며칠 뒤에도 그대로면 URL 검사로 원인을 확인하세요.
+- 2026-09-11 색인 생성 요청: `/blog/parenting-agent-mamma`, `/blog/baby-fever-guide`,
+  `/blog/baby-formula-amount-guide` (셋 다 "Google에 아직 알려지지 않은 URL" 상태였음)
 - `www.mamma.im`, `http://` 주소가 "리디렉션이 포함된 페이지"로 잡히는 것은 정상입니다(308로 `https://mamma.im` 통일).
 - 2026-09-11 색인 현황: 색인 9 / 미색인 9. 미색인 중 리디렉션 4건과 `www.mamma.im/privacy` 중복 1건은 조치 불필요.
   `크롤링됨 - 현재 색인이 생성되지 않음`인 `/blog`, `/blog/monthly-development-checklist`,
