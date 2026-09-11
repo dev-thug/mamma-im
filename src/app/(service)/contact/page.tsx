@@ -1,13 +1,24 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { siteConfig } from "@/config/site";
+import { baseOpenGraph, defaultOgImages } from "@/lib/seo";
+
+const contactUrl = `${siteConfig.url}/contact`;
 
 export const metadata: Metadata = {
   title: "1:1 문의 | 맘마",
   description: "맘마 앱 관련 문의사항을 보내주세요.",
   alternates: {
-    canonical: `${siteConfig.url}/contact`,
-    languages: { ko: `${siteConfig.url}/contact` },
+    canonical: contactUrl,
+    languages: { ko: contactUrl },
+  },
+  openGraph: {
+    ...baseOpenGraph,
+    title: "1:1 문의 | 맘마",
+    description: "맘마 앱 관련 문의사항을 보내주세요.",
+    url: contactUrl,
+    type: "website",
+    images: defaultOgImages,
   },
 };
 

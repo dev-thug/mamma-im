@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { getAllPosts } from "@/content/blog";
 import { siteConfig } from "@/config/site";
+import { baseOpenGraph } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "육아 정보 블로그 | 맘마",
@@ -12,16 +13,16 @@ export const metadata: Metadata = {
     languages: { ko: `${siteConfig.url}/blog` },
   },
   openGraph: {
+    ...baseOpenGraph,
     title: "육아 정보 블로그 | 맘마",
     description:
       "수유·수면·발달 체크부터 육아앱 고르는 법까지, 맘마가 정리한 실용적인 육아 정보를 확인하세요.",
     type: "website",
     url: `${siteConfig.url}/blog`,
-    // og:image는 opengraph-image.tsx가 생성합니다.
+    // og:image는 opengraph-image.tsx가 생성합니다. images 키를 넣으면 생성 이미지가 적용되지 않습니다.
   },
   twitter: {
-    // twitter 키를 선언해야 루트 레이아웃의 정적 이미지 대신
-    // 파일 기반 OG 이미지가 twitter:image로 쓰입니다.
+    // twitter:image는 루트 twitter에 images가 없어서 Next.js가 openGraph의 생성 이미지로 채웁니다.
     card: "summary_large_image",
     title: "육아 정보 블로그 | 맘마",
     description:

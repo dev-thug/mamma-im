@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { siteConfig } from "@/config/site";
+import { baseOpenGraph, defaultOgImages } from "@/lib/seo";
 
 const teamUrl = `${siteConfig.url}/team`;
 
@@ -12,11 +13,12 @@ export const metadata: Metadata = {
     languages: { ko: teamUrl },
   },
   openGraph: {
+    ...baseOpenGraph,
     title: `팀 소개 | ${siteConfig.name}`,
     description: `${siteConfig.nameWithEn}를 만드는 팀과 서비스 철학을 소개합니다.`,
     url: teamUrl,
-    locale: "ko_KR",
     type: "website",
+    images: defaultOgImages,
   },
 };
 

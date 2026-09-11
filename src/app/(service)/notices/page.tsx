@@ -1,12 +1,23 @@
 import type { Metadata } from "next";
 import { siteConfig } from "@/config/site";
+import { baseOpenGraph, defaultOgImages } from "@/lib/seo";
+
+const noticesUrl = `${siteConfig.url}/notices`;
 
 export const metadata: Metadata = {
   title: "공지사항 | 맘마",
   description: "맘마 앱의 공지사항과 업데이트 소식을 확인하세요.",
   alternates: {
-    canonical: `${siteConfig.url}/notices`,
-    languages: { ko: `${siteConfig.url}/notices` },
+    canonical: noticesUrl,
+    languages: { ko: noticesUrl },
+  },
+  openGraph: {
+    ...baseOpenGraph,
+    title: "공지사항 | 맘마",
+    description: "맘마 앱의 공지사항과 업데이트 소식을 확인하세요.",
+    url: noticesUrl,
+    type: "website",
+    images: defaultOgImages,
   },
 };
 

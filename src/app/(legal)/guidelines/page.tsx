@@ -1,12 +1,23 @@
 import type { Metadata } from "next";
 import { siteConfig } from "@/config/site";
+import { baseOpenGraph, defaultOgImages } from "@/lib/seo";
+
+const guidelinesUrl = `${siteConfig.url}/guidelines`;
 
 export const metadata: Metadata = {
   title: `커뮤니티 가이드라인 | ${siteConfig.name}`,
   description: `${siteConfig.nameWithEn} 커뮤니티 이용 규칙 및 콘텐츠 관리 정책을 안내합니다.`,
   alternates: {
-    canonical: `${siteConfig.url}/guidelines`,
-    languages: { ko: `${siteConfig.url}/guidelines` },
+    canonical: guidelinesUrl,
+    languages: { ko: guidelinesUrl },
+  },
+  openGraph: {
+    ...baseOpenGraph,
+    title: `커뮤니티 가이드라인 | ${siteConfig.name}`,
+    description: `${siteConfig.nameWithEn} 커뮤니티 이용 규칙 및 콘텐츠 관리 정책을 안내합니다.`,
+    url: guidelinesUrl,
+    type: "website",
+    images: defaultOgImages,
   },
 };
 

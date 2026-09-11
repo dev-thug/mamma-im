@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { siteConfig } from "@/config/site";
+import { baseOpenGraph, defaultOgImages } from "@/lib/seo";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
 import AnalyticsProvider from "@/components/AnalyticsProvider";
 import "./globals.css";
@@ -50,26 +51,18 @@ export const metadata: Metadata = {
       "naver-site-verification": siteConfig.naverSiteVerification,
     },
   },
+  // openGraph를 선언하는 페이지는 이 값을 통째로 덮으므로 baseOpenGraph를 펼쳐 넣어야 합니다(src/lib/seo.ts).
   openGraph: {
+    ...baseOpenGraph,
     title: siteConfig.seo.title,
     description: siteConfig.description,
     type: "website",
-    locale: "ko_KR",
-    siteName: `${siteConfig.name} (${siteConfig.nameEn})`,
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: `${siteConfig.name} - 스마트 육아 앱`,
-      },
-    ],
+    images: defaultOgImages,
   },
+  // title·description·images를 두지 않아야 Next.js가 페이지마다 최종 openGraph 값으로 채웁니다.
+  // 여기 title을 두면 openGraph를 선언한 페이지에서도 twitter:title이 홈 제목으로 남습니다.
   twitter: {
     card: "summary_large_image",
-    title: siteConfig.seo.title,
-    description: siteConfig.description,
-    images: ["/og-image.png"],
   },
 };
 

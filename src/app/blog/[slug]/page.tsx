@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getAllPosts, getPostBySlug, getRelatedPosts } from "@/content/blog";
 import { siteConfig } from "@/config/site";
+import { baseOpenGraph } from "@/lib/seo";
 import PostContent from "@/components/blog/PostContent";
 import TrackedStoreLink from "@/components/TrackedStoreLink";
 
@@ -30,13 +31,14 @@ export async function generateMetadata({
       languages: { ko: url },
     },
     openGraph: {
+      ...baseOpenGraph,
       title: post.title,
       description: post.description,
       type: "article",
       url,
       publishedTime: post.publishedAt,
       modifiedTime: post.updatedAt ?? post.publishedAt,
-      // og:image / twitter:image는 opengraph-image.tsx가 글마다 생성합니다.
+      // og:image / twitter:image는 opengraph-image.tsx가 글마다 생성합니다. images 키를 넣으면 생성 이미지가 적용되지 않습니다.
     },
     twitter: {
       card: "summary_large_image",

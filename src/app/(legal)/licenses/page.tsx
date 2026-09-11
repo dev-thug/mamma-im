@@ -1,11 +1,23 @@
 import type { Metadata } from "next";
 import { siteConfig } from "@/config/site";
+import { baseOpenGraph, defaultOgImages } from "@/lib/seo";
+
+const licensesUrl = `${siteConfig.url}/licenses`;
 
 export const metadata: Metadata = {
   title: `오픈소스 라이선스 | ${siteConfig.name}`,
+  description: `${siteConfig.nameWithEn} 서비스가 사용하는 오픈소스 라이브러리와 라이선스를 안내합니다.`,
   alternates: {
-    canonical: `${siteConfig.url}/licenses`,
-    languages: { ko: `${siteConfig.url}/licenses` },
+    canonical: licensesUrl,
+    languages: { ko: licensesUrl },
+  },
+  openGraph: {
+    ...baseOpenGraph,
+    title: `오픈소스 라이선스 | ${siteConfig.name}`,
+    description: `${siteConfig.nameWithEn} 서비스가 사용하는 오픈소스 라이브러리와 라이선스를 안내합니다.`,
+    url: licensesUrl,
+    type: "website",
+    images: defaultOgImages,
   },
 };
 

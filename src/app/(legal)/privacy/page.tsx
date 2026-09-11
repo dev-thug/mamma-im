@@ -1,12 +1,23 @@
 import type { Metadata } from "next";
 import { siteConfig } from "@/config/site";
+import { baseOpenGraph, defaultOgImages } from "@/lib/seo";
+
+const privacyUrl = `${siteConfig.url}/privacy`;
 
 export const metadata: Metadata = {
   title: `개인정보처리방침 | ${siteConfig.name}`,
   description: `${siteConfig.nameWithEn} 앱의 개인정보처리방침을 안내합니다.`,
   alternates: {
-    canonical: `${siteConfig.url}/privacy`,
-    languages: { ko: `${siteConfig.url}/privacy` },
+    canonical: privacyUrl,
+    languages: { ko: privacyUrl },
+  },
+  openGraph: {
+    ...baseOpenGraph,
+    title: `개인정보처리방침 | ${siteConfig.name}`,
+    description: `${siteConfig.nameWithEn} 앱의 개인정보처리방침을 안내합니다.`,
+    url: privacyUrl,
+    type: "website",
+    images: defaultOgImages,
   },
 };
 

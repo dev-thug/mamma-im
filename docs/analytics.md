@@ -227,3 +227,50 @@ Search Console의 URL 검사 → 색인 생성 요청을 따로 씁니다.
 블로그 글은 `updatedAt ?? publishedAt`, `/blog`는 가장 최근 글 날짜를 씁니다. 정적 페이지는
 수정일을 추적하지 않아 `lastmod`를 생략합니다 — 빌드 시각을 넣으면 매 배포마다 전체 URL이 "수정됨"으로
 보여서 Google이 이 사이트의 lastmod를 신뢰하지 않게 됩니다. 글을 고치면 `updatedAt`을 갱신하세요.
+
+### 공유 미리보기(Open Graph·X 카드) 메타데이터
+
+페이지가 `metadata.openGraph`를 선언하면 Next.js는 레이아웃의 openGraph를 필드 단위로 합치지 않고
+**통째로 바꿉니다.** 반대로 선언하지 않은 페이지는 루트 값을 그대로 물려받아, 2026-09-11 전까지
+`/faq`·`/contact`·`/privacy` 등이 카카오톡·X 공유 미리보기에서 홈 제목으로 보이고 og:url도 없었습니다.
+새 페이지를 만들 때 아래를 지키세요(공통값은 `src/lib/seo.ts`).
+
+1. 페이지마다 `openGraph`를 선언하고 **맨 앞에 `...baseOpenGraph`를 펼칩니다.** 빠뜨리면 그 페이지에서
+   og:site_name(`맘마`)·og:locale(`ko_KR`)이 사라져 사이트 이름 신호가 페이지마다 달라집니다.
+2. title·description은 페이지 값, `url`은 canonical과 같은 주소, `type`은 `"website"`(블로그 글은 `"article"`).
+   `description`이 없는 페이지는 og:description이 루트 문구로 채워지므로 꼭 넣습니다.
+3. 이미지: 같은 폴더에 `opengraph-image` 파일이 **없으면** `images: defaultOgImages`(`public/og-image.png`)를
+   넣습니다 — 루트의 이미지는 openGraph를 선언하는 순간 같이 사라집니다. 파일이 **있으면**(블로그 목록·글)
+   `images` 키를 아예 쓰지 않습니다. 같은 폴더의 opengraph-image는 page.tsx와 같은 세그먼트에 붙고,
+   Next.js는 그 세그먼트의 openGraph에 `images` 키가 있으면 생성 이미지를 건너뜁니다.
+4. twitter: 루트 레이아웃에는 `card`만 둡니다. 그러면 Next.js가 페이지의 최종 openGraph로
+   twitter:title·description·image를 채웁니다. 루트에 title을 두면 openGraph를 고친 페이지도
+   twitter:title이 홈 제목으로 남아 X 미리보기가 틀립니다. 페이지에서 `twitter`를 선언하면 루트 twitter도
+   통째로 바뀌므로 `card`를 함께 적습니다.
+
+- og:site_name은 2026-09-11부터 모든 페이지 `맘마`입니다(그 전 루트 값은 `맘마 (Mamma)`).
+- 루트 레이아웃 openGraph에는 `url`을 넣지 않습니다. 넣으면 404 등 openGraph를 선언하지 않은 페이지가
+  모두 홈 주소를 og:url로 물려받습니다. 그래서 홈도 `src/app/page.tsx`에서 openGraph를 직접 선언합니다
+  (공유 문구는 루트와 같은 값, og:url은 `https://mamma.im`). 404에는 og:url이 없는 게 정상입니다.
+- 홈의 검색 타이틀과 카카오톡·X 공유 제목은 모두 `siteConfig.seo.title` 하나에서 옵니다. 2026-09-11
+  `맘마 - 우리 가족의 육아 파트너` → `맘마 - AI 육아 에이전트 | 육아 기록·상담 앱`으로 바꿨습니다.
+  "1등·최고" 같은 최상급 표현은 표시광고법상 객관적 근거가 필요해서 쓰지 않았습니다.
+
+### 사이트 이름 신호 — WebSite 구조화 데이터
+
+Google은 검색 결과의 사이트 이름을 정할 때 홈의 WebSite 구조화 데이터를 가장 크게 봅니다. 홈
+`src/app/page.tsx`에 `{"@type": "WebSite", "name": "맘마", "alternateName": "Mamma", "url": "https://mamma.im"}`
+JSON-LD가 있습니다(2026-09-11 추가). 홈에만 두면 되고, 다른 신호도 같은 이름을 가리키도록 맞춰 둡니다:
+모든 페이지 og:site_name `맘마`, 페이지 제목 끝 `| 맘마`, `site.webmanifest`의 `short_name` `맘마`.
+사이트 이름을 바꿀 일이 생기면 `siteConfig.name` 하나를 고치면 이 값들이 함께 바뀝니다
+(`site.webmanifest`와 문자열로 쓴 제목은 따로 고칩니다). Google 반영에는 홈 재크롤링 후 몇 주가 걸릴 수 있어서,
+배포 후 Search Console URL 검사로 홈 색인 생성을 요청해 두면 빨라집니다.
+- 확인: 빌드 후 페이지별 og/twitter 태그를 봅니다.
+
+  ```bash
+  npm run build && npx next start -p 3457
+  curl -s http://localhost:3457/faq | grep -oE '<meta (property|name)="(og|twitter):[^"]*" content="[^"]*"'
+  ```
+
+- 카카오톡은 한 번 긁은 미리보기를 캐시하므로 배포 후에도 예전 제목이 보이면 카카오 개발자 사이트의
+  공유 디버거에서 해당 URL 캐시를 초기화합니다.
