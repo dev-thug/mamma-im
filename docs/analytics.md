@@ -141,6 +141,12 @@ dataLayer.filter(a => a[0] === 'event').map(a => [a[1], a[2]])
 - 모든 항목 켜짐. 페이지 조회 고급 설정의 **"브라우저 방문 기록 이벤트를 토대로 한 페이지 변경사항" 체크됨** —
   클라이언트 라우팅 `page_view`가 여기서 나옵니다. **끄지 마세요.**
 
+### 미완료
+
+- **개발자 트래픽 데이터 필터**(관리 → 데이터 필터 → 필터 만들기 → 개발자 트래픽 → 활성): `ga_debug=1`로 보낸
+  `debug_mode` 이벤트를 보고서에서 빼 줍니다(DebugView에는 계속 보임). 지금은 없으므로 운영 도메인에서
+  `ga_debug`로 검증하면 그 이벤트가 보고서에도 집계됩니다.
+
 ### 일부러 하지 않은 것
 
 - **Google 신호 데이터**: 주간 사용자 100명대 규모에서 켜면 데이터 임계값이 적용되어 보고서 행이 가려집니다.
@@ -155,15 +161,22 @@ dataLayer.filter(a => a[0] === 'event').map(a => [a[1], a[2]])
 - 속성: **`sc-domain:mamma.im` (도메인 속성)**, 소유권은 **DNS TXT** 방식으로 확인됨.
   그래서 `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` 메타 태그는 필요 없습니다(비워 두면 태그가 렌더되지 않음).
 - GA4 ↔ Search Console 연결 완료 (GA4 보고서 → Search Console 컬렉션).
-- 제출한 사이트맵: `https://mamma.im/sitemap.xml`, `https://mamma.im/rss.xml`
+- 제출된 사이트맵: `https://mamma.im/sitemap.xml` (2026-03-23 제출, Google이 주기적으로 다시 읽음)
+- **미완료**: `https://mamma.im/rss.xml`을 Sitemaps에 추가 제출 — 새 글 발견을 앞당기는 용도
 - `www.mamma.im`, `http://` 주소가 "리디렉션이 포함된 페이지"로 잡히는 것은 정상입니다(308로 `https://mamma.im` 통일).
+- 2026-09-11 색인 현황: 색인 9 / 미색인 9. 미색인 중 리디렉션 4건과 `www.mamma.im/privacy` 중복 1건은 조치 불필요.
+  `크롤링됨 - 현재 색인이 생성되지 않음`인 `/blog`, `/blog/monthly-development-checklist`,
+  `/blog/parenting-app-comparison-2026`은 크롤링 문제가 아니라 Google이 가치를 낮게 본 신호라서
+  색인 요청을 반복하기보다 본문 차별화·내부 링크 보강이 필요합니다.
 
 ### 네이버 서치어드바이저
 
 - 소유 확인: HTML 파일 방식 `public/naver3c2eebbec59f0e56eabd7b4968c03078.html` (2026-09-02 추가).
   메타 태그 방식은 쓰지 않습니다.
-- 콘솔에서 할 일: 요청 → 사이트맵 제출(`https://mamma.im/sitemap.xml`), 요청 → RSS 제출(`https://mamma.im/rss.xml`),
-  새 글은 요청 → 웹 페이지 수집.
+- **미완료(콘솔에서 직접)**: 요청 → 사이트맵 제출(`https://mamma.im/sitemap.xml`),
+  요청 → RSS 제출(`https://mamma.im/rss.xml`), 새 글은 요청 → 웹 페이지 수집.
+  naver.com은 Claude의 브라우저 도구에서 안전 제한으로 열리지 않아 대신 처리할 수 없습니다.
+- 2026-09-11 기준 네이버 웹문서 검색(`site:mamma.im`)에는 홈만 노출되고 블로그 글은 보이지 않았습니다.
 
 ### RSS 피드 — `/rss.xml`
 
@@ -180,7 +193,8 @@ npm run indexnow -- https://mamma.im/blog/<slug>   # 특정 URL만
 ```
 
 네이버(`searchadvisor.naver.com/indexnow`)에는 직접, Bing 등 나머지 참여 검색엔진에는
-`api.indexnow.org`로 보냅니다. 200/202면 접수된 것입니다. Google은 IndexNow를 지원하지 않으므로
+`api.indexnow.org`로 보냅니다. 200/202면 접수된 것입니다.
+제출 기록: 2026-09-11 sitemap 전체 21개 URL — 네이버 200, api.indexnow.org 202. Google은 IndexNow를 지원하지 않으므로
 Search Console의 URL 검사 → 색인 생성 요청을 따로 씁니다.
 
 ### sitemap.xml의 lastmod
