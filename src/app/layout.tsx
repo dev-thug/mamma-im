@@ -5,9 +5,29 @@ import GoogleAnalytics from "@/components/GoogleAnalytics";
 import AnalyticsProvider from "@/components/AnalyticsProvider";
 import "./globals.css";
 
+const websiteId = `${siteConfig.url}/#website`;
+const organizationId = `${siteConfig.url}/#organization`;
+
+/**
+ * Google 검색결과의 사이트 이름은 홈페이지의 WebSite 구조화 데이터를 가장 우선합니다.
+ * `og:site_name`·`<title>`·제목 요소와 이름이 어긋나면 Google이 확신하지 못하고 도메인(mamma.im)을
+ * 대신 보여주므로, 사이트 이름을 바꿀 때는 `siteConfig.name`만 고치세요.
+ * WebSite 노드는 페이지당 하나여야 하므로 다른 곳에 WebSite 블록을 추가하지 마세요.
+ * https://developers.google.com/search/docs/appearance/site-names
+ */
+const websiteSchema = {
+  "@type": "WebSite",
+  "@id": websiteId,
+  name: siteConfig.name,
+  alternateName: siteConfig.siteNameAlternates,
+  url: `${siteConfig.url}/`,
+  inLanguage: "ko",
+  publisher: { "@id": organizationId },
+};
+
 const organizationSchema = {
-  "@context": "https://schema.org",
   "@type": "Organization",
+  "@id": organizationId,
   name: siteConfig.company,
   legalName: siteConfig.company,
   url: siteConfig.url,
@@ -24,6 +44,11 @@ const organizationSchema = {
     streetAddress: siteConfig.business.address,
     addressCountry: "KR",
   },
+};
+
+const siteSchema = {
+  "@context": "https://schema.org",
+  "@graph": [websiteSchema, organizationSchema],
 };
 
 export const metadata: Metadata = {
@@ -97,7 +122,7 @@ export default function RootLayout({
         />
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(siteSchema) }}
         />
       </head>
       <body className="antialiased">

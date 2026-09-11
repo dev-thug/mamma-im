@@ -5,6 +5,11 @@ export const siteConfig = {
   nameEn: "Mamma",
   /** 서비스명 (한글+영문) */
   nameWithEn: "맘마(Mamma)",
+  /**
+   * Google 검색결과 사이트 이름의 대안 후보(WebSite 구조화 데이터 `alternateName`), 선호 순서대로.
+   * 1순위는 `name`("맘마")입니다. 마지막의 소문자 도메인은 다른 이름이 모두 채택되지 않을 때의 안전망입니다.
+   */
+  siteNameAlternates: ["Mamma", "맘마 육아 앱", "mamma.im"],
   /** 운영사명 (사업자등록증 상호) */
   company: "스페시파이(specify)",
   /** 서비스 URL */

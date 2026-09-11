@@ -204,6 +204,30 @@ Search Console 연결 직후 GA4 쿼리 보고서에서 '에이전트'가 들어
 **2~4주 뒤(2026-09-25 ~ 10-09) 이 보고서를 다시 확인**하고, 노출이 붙지 않으면 홈 타이틀
 (`siteConfig.seo.title`)과 콘텐츠의 무게를 'AI 육아', 'AI 육아 상담' 쪽으로 옮기는 것을 권합니다.
 
+### Google 검색결과 사이트 이름
+
+검색결과 제목 위에 뜨는 사이트 이름이 "맘마"가 아니라 도메인 `mamma.im`으로 나오던 문제를 2026-09-11에 고쳤습니다.
+
+- **원인**: 홈페이지에 Google이 가장 우선하는 `WebSite` 구조화 데이터가 없었고, 나머지 신호도 이름이 제각각이었습니다
+  (`og:site_name` "맘마 (Mamma)", Organization `name` "스페시파이(specify)", 앱 이름 "맘마"). Google은 이름을 확신하지
+  못하면 도메인을 대신 보여줍니다. 게다가 블로그 글·블로그 목록·팀 소개에는 `og:site_name`이 아예 없었습니다.
+- **조치**: 루트 레이아웃 JSON-LD를 `@graph`로 바꿔 `WebSite`(name "맘마", alternateName `Mamma` → `맘마 육아 앱` → `mamma.im`)를
+  추가하고 `publisher`로 Organization에 `@id` 연결. 이름은 `siteConfig.name`, 대안은 `siteConfig.siteNameAlternates`에서 고칩니다.
+  마지막 소문자 도메인은 다른 이름이 채택되지 않을 때의 안전망입니다(Google 권장).
+- **`og:site_name` 누락 주의**: 페이지가 `openGraph`를 선언하면 Next.js가 레이아웃의 `openGraph`를 통째로 덮어써서
+  `og:site_name`·`og:locale`이 사라집니다. 그래서 모든 `openGraph`에 `src/lib/seo.ts`의 `...baseOpenGraph`를 펼쳐 넣었습니다
+  (og:site_name은 모든 페이지 `맘마`). **새 페이지에 `openGraph`를 추가할 때도 반드시 넣으세요** — 규칙은 아래
+  "공유 미리보기" 절에 있습니다.
+- `WebSite` 노드는 페이지당 하나여야 합니다. 루트 레이아웃의 `@graph`에만 두고 다른 곳에 `WebSite` 블록을 추가하지 마세요.
+- 다른 신호도 같은 이름을 가리킵니다: 페이지 제목 끝 `| 맘마`, 홈 제목 첫 단어 `맘마`, `site.webmanifest`의 `short_name` `맘마`.
+  이름을 바꿀 때는 `siteConfig.name`을 고치고, `site.webmanifest`와 문자열로 적은 제목은 따로 고칩니다.
+- 히어로 `h1`과 헤더 로고는 그대로 뒀습니다. 홈 `<title>`은 같은 날 `맘마 - AI 육아 에이전트 | 육아 기록·상담 앱`으로
+  바뀌었으므로(여전히 `맘마`로 시작), 사이트 이름이 바뀌었는지 볼 때 이 변경도 함께 고려합니다.
+- 검증: Rich Results Test는 사이트 이름을 지원하지 않으므로 Schema Markup Validator(`validator.schema.org`)를 씁니다.
+  2026-09-11 로컬 빌드 기준 오류 0·경고 0.
+- **남은 일**: 배포 후 Search Console URL 검사 → `https://mamma.im/` 색인 생성 요청(미완료). 반영까지 며칠~몇 주 걸립니다.
+  몇 주 뒤에도 도메인이 나오면 Google 문서의 최후 수단(`name` 자체를 `mamma.im`으로)을 검토합니다.
+
 ### 네이버 서치어드바이저
 
 네이버는 `http://`와 `https://`를 **다른 사이트**로 봅니다. 운영은 https(http는 308 리디렉트)이므로
@@ -275,16 +299,6 @@ Search Console의 URL 검사 → 색인 생성 요청을 따로 씁니다.
 - 홈의 검색 타이틀과 카카오톡·X 공유 제목은 모두 `siteConfig.seo.title` 하나에서 옵니다. 2026-09-11
   `맘마 - 우리 가족의 육아 파트너` → `맘마 - AI 육아 에이전트 | 육아 기록·상담 앱`으로 바꿨습니다.
   "1등·최고" 같은 최상급 표현은 표시광고법상 객관적 근거가 필요해서 쓰지 않았습니다.
-
-### 사이트 이름 신호 — WebSite 구조화 데이터
-
-Google은 검색 결과의 사이트 이름을 정할 때 홈의 WebSite 구조화 데이터를 가장 크게 봅니다. 홈
-`src/app/page.tsx`에 `{"@type": "WebSite", "name": "맘마", "alternateName": "Mamma", "url": "https://mamma.im"}`
-JSON-LD가 있습니다(2026-09-11 추가). 홈에만 두면 되고, 다른 신호도 같은 이름을 가리키도록 맞춰 둡니다:
-모든 페이지 og:site_name `맘마`, 페이지 제목 끝 `| 맘마`, `site.webmanifest`의 `short_name` `맘마`.
-사이트 이름을 바꿀 일이 생기면 `siteConfig.name` 하나를 고치면 이 값들이 함께 바뀝니다
-(`site.webmanifest`와 문자열로 쓴 제목은 따로 고칩니다). Google 반영에는 홈 재크롤링 후 몇 주가 걸릴 수 있어서,
-배포 후 Search Console URL 검사로 홈 색인 생성을 요청해 두면 빨라집니다.
 - 확인: 빌드 후 페이지별 og/twitter 태그를 봅니다.
 
   ```bash

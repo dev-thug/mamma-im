@@ -31,16 +31,6 @@ const softwareApplicationSchema = {
   },
 };
 
-// Google 검색 결과의 사이트 이름을 정하는 가장 강한 신호입니다. 홈에만 두면 됩니다.
-// name은 모든 페이지의 og:site_name(src/lib/seo.ts의 baseOpenGraph)과 같은 값을 씁니다.
-const websiteSchema = {
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  name: siteConfig.name,
-  alternateName: siteConfig.nameEn,
-  url: siteConfig.url,
-};
-
 export const metadata: Metadata = {
   title: siteConfig.seo.title,
   description:
@@ -64,10 +54,7 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
-      />
+      {/* WebSite 노드는 루트 레이아웃의 @graph에 하나만 둡니다. 여기 추가하지 마세요. */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareApplicationSchema) }}
