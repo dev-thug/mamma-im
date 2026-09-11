@@ -105,6 +105,27 @@ export default function AnalyticsProvider() {
     return () => observer.disconnect();
   }, [pathname, pageType]);
 
+  // 선언형 노출 계측 — data-ga-view="이벤트명"이 붙은 요소가 화면에 들어오면 1회.
+  // 블로그 본문 끝 도달, 404 노출처럼 서버 컴포넌트에서 "보였다"를 잴 때 씁니다.
+  useEffect(() => {
+    const targets = document.querySelectorAll<HTMLElement>("[data-ga-view]");
+    if (targets.length === 0) return;
+
+    const observer = new IntersectionObserver((entries) => {
+      for (const entry of entries) {
+        if (!entry.isIntersecting) continue;
+        const name = entry.target.getAttribute("data-ga-view");
+        if (name) {
+          trackEvent(name, { ...readParams(entry.target), page_type: pageType });
+        }
+        observer.unobserve(entry.target);
+      }
+    });
+
+    targets.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, [pathname, pageType]);
+
   // 선언형 클릭 계측 + mailto 클릭
   useEffect(() => {
     const handleClick = (event: MouseEvent) => {
@@ -133,8 +154,14 @@ export default function AnalyticsProvider() {
       const link = target.closest<HTMLAnchorElement>("a");
       const navContainer = link?.closest("[data-ga-nav]");
       if (link && navContainer) {
+        // 로고처럼 텍스트가 없는 링크는 aria-label, 그것도 없으면 경로로 구분합니다
+        const label =
+          link.textContent?.trim() ||
+          link.getAttribute("aria-label") ||
+          link.getAttribute("href") ||
+          "";
         trackEvent("nav_click", {
-          link_label: link.textContent?.trim().slice(0, 60) ?? "",
+          link_label: label.slice(0, 60),
           link_location: navContainer.getAttribute("data-ga-nav") ?? "",
           page_type: pageType,
         });
