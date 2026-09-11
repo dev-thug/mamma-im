@@ -24,12 +24,35 @@ export type LinkLocation =
   | "faq";
 
 /**
+ * gtag가 정의되기 전에 발생한 이벤트.
+ *
+ * GoogleAnalytics는 호스트를 판정한 뒤 두 번째 렌더에서야 gtag 스크립트를 넣기 때문에,
+ * 첫 마운트 때 보내는 이벤트(짧은 페이지의 scroll_depth처럼 로드 즉시 도달하는 구간)가
+ * 그대로 버려지고 있었습니다. 여기 모아 뒀다가 flushPendingEvents()로 보냅니다.
+ * GA를 켜지 않는 호스트(dev·프리뷰)에서는 끝내 비워지지 않으므로 상한을 둡니다.
+ */
+const pendingEvents: Array<[string, Record<string, unknown> | undefined]> = [];
+const MAX_PENDING_EVENTS = 50;
+
+/**
  * GA4로 이벤트를 전송합니다.
- * gtag가 아직 로드되지 않았거나 SSR 중이면 조용히 무시합니다.
+ * gtag가 아직 없으면 대기열에 넣고, SSR 중이면 무시합니다.
  */
 export function trackEvent(name: string, params?: Record<string, unknown>) {
+  if (typeof window === "undefined") return;
+  if (typeof window.gtag === "function") {
+    window.gtag("event", name, params);
+  } else if (pendingEvents.length < MAX_PENDING_EVENTS) {
+    pendingEvents.push([name, params]);
+  }
+}
+
+/** gtag가 정의된 직후 GoogleAnalytics가 호출해 대기 중이던 이벤트를 보냅니다. */
+export function flushPendingEvents() {
   if (typeof window === "undefined" || typeof window.gtag !== "function") return;
-  window.gtag("event", name, params);
+  for (const [name, params] of pendingEvents.splice(0)) {
+    window.gtag("event", name, params);
+  }
 }
 
 /**

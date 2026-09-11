@@ -1,8 +1,9 @@
 "use client";
 
 import Script from "next/script";
-import { useSyncExternalStore } from "react";
+import { useEffect, useSyncExternalStore } from "react";
 import { siteConfig } from "@/config/site";
+import { flushPendingEvents } from "@/lib/analytics";
 
 const PROD_HOST = new URL(siteConfig.url).hostname;
 
@@ -34,6 +35,12 @@ function resolveMode(): Mode {
 export default function GoogleAnalytics() {
   const measurementId = siteConfig.gaMeasurementId;
   const mode = useSyncExternalStore(noopSubscribe, resolveMode, serverSnapshot);
+
+  // 자식 Script(afterInteractive)의 effect가 인라인 스크립트를 먼저 실행해 gtag를 정의하므로,
+  // 부모인 이 effect 시점에는 gtag가 있습니다. 그 전에 쌓인 이벤트를 여기서 보냅니다.
+  useEffect(() => {
+    if (mode !== "off") flushPendingEvents();
+  }, [mode]);
 
   if (!measurementId || mode === "off") return null;
 
