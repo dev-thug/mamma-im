@@ -46,9 +46,6 @@ export const metadata: Metadata = {
   manifest: "/site.webmanifest",
   verification: {
     google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
-    other: {
-      "naver-site-verification": siteConfig.naverSiteVerification,
-    },
   },
   openGraph: {
     title: siteConfig.seo.title,
@@ -79,7 +76,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ko">
+    // data-scroll-behavior: globals.css의 smooth 스크롤을 라우트 전환 때만 끕니다.
+    // 없으면 페이지 이동 시 맨 위로 1초가량 애니메이션되고, 그동안 새 페이지의
+    // scroll_depth·article_complete가 이전 페이지 스크롤 위치로 잘못 기록됩니다.
+    <html lang="ko" data-scroll-behavior="smooth">
       <head>
         <link
           rel="stylesheet"

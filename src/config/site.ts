@@ -17,8 +17,6 @@ export const siteConfig = {
   email: "support@specify.app",
   /** Google Analytics 4 측정 ID */
   gaMeasurementId: "G-39P8T0W65L",
-  /** 네이버 서치어드바이저 사이트 소유확인 키 (public/naver<키>.html과 동일) */
-  naverSiteVerification: "3c2eebbec59f0e56eabd7b4968c03078",
   /** 서비스 설명 (한글) */
   description:
     "태어나는 순간부터 초등학교 졸업까지, 아이의 모든 성장을 함께하는 스마트 육아 앱",
