@@ -186,11 +186,19 @@ dataLayer.filter(a => a[0] === 'event').map(a => [a[1], a[2]])
 
 ### 네이버 서치어드바이저
 
-- 소유 확인: HTML 파일 방식 `public/naver3c2eebbec59f0e56eabd7b4968c03078.html` (2026-09-02 추가).
-  메타 태그 방식은 쓰지 않습니다.
-- **미완료(콘솔에서 직접)**: 요청 → 사이트맵 제출(`https://mamma.im/sitemap.xml`),
-  요청 → RSS 제출(`https://mamma.im/rss.xml`), 새 글은 요청 → 웹 페이지 수집.
-  naver.com은 Claude의 브라우저 도구에서 안전 제한으로 열리지 않아 대신 처리할 수 없습니다.
+네이버는 `http://`와 `https://`를 **다른 사이트**로 봅니다. 운영은 https(http는 308 리디렉트)이므로
+**`https://mamma.im` 사이트가 기준**입니다.
+
+| 등록 사이트 | 소유 확인 | 비고 |
+| --- | --- | --- |
+| `https://mamma.im` (기준) | 메타 태그 `naver-site-verification` — 값은 `siteConfig.naverSiteVerification` | 2026-09-11 추가 |
+| `http://mamma.im` (예전 등록) | HTML 파일 `public/naver3c2eebbec59f0e56eabd7b4968c03078.html` | 2026-09-02 등록. 지워도 무방 |
+
+- 2026-09-11: http 사이트에 사이트맵·RSS(`http://mamma.im/rss.xml`, 16:13) 제출. 이어서 https 사이트를
+  메타 태그로 새로 등록해 사이트맵(`sitemap.xml`)·RSS(`https://mamma.im/rss.xml`)를 다시 제출합니다.
+- 두 확인 수단은 서로 다른 사이트용이므로 **둘 다 지우지 마세요.**
+- 새 글은 `npm run indexnow`로 알립니다(콘솔의 요청 → 웹 페이지 수집과 같은 효과).
+- naver.com은 Claude의 브라우저 도구에서 안전 제한으로 열리지 않아 콘솔 작업은 사람이 직접 합니다.
 - 2026-09-11 기준 네이버 웹문서 검색(`site:mamma.im`)에는 홈만 노출되고 블로그 글은 보이지 않았습니다.
 
 ### RSS 피드 — `/rss.xml`

@@ -17,6 +17,12 @@ export const siteConfig = {
   email: "support@specify.app",
   /** Google Analytics 4 측정 ID */
   gaMeasurementId: "G-39P8T0W65L",
+  /**
+   * 네이버 서치어드바이저 `https://mamma.im` 사이트의 소유확인 메타 태그 값.
+   * `http://mamma.im` 사이트는 public/naver3c2eebbec59f0e56eabd7b4968c03078.html로 따로 확인합니다
+   * (네이버는 http와 https를 다른 사이트로 봅니다).
+   */
+  naverSiteVerification: "82f87c45eead6dc221cf930baff7f35bfbb29dd6",
   /** 서비스 설명 (한글) */
   description:
     "태어나는 순간부터 초등학교 졸업까지, 아이의 모든 성장을 함께하는 스마트 육아 앱",

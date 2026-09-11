@@ -46,6 +46,9 @@ export const metadata: Metadata = {
   manifest: "/site.webmanifest",
   verification: {
     google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
+    other: {
+      "naver-site-verification": siteConfig.naverSiteVerification,
+    },
   },
   openGraph: {
     title: siteConfig.seo.title,
