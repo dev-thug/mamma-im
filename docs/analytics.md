@@ -194,8 +194,9 @@ dataLayer.filter(a => a[0] === 'event').map(a => [a[1], a[2]])
 | `https://mamma.im` (기준) | 메타 태그 `naver-site-verification` — 값은 `siteConfig.naverSiteVerification` | 2026-09-11 추가 |
 | `http://mamma.im` (예전 등록) | HTML 파일 `public/naver3c2eebbec59f0e56eabd7b4968c03078.html` | 2026-09-02 등록. 지워도 무방 |
 
-- 2026-09-11: http 사이트에 사이트맵·RSS(`http://mamma.im/rss.xml`, 16:13) 제출. 이어서 https 사이트를
-  메타 태그로 새로 등록해 사이트맵(`sitemap.xml`)·RSS(`https://mamma.im/rss.xml`)를 다시 제출합니다.
+- 2026-09-11: http 사이트에 사이트맵·RSS(`http://mamma.im/rss.xml`, 16:13) 제출 후, https 사이트를
+  메타 태그로 새로 등록해 **소유확인 완료**, 사이트맵(`https://mamma.im/sitemap.xml`)·RSS(`https://mamma.im/rss.xml`)
+  **제출 완료**. 수집·노출 반영은 며칠 걸리므로 리포트 → 사이트 현황과 `site:mamma.im` 검색으로 확인합니다.
 - 두 확인 수단은 서로 다른 사이트용이므로 **둘 다 지우지 마세요.**
 - 새 글은 `npm run indexnow`로 알립니다(콘솔의 요청 → 웹 페이지 수집과 같은 효과).
 - naver.com은 Claude의 브라우저 도구에서 안전 제한으로 열리지 않아 콘솔 작업은 사람이 직접 합니다.
