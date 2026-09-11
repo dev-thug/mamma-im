@@ -67,6 +67,14 @@ GA4 측정 ID: `G-39P8T0W65L` · 속성 `mamma.im` (속성 ID `552469899`, 웹 �
 **새 파라미터를 만들면 GA4 관리 → 맞춤 정의에 같은 이름으로 등록해야** 보고서에서 보입니다.
 등록하지 않은 파라미터는 수집은 되지만 보고서에서는 `(not set)`으로만 보입니다.
 
+### gtag 준비 전 이벤트는 대기열에서 기다립니다
+
+`GoogleAnalytics`는 호스트 판정 뒤 두 번째 렌더에서 gtag를 넣으므로, 첫 마운트에 보내는 이벤트
+(짧은 페이지·404에서 로드 즉시 도달하는 `scroll_depth` 등)는 `trackEvent`가 대기열에 넣었다가
+gtag가 정의되는 순간 `flushPendingEvents()`로 보냅니다. 이전에는 이 이벤트들이 조용히 버려져
+검색 유입 랜딩 세션의 25·50% 도달이 누락됐습니다. `window.gtag`를 직접 호출하지 말고 항상
+`trackEvent`를 쓰세요.
+
 ### 주의: `<html data-scroll-behavior="smooth">`를 지우지 마세요
 
 `globals.css`가 `html { scroll-behavior: smooth }`라서, 이 속성이 없으면 Next.js가 페이지 이동 때
@@ -147,7 +155,8 @@ dataLayer.filter(a => a[0] === 'event').map(a => [a[1], a[2]])
   보고서에서 뺍니다. `ga_debug=1` 검증 이벤트는 DebugView에서만 보입니다. 소급 적용되지 않으므로
   필터 활성화(15:54 KST) 전인 2026-09-11 15:29~15:35 KST에 localhost 검증으로 들어간 debug 이벤트
   십수 건(사용자 2명, 소스 direct)은 보고서에 남아 있습니다.
-- Internal Traffic (내부 트래픽, 테스트): GA4 기본값. 내부 IP 정의가 없어 아무것도 걸러지지 않습니다.
+- Internal Traffic (내부 트래픽, 테스트): GA4 기본값. 테스트 상태라 보고서에서 데이터를 빼지 않습니다.
+  내부 IP 규칙(데이터 스트림 → 태그 설정 → 내부 트래픽 정의)은 확인하지 않았습니다.
 
 ### 일부러 하지 않은 것
 
@@ -187,7 +196,8 @@ dataLayer.filter(a => a[0] === 'event').map(a => [a[1], a[2]])
 ### RSS 피드 — `/rss.xml`
 
 `src/app/rss.xml/route.ts`가 블로그 글 목록으로 RSS 2.0을 만듭니다. 모든 페이지 `<head>`에
-`<link rel="alternate" type="application/rss+xml">`가 들어갑니다. 글을 추가하면 자동 반영됩니다.
+`<link rel="alternate" type="application/rss+xml">`가 들어가고, `robots.txt`의 `Sitemap:` 지시어에도
+`sitemap.xml`과 함께 실립니다. 글을 추가하면 자동 반영됩니다.
 
 ### IndexNow (네이버·Bing 즉시 색인 요청)
 

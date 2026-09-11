@@ -22,6 +22,7 @@ export default function robots(): MetadataRoute.Robots {
         allow: '/',
       },
     ],
-    sitemap: `${siteConfig.url}/sitemap.xml`,
+    // rss.xml도 함께 알립니다 — 콘솔 제출과 별개로 크롤러(Yeti·Googlebot)가 robots.txt에서 피드를 발견합니다.
+    sitemap: [`${siteConfig.url}/sitemap.xml`, `${siteConfig.url}/rss.xml`],
   }
 }
