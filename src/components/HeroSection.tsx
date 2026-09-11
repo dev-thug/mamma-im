@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, type Variants } from "framer-motion";
 import AppMockup from "./mockup/AppMockup";
 import { siteConfig } from "@/config/site";
@@ -24,13 +24,20 @@ export default function HeroSection() {
   const [activeTab, setActiveTab] = useState(0);
 
   /** 목업 조작은 세션당 1회만 보냅니다 — 탭 전환마다 보내면 신호 대비 양이 너무 많습니다 */
+  const demoReported = useRef(false);
   const reportDemoInteract = (tab: number) => {
-    if (userInteracted) return;
+    if (demoReported.current) return;
+    demoReported.current = true;
     trackDemoInteract(DEMO_TAB_LABELS[tab] ?? String(tab));
   };
 
-  const handleInteraction = () => {
-    reportDemoInteract(activeTab);
+  const handleInteraction = (event: React.PointerEvent) => {
+    // 탭 버튼 위에서 눌렀다면 어떤 탭인지 아는 handleTabChange가 보고합니다.
+    // pointerdown이 click보다 먼저 오기 때문에 여기서 보고하면
+    // 사용자가 고른 탭이 아니라 자동 순환 중이던 탭이 기록됩니다.
+    const onTabButton =
+      event.target instanceof Element && event.target.closest("button");
+    if (!onTabButton) reportDemoInteract(activeTab);
     setUserInteracted(true);
   };
   const handleTabChange = (tab: number) => {
