@@ -230,7 +230,7 @@ export default function Footer() {
               {[
                 { label: "이용약관", href: "/terms" },
                 { label: "개인정보처리방침", href: "/privacy" },
-                { label: "커뮤니티 가이드라인", href: "/guidelines" },
+                { label: "서비스 이용 가이드라인", href: "/guidelines" },
                 { label: "오픈소스 라이선스", href: "/licenses" },
               ].map((item) => (
                 <li key={item.href}>

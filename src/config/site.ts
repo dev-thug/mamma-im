@@ -54,6 +54,8 @@ export const siteConfig = {
   legal: {
     /** 약관/방침 시행일자 */
     effectiveDate: "2026년 3월 1일",
+    /** 최종 개정일자 — 문서 내용을 고쳤으면 반드시 함께 올린다 */
+    revisedDate: "2026년 9월 12일",
     /** 개인정보 보호책임자 이름 */
     privacyOfficer: "맘마 개인정보 보호팀",
     /** 개인정보 보호책임자 직책 */

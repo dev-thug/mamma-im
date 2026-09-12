@@ -28,7 +28,9 @@ export default function TermsPage() {
     <>
       <div className="mb-10">
         <h1 className="text-3xl font-bold text-neutral-900">이용약관</h1>
-        <p className="mt-2 text-sm text-neutral-500">시행일자: {legal.effectiveDate}</p>
+        <p className="mt-2 text-sm text-neutral-500">
+          시행일자: {legal.effectiveDate} (최종 개정: {legal.revisedDate})
+        </p>
       </div>
 
       <div className="space-y-10 text-neutral-700">
@@ -116,20 +118,23 @@ export default function TermsPage() {
             </p>
             <ol className="space-y-2 list-decimal list-inside">
               <li className="leading-relaxed">
-                <strong>육아 기록</strong>: 아이의 성장, 식사, 수면, 활동 등
-                일상을 기록하고 관리하는 기능
+                <strong>육아 기록</strong>: 수유, 수면, 기저귀, 놀이, 성장(키·몸무게),
+                발달 이정표, 메모 등 아이의 일상을 기록하고 관리하는 기능
               </li>
               <li className="leading-relaxed">
-                <strong>AI 코치</strong>: 인공지능 기반 육아 정보 제공 및 맞춤형
+                <strong>맘마톡</strong>: 인공지능 기반 육아 정보 제공 및 맞춤형
                 조언 서비스
               </li>
               <li className="leading-relaxed">
-                <strong>커뮤니티</strong>: 부모들이 육아 경험을 공유하고 소통할
-                수 있는 온라인 커뮤니티
+                <strong>발달 체크 및 성장 분석</strong>: 아이의 연령에 따른 발달
+                이정표 확인, 성장 추이 분석 및 리포트 제공
               </li>
               <li className="leading-relaxed">
-                <strong>놀이지도</strong>: 아이의 연령과 발달 단계에 맞춘 놀이
-                활동 추천 및 가이드
+                <strong>육아 팁</strong>: 아이의 연령과 발달 단계에 맞춘
+                수유·수면·배변·놀이·건강 가이드
+              </li>
+              <li className="leading-relaxed">
+                <strong>알림</strong>: 기록 리마인더 및 서비스 안내 푸시 알림
               </li>
               <li className="leading-relaxed">
                 기타 회사가 추가로 개발하거나 제휴를 통해 제공하는 서비스
@@ -152,11 +157,11 @@ export default function TermsPage() {
                 연중무휴, 1일 24시간을 원칙으로 합니다.
               </li>
               <li className="leading-relaxed">
-                회원가입은 소셜 로그인을 통해 진행되며, 지원하는 소셜 로그인은
-                다음과 같습니다.
+                회원가입은 이메일 또는 소셜 로그인을 통해 진행되며, 지원하는
+                가입 수단은 다음과 같습니다.
                 <ul className="mt-2 ml-4 space-y-1 list-disc list-inside">
+                  <li>이메일 주소와 비밀번호</li>
                   <li>카카오 계정</li>
-                  <li>네이버 계정</li>
                   <li>구글(Google) 계정</li>
                   <li>애플(Apple) 계정</li>
                 </ul>

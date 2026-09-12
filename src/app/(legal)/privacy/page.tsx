@@ -27,7 +27,9 @@ export default function PrivacyPage() {
   return (
     <article className="max-w-none">
       <h1 className="text-3xl font-bold text-neutral-900 mb-2">개인정보처리방침</h1>
-      <p className="text-sm text-neutral-500 mb-10">시행일자: {legal.effectiveDate}</p>
+      <p className="text-sm text-neutral-500 mb-10">
+        시행일자: {legal.effectiveDate} (최종 개정: {legal.revisedDate})
+      </p>
 
       <p className="text-neutral-700 leading-relaxed mb-8">
         {name}(이하 &quot;회사&quot;)는 이용자의 개인정보를 중요시하며, 「개인정보 보호법」 등 관련 법령을 준수하기 위하여
@@ -40,10 +42,13 @@ export default function PrivacyPage() {
         <p className="text-neutral-700 leading-relaxed mb-3">
           회사는 서비스 제공을 위해 다음과 같은 개인정보를 수집합니다.
         </p>
-        <h3 className="text-base font-semibold text-neutral-800 mb-2">가. 소셜 로그인 시 수집 항목</h3>
+        <h3 className="text-base font-semibold text-neutral-800 mb-2">가. 회원가입 시 수집 항목</h3>
         <ul className="list-disc list-inside text-neutral-700 space-y-1 mb-4">
+          <li>
+            이메일 회원가입: 이메일 주소, 비밀번호(단방향 암호화되어 저장되며 회사는
+            원본을 알 수 없습니다)
+          </li>
           <li>카카오 로그인: 이름(닉네임), 이메일 주소, 프로필 사진</li>
-          <li>네이버 로그인: 이름(닉네임), 이메일 주소, 프로필 사진</li>
           <li>애플 로그인: 이름, 이메일 주소</li>
           <li>구글 로그인: 이름, 이메일 주소, 프로필 사진</li>
         </ul>

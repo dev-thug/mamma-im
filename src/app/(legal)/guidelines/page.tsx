@@ -4,17 +4,20 @@ import { baseOpenGraph, defaultOgImages } from "@/lib/seo";
 
 const guidelinesUrl = `${siteConfig.url}/guidelines`;
 
+const TITLE = `서비스 이용 가이드라인 | ${siteConfig.name}`;
+const DESCRIPTION = `${siteConfig.nameWithEn}를 안전하게 이용하기 위한 기록 입력 기준, 맘마톡 유의사항, 금지 행위를 안내합니다.`;
+
 export const metadata: Metadata = {
-  title: `커뮤니티 가이드라인 | ${siteConfig.name}`,
-  description: `${siteConfig.nameWithEn} 커뮤니티 이용 규칙 및 콘텐츠 관리 정책을 안내합니다.`,
+  title: TITLE,
+  description: DESCRIPTION,
   alternates: {
     canonical: guidelinesUrl,
     languages: { ko: guidelinesUrl },
   },
   openGraph: {
     ...baseOpenGraph,
-    title: `커뮤니티 가이드라인 | ${siteConfig.name}`,
-    description: `${siteConfig.nameWithEn} 커뮤니티 이용 규칙 및 콘텐츠 관리 정책을 안내합니다.`,
+    title: TITLE,
+    description: DESCRIPTION,
     url: guidelinesUrl,
     type: "website",
     images: defaultOgImages,
@@ -22,164 +25,114 @@ export const metadata: Metadata = {
 };
 
 export default function GuidelinesPage() {
-  const { name, nameWithEn, email, legal } = siteConfig;
+  const { nameWithEn, email, legal } = siteConfig;
 
   return (
     <>
       <div className="mb-10">
-        <h1 className="text-3xl font-bold text-neutral-900">커뮤니티 가이드라인</h1>
-        <p className="mt-2 text-sm text-neutral-500">시행일자: {legal.effectiveDate}</p>
+        <h1 className="text-3xl font-bold text-neutral-900">
+          서비스 이용 가이드라인
+        </h1>
+        <p className="mt-2 text-sm text-neutral-500">
+          시행일자: {legal.effectiveDate} (최종 개정: {legal.revisedDate})
+        </p>
       </div>
 
       <div className="space-y-10 text-neutral-700">
         {/* 소개 */}
         <section>
           <p className="leading-relaxed">
-            {nameWithEn} 커뮤니티는 부모님들이 서로 육아 경험을 나누고 응원하는 따뜻한 공간입니다.
-            모든 이용자가 안전하고 쾌적하게 서비스를 이용할 수 있도록 아래 가이드라인을 준수해 주세요.
+            {nameWithEn}는 아이의 일상을 기록하고 인공지능 육아 상담을 받는{" "}
+            <strong>개인용 육아 기록 서비스</strong>입니다. 지금은 내 기록이나
+            대화가 다른 이용자에게 공개되는 기능이 없습니다. 아래는 서비스를
+            안전하게 이용하기 위한 안내입니다.
           </p>
         </section>
 
-        {/* 1. 콘텐츠 기준 */}
+        {/* 1. 기록 입력 기준 */}
         <section>
           <h2 className="mb-3 text-xl font-semibold text-neutral-900">
-            1. 콘텐츠 기준
+            1. 기록 입력 기준
           </h2>
-          <p className="mb-3 leading-relaxed">
-            {name} 커뮤니티에서는 다음과 같은 콘텐츠를 금지합니다.
-          </p>
-          <ol className="space-y-2 list-decimal list-inside">
+          <ul className="space-y-2 list-disc list-inside">
             <li className="leading-relaxed">
-              <strong>폭력적·위협적 콘텐츠</strong>: 타인에 대한 폭력, 위협, 협박, 괴롭힘을 조장하거나 포함하는 게시물
+              기록과 메모에는{" "}
+              <strong>본인 또는 양육 권한이 있는 아동</strong>에 관한 정보만
+              입력해 주세요.
             </li>
             <li className="leading-relaxed">
-              <strong>혐오·차별 콘텐츠</strong>: 인종, 성별, 종교, 국적, 장애 등을 이유로 특정 집단이나 개인을 비하·차별하는 게시물
+              다른 사람(다른 아동을 포함합니다)의 민감한 개인정보를 동의 없이
+              입력하지 않습니다.
             </li>
             <li className="leading-relaxed">
-              <strong>음란·선정적 콘텐츠</strong>: 성적으로 노골적이거나 선정적인 이미지, 영상, 텍스트
-            </li>
-            <li className="leading-relaxed">
-              <strong>스팸·광고</strong>: 상업적 광고, 홍보, 스팸성 게시물 (사전 승인 없는 외부 링크 포함)
-            </li>
-            <li className="leading-relaxed">
-              <strong>허위 정보</strong>: 의학적·과학적 근거 없이 아동 건강이나 안전에 관한 잘못된 정보를 유포하는 게시물
-            </li>
-            <li className="leading-relaxed">
-              <strong>개인정보 침해</strong>: 본인 또는 타인(특히 아동)의 민감한 개인정보를 무단으로 공개하는 게시물
-            </li>
-            <li className="leading-relaxed">
-              <strong>불법 콘텐츠</strong>: 관련 법령에 위반되는 콘텐츠
-            </li>
-          </ol>
-        </section>
-
-        {/* 2. 콘텐츠 필터링 */}
-        <section>
-          <h2 className="mb-3 text-xl font-semibold text-neutral-900">
-            2. 콘텐츠 필터링
-          </h2>
-          <p className="leading-relaxed">
-            {name}는 건전한 커뮤니티 환경을 유지하기 위해 다음과 같은 콘텐츠 필터링 시스템을 운영합니다.
-          </p>
-          <ul className="mt-3 space-y-2 list-disc list-inside">
-            <li className="leading-relaxed">
-              게시물 및 댓글 작성 시 자동 필터링 시스템을 통해 부적절한 표현(욕설, 비속어, 혐오 표현 등)을 사전에 감지하고 차단합니다.
-            </li>
-            <li className="leading-relaxed">
-              이미지 및 미디어 콘텐츠에 대해 자동화된 검수 시스템을 통해 부적절한 콘텐츠를 필터링합니다.
-            </li>
-            <li className="leading-relaxed">
-              운영팀이 정기적으로 게시물을 모니터링하여 가이드라인 위반 콘텐츠를 검토하고 조치합니다.
+              주민등록번호, 카드번호, 계좌번호처럼 서비스 제공에 필요하지 않은
+              정보는 입력하지 마세요. 회사는 이러한 정보를 요구하지 않습니다.
             </li>
           </ul>
         </section>
 
-        {/* 3. 신고 기능 */}
+        {/* 2. 맘마톡 유의사항 */}
         <section>
           <h2 className="mb-3 text-xl font-semibold text-neutral-900">
-            3. 부적절한 콘텐츠 신고
+            2. 맘마톡 이용 시 유의사항
           </h2>
-          <p className="mb-3 leading-relaxed">
-            커뮤니티 가이드라인에 위반되는 게시물이나 댓글을 발견하면, 누구나 신고할 수 있습니다.
-          </p>
-          <ol className="space-y-2 list-decimal list-inside">
+          <ul className="space-y-2 list-disc list-inside">
             <li className="leading-relaxed">
-              해당 게시물 또는 댓글의 <strong>&quot;신고&quot;</strong> 버튼을 탭합니다.
+              맘마톡은{" "}
+              <strong>
+                일반적인 육아 정보를 제공하며, 의학적 진단이나 처방이 아닙니다.
+              </strong>{" "}
+              아이의 건강이 우려되면 소아과 진료를 받아 주세요.
             </li>
             <li className="leading-relaxed">
-              신고 사유를 선택합니다 (폭력/위협, 혐오/차별, 음란/선정, 스팸/광고, 허위정보, 기타).
+              응급 상황에서는 맘마톡에 묻지 마시고{" "}
+              <strong>119 또는 의료기관에 즉시 연락</strong>해 주세요.
             </li>
             <li className="leading-relaxed">
-              필요 시 추가 설명을 입력한 후 신고를 제출합니다.
+              입력한 대화 내용은 답변을 생성하기 위해 인공지능 모델에
+              전달됩니다. 민감한 개인정보는 입력하지 마세요.
             </li>
-          </ol>
-          <p className="mt-3 leading-relaxed">
-            접수된 신고는 운영팀에 즉시 전달되며, <strong>24시간 이내에 검토 및 조치</strong>됩니다.
-          </p>
+            <li className="leading-relaxed">
+              아동학대, 타인에 대한 위해, 불법행위를 위한 정보 요청에는 답변하지
+              않습니다.
+            </li>
+          </ul>
         </section>
 
-        {/* 4. 사용자 차단 */}
+        {/* 3. 금지되는 이용 행위 */}
         <section>
           <h2 className="mb-3 text-xl font-semibold text-neutral-900">
-            4. 사용자 차단
+            3. 금지되는 이용 행위
           </h2>
-          <p className="mb-3 leading-relaxed">
-            불쾌하거나 부적절한 행동을 하는 사용자를 차단할 수 있습니다.
-          </p>
-          <ol className="space-y-2 list-decimal list-inside">
+          <ul className="space-y-2 list-disc list-inside">
             <li className="leading-relaxed">
-              해당 사용자의 프로필 또는 게시물에서 <strong>&quot;차단&quot;</strong> 버튼을 탭합니다.
+              타인의 계정을 도용하거나 타인의 정보로 가입하는 행위
             </li>
             <li className="leading-relaxed">
-              차단된 사용자의 모든 게시물과 댓글은 <strong>즉시 내 피드에서 제거</strong>됩니다.
+              자동화된 수단으로 서비스를 비정상적으로 대량 호출하는 행위
             </li>
             <li className="leading-relaxed">
-              차단된 사용자는 나의 게시물에 댓글을 작성하거나 메시지를 보낼 수 없습니다.
+              서비스의 설비, 서버, 네트워크를 방해하거나 취약점을 악용하는 행위
             </li>
             <li className="leading-relaxed">
-              차단 시 해당 사용자의 부적절한 콘텐츠가 <strong>운영팀에 자동 통보</strong>되어 추가 검토가 이루어집니다.
+              서비스를 통해 얻은 정보를 회사의 사전 승낙 없이 복제·유통하거나
+              상업적으로 이용하는 행위
             </li>
-          </ol>
-          <p className="mt-3 leading-relaxed">
-            차단은 설정 &gt; 차단 관리에서 언제든지 해제할 수 있습니다.
-          </p>
+            <li className="leading-relaxed">
+              관련 법령에 위반되는 목적으로 서비스를 이용하는 행위
+            </li>
+          </ul>
         </section>
 
-        {/* 5. 위반 시 조치 */}
+        {/* 4. 문의 및 신고 */}
         <section>
           <h2 className="mb-3 text-xl font-semibold text-neutral-900">
-            5. 위반 시 조치
-          </h2>
-          <p className="mb-3 leading-relaxed">
-            커뮤니티 가이드라인을 위반한 경우, {name} 운영팀은 다음과 같은 조치를 취합니다.
-          </p>
-          <ol className="space-y-2 list-decimal list-inside">
-            <li className="leading-relaxed">
-              <strong>콘텐츠 삭제</strong>: 가이드라인을 위반한 게시물, 댓글, 이미지 등은 즉시 삭제됩니다.
-            </li>
-            <li className="leading-relaxed">
-              <strong>경고</strong>: 최초 위반 시 경고 알림을 발송합니다.
-            </li>
-            <li className="leading-relaxed">
-              <strong>일시 이용 정지</strong>: 반복적인 위반 또는 심각한 위반의 경우 커뮤니티 이용이 일시적으로 정지됩니다.
-            </li>
-            <li className="leading-relaxed">
-              <strong>영구 이용 정지</strong>: 지속적인 위반 또는 중대한 위반(폭력, 아동 관련 부적절 콘텐츠 등)의 경우 계정이 영구적으로 정지됩니다.
-            </li>
-          </ol>
-          <p className="mt-3 leading-relaxed">
-            모든 신고에 대해 <strong>24시간 이내에 검토</strong>하며, 위반이 확인되면 해당 콘텐츠를 삭제하고 위반 사용자에게 적절한 조치를 취합니다.
-          </p>
-        </section>
-
-        {/* 6. 이의 제기 */}
-        <section>
-          <h2 className="mb-3 text-xl font-semibold text-neutral-900">
-            6. 이의 제기
+            4. 문의 및 신고
           </h2>
           <p className="leading-relaxed">
-            운영팀의 조치에 이의가 있는 경우, 아래 이메일로 문의하실 수 있습니다.
-            이의 제기는 접수 후 영업일 기준 3일 이내에 검토하여 결과를 안내드립니다.
+            서비스 이용 중 문제나 부적절한 이용을 발견하셨다면 아래 이메일로
+            알려 주세요. 접수된 내용은 확인 후 필요한 조치를 취하고 결과를
+            회신합니다. 개인정보의 열람·정정·삭제 요청도 같은 주소로 접수합니다.
           </p>
           <p className="mt-2 leading-relaxed">
             문의:{" "}
@@ -192,14 +145,28 @@ export default function GuidelinesPage() {
           </p>
         </section>
 
-        {/* 7. 가이드라인 변경 */}
+        {/* 5. 위반 시 조치 */}
         <section>
           <h2 className="mb-3 text-xl font-semibold text-neutral-900">
-            7. 가이드라인 변경
+            5. 위반 시 조치
           </h2>
           <p className="leading-relaxed">
-            {name}는 서비스 운영 상황 및 관련 법령 변경에 따라 본 가이드라인을 수정할 수 있습니다.
-            변경 시 앱 내 공지사항 또는 서비스 화면을 통해 사전에 안내합니다.
+            이 가이드라인 또는 이용약관을 위반한 경우 회사는 서비스 이용을
+            제한하거나 이용계약을 해지할 수 있습니다. 조치 전 회원에게 사유를
+            안내하며, 회원은 이에 대해 소명할 수 있습니다. 구체적인 절차는
+            이용약관 제10조(서비스 이용제한)를 따릅니다.
+          </p>
+        </section>
+
+        {/* 6. 가이드라인의 개정 */}
+        <section>
+          <h2 className="mb-3 text-xl font-semibold text-neutral-900">
+            6. 가이드라인의 개정
+          </h2>
+          <p className="leading-relaxed">
+            서비스에 새로운 기능이 추가되거나 관련 법령이 변경되면 이
+            가이드라인을 개정할 수 있습니다. 개정하는 경우 변경 내용과 시행일자를
+            시행 7일 전부터 서비스 내 공지사항을 통해 안내합니다.
           </p>
         </section>
 
@@ -207,7 +174,8 @@ export default function GuidelinesPage() {
         <section className="border-t border-neutral-200 pt-8">
           <h2 className="mb-3 text-xl font-semibold text-neutral-900">부칙</h2>
           <p className="leading-relaxed">
-            이 가이드라인은 <strong>{legal.effectiveDate}</strong>부터 시행합니다.
+            이 가이드라인은 <strong>{legal.effectiveDate}</strong>부터 시행하며,{" "}
+            <strong>{legal.revisedDate}</strong> 개정 내용을 반영하고 있습니다.
           </p>
           <div className="mt-6 rounded-lg bg-neutral-50 p-4">
             <p className="text-sm text-neutral-600">
