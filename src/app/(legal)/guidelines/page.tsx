@@ -25,7 +25,7 @@ export const metadata: Metadata = {
 };
 
 export default function GuidelinesPage() {
-  const { nameWithEn, email, legal } = siteConfig;
+  const { nameWithEn, email, company, business, legal } = siteConfig;
 
   return (
     <>
@@ -177,9 +177,21 @@ export default function GuidelinesPage() {
             이 가이드라인은 <strong>{legal.effectiveDate}</strong>부터 시행하며,{" "}
             <strong>{legal.revisedDate}</strong> 개정 내용을 반영하고 있습니다.
           </p>
+          <p className="mt-3 leading-relaxed">
+            이 가이드라인에서 &quot;회사&quot;란 {nameWithEn} 서비스를 운영하는{" "}
+            {company}를 말합니다.
+          </p>
           <div className="mt-6 rounded-lg bg-neutral-50 p-4">
             <p className="text-sm text-neutral-600">
               서비스명: {nameWithEn}
+              <br />
+              운영사(상호): {company}
+              <br />
+              대표자: {business.representative}
+              <br />
+              사업자등록번호: {business.registrationNumber}
+              <br />
+              사업장 소재지: {business.address}
               <br />
               문의: {email}
             </p>

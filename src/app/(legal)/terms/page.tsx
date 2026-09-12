@@ -40,7 +40,7 @@ export default function TermsPage() {
               제1조 (목적)
             </h2>
             <p className="leading-relaxed">
-              이 약관은 {name}(이하 &quot;회사&quot;)가 운영하는 {nameWithEn} 서비스(이하
+              이 약관은 {company}(이하 &quot;회사&quot;)가 운영하는 {nameWithEn} 서비스(이하
               &quot;서비스&quot;)의 이용과 관련하여 회사와 이용자 간의 권리, 의무 및
               책임사항, 기타 필요한 사항을 규정함을 목적으로 합니다.
             </p>

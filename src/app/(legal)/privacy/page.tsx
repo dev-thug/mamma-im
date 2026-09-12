@@ -32,7 +32,7 @@ export default function PrivacyPage() {
       </p>
 
       <p className="text-neutral-700 leading-relaxed mb-8">
-        {name}(이하 &quot;회사&quot;)는 이용자의 개인정보를 중요시하며, 「개인정보 보호법」 등 관련 법령을 준수하기 위하여
+        {siteConfig.company}(이하 &quot;회사&quot;)는 이용자의 개인정보를 중요시하며, 「개인정보 보호법」 등 관련 법령을 준수하기 위하여
         다음과 같이 개인정보처리방침을 수립·공개합니다.
       </p>
 
