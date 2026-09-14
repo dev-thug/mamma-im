@@ -8,10 +8,10 @@ import { cn } from "@/lib/utils";
 import { trackEvent, trackNavClick, type LinkLocation } from "@/lib/analytics";
 
 const navLinks = [
-  { label: "기능 소개", href: "#features" },
-  { label: "스크린샷", href: "#screenshots" },
+  { label: "기능 소개", href: "/features" },
+  { label: "스크린샷", href: "/screenshots" },
   { label: "블로그", href: "/blog" },
-  { label: "다운로드", href: "#download" },
+  { label: "다운로드", href: "/download" },
 ];
 
 function LogoIcon({ compact = false, uid = "a" }: { compact?: boolean; uid?: string }) {
@@ -107,10 +107,14 @@ export default function Header() {
   ) => {
     trackNavClick(label, location);
     setMobileOpen(false);
-    const target = document.querySelector(href);
-    if (target) {
-      target.scrollIntoView({ behavior: "smooth" });
+
+    if (href.startsWith("#")) {
+      const target = document.querySelector(href);
+      target?.scrollIntoView({ behavior: "smooth" });
+      return;
     }
+
+    window.location.assign(href);
   };
 
   return (
@@ -164,7 +168,7 @@ export default function Header() {
             {/* Desktop CTA */}
             <div className="hidden md:flex items-center">
               <button
-                onClick={() => handleNavClick("#download", "앱 다운로드", "header")}
+                onClick={() => handleNavClick("/download", "앱 다운로드", "header")}
                 className="bg-primary-500 hover:bg-primary-600 text-white font-semibold px-6 py-2.5 rounded-full transition-colors duration-200 cursor-pointer"
               >
                 앱 다운로드
@@ -260,7 +264,7 @@ export default function Header() {
                 exit={{ opacity: 0, y: 20 }}
                 transition={{ delay: 0.08 * (navLinks.length + 1), duration: 0.25, ease: "easeOut" }}
                 onClick={() =>
-                  handleNavClick("#download", "앱 다운로드", "header_mobile")
+                  handleNavClick("/download", "앱 다운로드", "header_mobile")
                 }
                 className="mt-4 bg-primary-500 hover:bg-primary-600 text-white font-semibold text-lg px-10 py-3.5 rounded-full transition-colors duration-200 cursor-pointer"
               >

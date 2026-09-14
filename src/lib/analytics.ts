@@ -69,6 +69,9 @@ export function pageTypeFromPath(pathname: string) {
   if (["/faq", "/notices", "/contact", "/team"].includes(pathname)) {
     return "service";
   }
+  if (["/features", "/screenshots", "/download"].includes(pathname)) {
+    return "marketing";
+  }
   return "other";
 }
 

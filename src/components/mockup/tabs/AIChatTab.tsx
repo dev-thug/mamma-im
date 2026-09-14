@@ -13,6 +13,8 @@ export default function AIChatTab() {
     },
   ]);
 
+  const [responseIndex, setResponseIndex] = useState(0);
+
   const suggestedQuestions = [
     { icon: "👥", text: "또래 사회성 발달 방법" },
     { icon: "🏫", text: "유치원 적응 도움 방법" },
@@ -31,7 +33,8 @@ export default function AIChatTab() {
     setInput("");
     const now = new Date();
     const timeStr = `오후 ${now.getHours() > 12 ? now.getHours() - 12 : now.getHours()}:${String(now.getMinutes()).padStart(2, "0")}`;
-    const aiText = aiResponses[Math.floor(Math.random() * aiResponses.length)];
+    const aiText = aiResponses[responseIndex % aiResponses.length];
+    setResponseIndex((index) => index + 1);
     setMsgs(p => [...p, { role: "user", text: q }, { role: "ai", text: aiText, time: timeStr }]);
   };
 

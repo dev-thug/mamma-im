@@ -138,7 +138,7 @@ export default function Footer() {
             <ul className="space-y-1">
                 <li>
                   <Link
-                    href="/#features"
+                    href="/features"
                     className="text-neutral-400 hover:text-white transition-colors text-sm py-1 block"
                   >
                     기능 소개
@@ -146,7 +146,15 @@ export default function Footer() {
                 </li>
                 <li>
                   <Link
-                    href="/#download"
+                    href="/screenshots"
+                    className="text-neutral-400 hover:text-white transition-colors text-sm py-1 block"
+                  >
+                    스크린샷
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/download"
                     className="text-neutral-400 hover:text-white transition-colors text-sm py-1 block"
                   >
                     앱 다운로드
