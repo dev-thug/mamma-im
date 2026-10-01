@@ -12,6 +12,17 @@ export default function PostContent({ blocks }: { blocks: PostBlock[] }) {
                 {block.text}
               </p>
             );
+          case "link":
+            return (
+              <p key={i} className="text-[17px] leading-[1.9] text-neutral-700">
+                <a
+                  href={block.href}
+                  className="text-primary-600 underline underline-offset-4 hover:text-primary-700 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary-500"
+                >
+                  {block.text}
+                </a>
+              </p>
+            );
           case "heading": {
             const Tag = block.level === 2 ? "h2" : "h3";
             return (
