@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
 import { siteConfig } from "@/config/site";
 import { baseOpenGraph, defaultOgImages } from "@/lib/seo";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
@@ -9,14 +8,7 @@ import "./globals.css";
 
 const websiteId = `${siteConfig.url}/#website`;
 const organizationId = `${siteConfig.url}/#organization`;
-const pretendard = localFont({
-  src: './fonts/PretendardVariable.woff2',
-  weight: '45 920',
-  display: 'optional',
-  preload: false,
-  adjustFontFallback: false,
-  variable: '--font-mamma',
-});
+
 
 /**
  * Google 검색결과의 사이트 이름은 홈페이지의 WebSite 구조화 데이터를 가장 우선합니다.
@@ -118,7 +110,7 @@ export default function RootLayout({
     // data-scroll-behavior: globals.css의 smooth 스크롤을 라우트 전환 때만 끕니다.
     // 없으면 페이지 이동 시 맨 위로 1초가량 애니메이션되고, 그동안 새 페이지의
     // scroll_depth·article_complete가 이전 페이지 스크롤 위치로 잘못 기록됩니다.
-    <html lang="ko" className={pretendard.variable} data-scroll-behavior="smooth">
+    <html lang="ko" data-scroll-behavior="smooth">
       <head>
         {/* metadata.alternates는 페이지의 canonical 설정에 통째로 덮이므로 피드 링크는 직접 둡니다 */}
         <link
