@@ -6,6 +6,7 @@ const canonicalOrigin = 'https://mamma.im';
 const failures = [];
 const titles = new Set();
 const descriptions = new Set();
+const stylesheets = new Map();
 const decode = (s) => s.replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/&#x27;/g, "'");
 const text = (s) => decode(s.replace(/<[^>]*>/g, '')).trim();
 const attrs = (tag) => Object.fromEntries([...tag.matchAll(/([\w:-]+)="([^"]*)"/g)].map((m) => [m[1], decode(m[2])]));
@@ -21,6 +22,15 @@ for (const url of urls) {
     assert.equal(response.status, 200, 'Indexable URL must return 200 without redirect');
     const html = await response.text();
     assert(!html.includes('pretendardvariable-dynamic-subset'), 'External font stylesheet must not block rendering');
+    if (path === '/') {
+      for (const match of html.matchAll(/<link\b[^>]*>/g)) {
+        const link = attrs(match[0]);
+        if (link.rel !== 'stylesheet') continue;
+        const cssUrl = new URL(link.href, origin).href;
+        if (!stylesheets.has(cssUrl)) stylesheets.set(cssUrl, await fetch(cssUrl).then((r) => r.text()));
+        assert(!stylesheets.get(cssUrl).includes('@font-face'), 'Optional font CSS must load after the initial page, outside render-blocking stylesheets');
+      }
+    }
     const meta = [...html.matchAll(/<meta\b[^>]*>/g)].map((m) => attrs(m[0]));
     const value = (key) => meta.find((m) => m.name === key || m.property === key)?.content;
     const title = text(html.match(/<title>(.*?)<\/title>/s)?.[1] ?? '');

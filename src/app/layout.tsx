@@ -3,6 +3,7 @@ import { siteConfig } from "@/config/site";
 import { baseOpenGraph, defaultOgImages } from "@/lib/seo";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
 import AnalyticsProvider from "@/components/AnalyticsProvider";
+import DeferredFonts from "@/components/DeferredFonts";
 import { appDescription } from "@/content/app";
 import "./globals.css";
 
@@ -127,6 +128,7 @@ export default function RootLayout({
       </head>
       <body className="antialiased">
         {children}
+        <DeferredFonts />
         <GoogleAnalytics />
         <AnalyticsProvider />
       </body>
