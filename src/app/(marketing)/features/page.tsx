@@ -4,11 +4,12 @@ import FeaturesSection from "@/components/FeaturesSection";
 import AgentSection from "@/components/AgentSection";
 import { siteConfig } from "@/config/site";
 import { baseOpenGraph, defaultOgImages } from "@/lib/seo";
+import { appDescription } from "@/content/app";
 
 const pageUrl = `${siteConfig.url}/features`;
 
 export const metadata: Metadata = {
-  title: "기능 소개 | 기록부터 AI 육아 에이전트까지 | 맘마",
+  title: "맘마 기능 | 수유·수면·기저귀 기록과 AI 육아 상담",
   description:
     "맘마의 수유·수면·기저귀 기록, 성장 리포트, 발달 체크, 맘마톡 AI 상담 기능을 한눈에 확인하세요.",
   alternates: {
@@ -17,7 +18,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     ...baseOpenGraph,
-    title: "기능 소개 | 기록부터 AI 육아 에이전트까지 | 맘마",
+    title: "맘마 기능 | 수유·수면·기저귀 기록과 AI 육아 상담",
     description:
       "맘마의 수유·수면·기저귀 기록, 성장 리포트, 발달 체크, 맘마톡 AI 상담 기능을 한눈에 확인하세요.",
     url: pageUrl,
@@ -40,12 +41,12 @@ export default function FeaturesPage() {
             맘마 기능 소개
           </span>
           <h1 className="mx-auto max-w-3xl text-3xl font-bold leading-tight text-neutral-900 [word-break:keep-all] sm:text-5xl">
-            기록을 넘어,
+            맘마 수유·수면 기록,
             <br />
-            <span className="gradient-text">우리 아이를 이해하는</span> 육아 에이전트
+            <span className="gradient-text">성장 관리부터</span> AI 육아 상담까지
           </h1>
           <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-neutral-600 [word-break:keep-all] sm:text-lg">
-            터치 한 번으로 하루를 기록하고, 쌓인 기록은 맘마톡 AI가 읽습니다. 수유와 수면부터 성장과 발달까지, 부모가 매번 다시 설명하지 않아도 되는 육아를 시작하세요.
+            {appDescription}
           </p>
           <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
             <Link

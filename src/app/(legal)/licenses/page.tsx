@@ -23,6 +23,12 @@ export const metadata: Metadata = {
 
 const libraries = [
   {
+    name: "Pretendard Variable (Kil Hyung-jin)",
+    version: "1.3.9",
+    license: "SIL Open Font License 1.1",
+    url: "/fonts/OFL.txt",
+  },
+  {
     name: "Next.js",
     version: "16.1.6",
     license: "MIT",
@@ -145,7 +151,7 @@ export default function LicensesPage() {
                     rel="noopener noreferrer"
                     className="text-primary-600 hover:text-primary-700 hover:underline transition-colors"
                   >
-                    GitHub &rarr;
+                    {lib.url.startsWith("/") ? "라이선스 원문" : "GitHub"} &rarr;
                   </a>
                 </td>
               </tr>
@@ -182,7 +188,7 @@ export default function LicensesPage() {
                 rel="noopener noreferrer"
                 className="text-sm text-primary-600 hover:text-primary-700 hover:underline transition-colors"
               >
-                GitHub &rarr;
+                {lib.url.startsWith("/") ? "라이선스 원문" : "GitHub"} &rarr;
               </a>
             </div>
           </div>

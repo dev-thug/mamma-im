@@ -32,12 +32,12 @@ export default function AppMockup({ activeTab: controlledTab, onTabChange }: App
   }, []);
 
   return (
-    <div aria-hidden="true"
+    <div role="group" aria-label="맘마 앱 기능 체험 (예시 데이터)"
       className="phone-frame w-[280px] h-[560px] lg:w-[300px] lg:h-[600px] flex flex-col select-none"
       style={{ background: "white" }}>
 
       {/* 상태바 */}
-      <div className="h-11 flex items-center justify-between px-5 flex-shrink-0 bg-white">
+      <div aria-hidden="true" className="h-11 flex items-center justify-between px-5 flex-shrink-0 bg-white">
         <span className="text-[12px] font-semibold text-neutral-800">
           {now.getHours()}:{String(now.getMinutes()).padStart(2, "0")}
         </span>
@@ -84,7 +84,7 @@ export default function AppMockup({ activeTab: controlledTab, onTabChange }: App
           {TAB_LABELS.map((label, i) => {
             const active = activeTab === i;
             return (
-              <button key={label} onClick={() => {
+              <button key={label} aria-pressed={active} onClick={() => {
                 if (onTabChange) onTabChange(i);
                 else setInternalTab(i);
               }}

@@ -57,7 +57,7 @@ export default function DownloadPage() {
             맘마 앱 다운로드
           </span>
           <h1 className="text-3xl font-bold leading-tight text-neutral-900 [word-break:keep-all] sm:text-5xl">
-            기록은 가볍게,
+            맘마 앱 무료 다운로드,
             <br />
             <span className="gradient-text">육아의 다음 순간은 더 선명하게</span>
           </h1>

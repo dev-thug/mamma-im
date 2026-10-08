@@ -2,9 +2,22 @@
 
 import { useState, useEffect, useRef } from "react";
 import { motion, type Variants } from "framer-motion";
-import AppMockup from "./mockup/AppMockup";
+import dynamic from "next/dynamic";
+import Image from "next/image";
 import { siteConfig } from "@/config/site";
 import { trackDemoInteract, trackStoreClick } from "@/lib/analytics";
+
+// The interactive demo uses live dates and timers. Keep it client-only so a cached
+// build's time cannot conflict with the visitor's clock during hydration.
+// The app's actual screenshot remains visible in server HTML and without JS.
+const AppMockup = dynamic(() => import('./mockup/AppMockup'), {
+  ssr: false,
+  loading: () => (
+    <div className="phone-frame w-[280px] h-[560px] lg:w-[300px] lg:h-[600px] overflow-hidden bg-white">
+      <Image src="/preview/record.png" alt="맘마 수유·수면·기저귀 기록 화면" width={390} height={844} sizes="(min-width: 1024px) 300px, 280px" className="h-full w-full object-cover object-top" />
+    </div>
+  ),
+});
 
 const AUTO_CYCLE_TABS = [0, 1, 2, 3];
 /** AppMockup 하단 탭바와 같은 순서 — GA4에 숫자 대신 이름으로 보냅니다 */
@@ -75,7 +88,7 @@ export default function HeroSection() {
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-12 py-24 lg:py-0">
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
           <motion.div className="flex-1 flex flex-col items-center text-center lg:items-start lg:text-left"
-            variants={staggerChildren} initial="hidden" animate="visible">
+            variants={staggerChildren} initial={false} animate="visible">
             <motion.div variants={fadeInUp}>
               <span className="inline-block px-4 py-1.5 rounded-full text-sm font-semibold mb-6"
                 style={{ background: "var(--primary-50)", color: "var(--primary-500)", border: "1px solid var(--primary-100)" }}>
@@ -84,7 +97,7 @@ export default function HeroSection() {
             </motion.div>
             <motion.h1 className="text-[2rem] sm:text-5xl lg:text-6xl font-bold text-neutral-900 leading-tight whitespace-pre-line [word-break:keep-all] mb-5"
               variants={fadeInUp}>
-              {"기록은 터치 한 번,\n답은 "}
+              {"맘마, 기록은 터치 한 번\n답은 "}
               <span className="gradient-text">우리 아이</span>
               {" 기준으로"}
             </motion.h1>
@@ -141,7 +154,8 @@ export default function HeroSection() {
             className="flex-shrink-0"
             style={{ position: "relative" }}
             onPointerDown={handleInteraction}
-            initial={{ opacity: 0, y: 48 }}
+            onFocus={() => setUserInteracted(true)}
+            initial={false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
           >

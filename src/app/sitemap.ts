@@ -28,6 +28,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
       url: base,
+      lastModified: new Date('2026-10-08T00:00:00+09:00'),
       changeFrequency: 'daily',
       priority: 1,
     },
@@ -40,6 +41,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...blogEntries,
     {
       url: `${base}/features`,
+      lastModified: new Date('2026-10-08T00:00:00+09:00'),
       changeFrequency: 'monthly',
       priority: 0.8,
     },
@@ -50,6 +52,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${base}/download`,
+      lastModified: new Date('2026-10-08T00:00:00+09:00'),
       changeFrequency: 'monthly',
       priority: 0.8,
     },
@@ -65,11 +68,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${base}/licenses`,
+      lastModified: new Date('2026-10-08T00:00:00+09:00'),
       changeFrequency: 'monthly',
       priority: 0.1,
     },
     {
       url: `${base}/faq`,
+      lastModified: new Date('2026-10-08T00:00:00+09:00'),
       changeFrequency: 'monthly',
       priority: 0.5,
     },
@@ -85,6 +90,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${base}/team`,
+      lastModified: new Date('2026-10-08T00:00:00+09:00'),
       changeFrequency: 'monthly',
       priority: 0.45,
     },

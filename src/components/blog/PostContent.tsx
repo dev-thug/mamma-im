@@ -28,6 +28,8 @@ export default function PostContent({ blocks }: { blocks: PostBlock[] }) {
             return (
               <Tag
                 key={i}
+                id={`section-${i}`}
+                style={{ scrollMarginTop: "6rem" }}
                 className={
                   block.level === 2
                     ? "text-2xl font-bold text-neutral-900 mt-10 mb-2"
@@ -67,6 +69,7 @@ export default function PostContent({ blocks }: { blocks: PostBlock[] }) {
                       {block.headers.map((h, hi) => (
                         <th
                           key={hi}
+                          scope="col"
                           className="px-4 py-3 text-left font-semibold text-neutral-700 whitespace-nowrap"
                         >
                           {h}

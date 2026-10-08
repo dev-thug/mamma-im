@@ -1,12 +1,22 @@
 import type { Metadata } from "next";
+import localFont from "next/font/local";
 import { siteConfig } from "@/config/site";
 import { baseOpenGraph, defaultOgImages } from "@/lib/seo";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
 import AnalyticsProvider from "@/components/AnalyticsProvider";
+import { appDescription } from "@/content/app";
 import "./globals.css";
 
 const websiteId = `${siteConfig.url}/#website`;
 const organizationId = `${siteConfig.url}/#organization`;
+const pretendard = localFont({
+  src: './fonts/PretendardVariable.woff2',
+  weight: '45 920',
+  display: 'optional',
+  preload: false,
+  adjustFontFallback: false,
+  variable: '--font-mamma',
+});
 
 /**
  * Google 검색결과의 사이트 이름은 홈페이지의 WebSite 구조화 데이터를 가장 우선합니다.
@@ -23,6 +33,7 @@ const websiteSchema = {
   url: `${siteConfig.url}/`,
   inLanguage: "ko",
   publisher: { "@id": organizationId },
+  about: { "@id": `${siteConfig.url}/#app` },
 };
 
 const organizationSchema = {
@@ -54,8 +65,11 @@ const siteSchema = {
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: siteConfig.seo.title,
-  description: "수유부터 수면, 기저귀, 발달 체크까지 세세하게 기록하고, 아이의 실제 기록을 바탕으로 답하는 AI 맘마톡과 함께하는 육아 앱",
+  description: appDescription,
   keywords: [...siteConfig.seo.keywords],
+  robots: {
+    googleBot: { "max-image-preview": "large", "max-snippet": -1, "max-video-preview": -1 },
+  },
   icons: {
     icon: [
       { url: "/favicon.svg", type: "image/svg+xml" },
@@ -84,7 +98,7 @@ export const metadata: Metadata = {
   openGraph: {
     ...baseOpenGraph,
     title: siteConfig.seo.title,
-    description: siteConfig.description,
+    description: appDescription,
     type: "website",
     images: defaultOgImages,
   },
@@ -104,15 +118,8 @@ export default function RootLayout({
     // data-scroll-behavior: globals.css의 smooth 스크롤을 라우트 전환 때만 끕니다.
     // 없으면 페이지 이동 시 맨 위로 1초가량 애니메이션되고, 그동안 새 페이지의
     // scroll_depth·article_complete가 이전 페이지 스크롤 위치로 잘못 기록됩니다.
-    <html lang="ko" data-scroll-behavior="smooth">
+    <html lang="ko" className={pretendard.variable} data-scroll-behavior="smooth">
       <head>
-        <link
-          rel="stylesheet"
-          as="style"
-          crossOrigin="anonymous"
-          href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"
-          integrity="sha384-GIdEBaqGN9mNkDkMkzMHW8EKUqtpPIe/sLj1X7DIrnc9uPtLROJgmuDlh+3rBw0j"
-        />
         {/* metadata.alternates는 페이지의 canonical 설정에 통째로 덮이므로 피드 링크는 직접 둡니다 */}
         <link
           rel="alternate"
@@ -120,6 +127,7 @@ export default function RootLayout({
           title={`${siteConfig.name} 블로그`}
           href={`${siteConfig.url}/rss.xml`}
         />
+        <link rel="alternate" type="text/plain" title="맘마 앱 정보와 공식 문서" href={`${siteConfig.url}/llms.txt`} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(siteSchema) }}

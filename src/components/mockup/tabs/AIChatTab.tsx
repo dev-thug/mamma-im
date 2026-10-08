@@ -106,17 +106,17 @@ export default function AIChatTab() {
 
       {/* 입력창 */}
       <div className="px-3 py-2 border-t border-neutral-100 flex items-center gap-1.5">
-        <button className="w-6 h-6 rounded-full bg-neutral-100 flex items-center justify-center flex-shrink-0">
+        <button aria-label="예시 화면의 첨부 기능" disabled className="w-6 h-6 rounded-full bg-neutral-100 flex items-center justify-center flex-shrink-0">
           <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#6B7280" strokeWidth="2.5" strokeLinecap="round">
             <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
           </svg>
         </button>
-        <input value={input} onChange={e => setInput(e.target.value)}
+        <input aria-label="맘마톡 체험 질문" value={input} onChange={e => setInput(e.target.value)}
           onKeyDown={e => e.key === "Enter" && sendMsg()}
           placeholder="궁금한 것을 물어보세요..."
           className="flex-1 bg-neutral-100 rounded-full px-3 py-1.5 text-[9px] outline-none"
           style={{ color: "#374151" }} />
-        <button onClick={() => sendMsg()}
+        <button aria-label="체험 질문 보내기" onClick={() => sendMsg()}
           className="w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0"
           style={{ background: "var(--primary-500)" }}>
           <svg width="11" height="11" viewBox="0 0 24 24" fill="white"><path d="M2 21l21-9L2 3v7l15 2-15 2v7z"/></svg>

@@ -12,7 +12,7 @@ export function Sheet({ title, onClose, onOk, okLabel = "기록하기", children
         <div className="w-8 h-1 bg-neutral-200 rounded-full mx-auto mb-3" />
         <div className="flex items-center justify-between mb-3">
           <span className="text-[12px] font-bold text-neutral-900">{title}</span>
-          <button onClick={onClose} className="text-neutral-400 text-xl leading-none w-6 h-6 flex items-center justify-center">×</button>
+          <button aria-label={`${title} 창 닫기`} onClick={onClose} className="text-neutral-400 text-xl leading-none w-6 h-6 flex items-center justify-center">×</button>
         </div>
         {children}
         <button onClick={onOk}

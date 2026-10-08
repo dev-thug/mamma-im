@@ -126,7 +126,7 @@ export default function HomeTab({ now }: { now: Date }) {
         <div className="absolute inset-0 z-50 bg-white flex flex-col">
           <div className="flex items-center justify-between px-4 py-3 border-b border-neutral-100">
             <span className="text-[12px] font-bold text-neutral-900">{title}</span>
-            <button onClick={close} className="text-neutral-400 text-xl leading-none">×</button>
+            <button aria-label="기록 창 닫기" onClick={close} className="text-neutral-400 text-xl leading-none">×</button>
           </div>
           <div className="flex-1 overflow-y-auto px-4 py-2" style={{ scrollbarWidth: "none" }}>
             {recs.length === 0 ? (
@@ -186,7 +186,7 @@ export default function HomeTab({ now }: { now: Date }) {
           ))}
         </div>
         <label className="text-[9px] text-neutral-500 block mb-1">양 (mL)</label>
-        <input type="number" value={feedAmt} onChange={e => setFeedAmt(e.target.value)}
+        <input type="number" aria-label="수유량 (mL)" value={feedAmt} onChange={e => setFeedAmt(e.target.value)}
           className="w-full border rounded-xl px-3 py-2 text-[11px] outline-none"
           style={{ borderColor: "#E5E7EB" }} placeholder="120" />
       </Sheet>
@@ -223,7 +223,7 @@ export default function HomeTab({ now }: { now: Date }) {
     if (modal === "growth") return (
       <Sheet title="성장 기록" onClose={close} onOk={doGrowth}>
         <label className="text-[9px] text-neutral-500 block mb-1">체중 (kg)</label>
-        <input type="number" value={weightVal} onChange={e => setWeightVal(e.target.value)}
+        <input type="number" aria-label="체중 (kg)" value={weightVal} onChange={e => setWeightVal(e.target.value)}
           className="w-full border rounded-xl px-3 py-2 text-[11px] outline-none"
           style={{ borderColor: "#E5E7EB" }} placeholder="예: 1.8" step="0.1" />
       </Sheet>
@@ -232,7 +232,7 @@ export default function HomeTab({ now }: { now: Date }) {
     if (modal === "temp") return (
       <Sheet title="체온 기록" onClose={close} onOk={doTemp}>
         <label className="text-[9px] text-neutral-500 block mb-1">체온 (°C)</label>
-        <input type="number" value={tempVal} onChange={e => setTempVal(e.target.value)}
+        <input type="number" aria-label="체온 (°C)" value={tempVal} onChange={e => setTempVal(e.target.value)}
           className="w-full border rounded-xl px-3 py-2 text-[11px] outline-none"
           style={{ borderColor: "#E5E7EB" }} placeholder="36.5" step="0.1" />
       </Sheet>
@@ -241,7 +241,7 @@ export default function HomeTab({ now }: { now: Date }) {
     if (modal === "med") return (
       <Sheet title="투약 기록" onClose={close} onOk={doMed}>
         <label className="text-[9px] text-neutral-500 block mb-1">약 이름</label>
-        <input type="text" value={medVal} onChange={e => setMedVal(e.target.value)}
+        <input type="text" aria-label="약 이름" value={medVal} onChange={e => setMedVal(e.target.value)}
           className="w-full border rounded-xl px-3 py-2 text-[11px] outline-none"
           style={{ borderColor: "#E5E7EB" }} placeholder="예: 타이레놀" />
       </Sheet>
@@ -250,7 +250,7 @@ export default function HomeTab({ now }: { now: Date }) {
     if (modal === "activity") return (
       <Sheet title="활동 기록" onClose={close} onOk={doAct}>
         <label className="text-[9px] text-neutral-500 block mb-1">활동 내용</label>
-        <input type="text" value={actVal} onChange={e => setActVal(e.target.value)}
+        <input type="text" aria-label="활동 내용" value={actVal} onChange={e => setActVal(e.target.value)}
           className="w-full border rounded-xl px-3 py-2 text-[11px] outline-none"
           style={{ borderColor: "#E5E7EB" }} placeholder="예: 산책 30분" />
       </Sheet>
@@ -348,11 +348,12 @@ export default function HomeTab({ now }: { now: Date }) {
               return (
                 <div key={btn.label} className="flex flex-col items-center gap-1">
                   <button
-                    onMouseDown={() => setPressedBtn(btn.label)}
-                    onMouseUp={() => { setPressedBtn(null); onQuick(btn.label); }}
-                    onMouseLeave={() => setPressedBtn(null)}
-                    onTouchStart={() => setPressedBtn(btn.label)}
-                    onTouchEnd={() => { setPressedBtn(null); onQuick(btn.label); }}
+                    aria-label={`${btn.label} 기록 체험`}
+                    onPointerDown={() => setPressedBtn(btn.label)}
+                    onPointerUp={() => setPressedBtn(null)}
+                    onPointerLeave={() => setPressedBtn(null)}
+                    onPointerCancel={() => setPressedBtn(null)}
+                    onClick={() => onQuick(btn.label)}
                     className="w-11 h-11 rounded-2xl flex items-center justify-center relative cursor-pointer"
                     style={{
                       background: pressedBtn === btn.label ? btn.activeBg : btn.bg,

@@ -152,7 +152,6 @@ export default function ScreenshotGallery() {
                     height={844}
                     sizes="260px"
                     className="w-full h-auto block"
-                    priority={i === 0}
                   />
                 </div>
               </motion.div>

@@ -64,20 +64,28 @@ export default async function BlogPostPage({
 
   const related = getRelatedPosts(slug);
   const url = `${siteConfig.url}/blog/${post.slug}`;
+  const articleImages = post.content.filter((block) => block.type === "image").map((block) => `${siteConfig.url}${block.src}`);
 
   const articleSchema = {
     "@context": "https://schema.org",
-    "@type": "Article",
+    "@type": "BlogPosting",
+    "@id": `${url}/#article`,
     headline: post.title,
+    inLanguage: "ko",
+    image: articleImages.length ? articleImages : [`${url}/opengraph-image`],
+    isPartOf: { "@id": `${siteConfig.url}/#website` },
     description: post.description,
     datePublished: post.publishedAt,
     dateModified: post.updatedAt ?? post.publishedAt,
     author: {
       "@type": "Organization",
-      name: siteConfig.company,
+      "@id": `${siteConfig.url}/team#editorial-policy`,
+      name: "맘마 편집팀",
+      url: `${siteConfig.url}/team#editorial-policy`,
     },
     publisher: {
       "@type": "Organization",
+      "@id": `${siteConfig.url}/#organization`,
       name: siteConfig.company,
       logo: {
         "@type": "ImageObject",
@@ -129,13 +137,28 @@ export default async function BlogPostPage({
         {post.title}
       </h1>
 
-      <div className="flex items-center gap-2 text-sm text-neutral-400 mb-10">
-        <time dateTime={post.publishedAt}>{formatDate(post.publishedAt)}</time>
+      <div className="flex flex-wrap items-center gap-2 text-sm text-neutral-500 mb-5">
+        <span>게시 <time dateTime={post.publishedAt}>{formatDate(post.publishedAt)}</time></span>
+        {post.updatedAt && post.updatedAt !== post.publishedAt && <span>· 수정 <time dateTime={post.updatedAt}>{formatDate(post.updatedAt)}</time></span>}
         <span>·</span>
         <span>{post.readingMinutes}분 읽기</span>
+        <span>·</span>
+        <Link href="/team#editorial-policy" className="underline underline-offset-4">작성·편집: 맘마 편집팀</Link>
       </div>
 
+      <nav aria-label="글 목차" className="mb-10 rounded-2xl border border-neutral-200 bg-neutral-50 p-5">
+        <p className="mb-3 font-semibold text-neutral-900">이 글에서 확인할 내용</p>
+        <ul className="space-y-2 text-sm text-neutral-600">
+          {post.content.map((block, index) => block.type === "heading" && block.level === 2 ? (
+            <li key={index}><a href={`#section-${index}`} className="underline underline-offset-4 hover:text-primary-600">{block.text}</a></li>
+          ) : null)}
+        </ul>
+      </nav>
       <PostContent blocks={post.content} />
+      <aside className="mt-10 border-t border-neutral-200 pt-5 text-sm leading-relaxed text-neutral-500" aria-label="편집 안내">
+        맘마 운영사가 제공하는 육아 정보입니다. 건강 관련 내용은 일반적인 참고 자료이며 의료진의 진단·처방을 대신하지 않습니다. 출처가 있는 글은 본문의 원문 링크를 함께 확인해 주세요.
+        <Link href="/contact" className="ml-1 underline underline-offset-4">내용 오류·수정 요청</Link>
+      </aside>
 
       {/* 본문 끝 도달 — 아래 CTA·관련 글까지 포함하는 scroll_depth 100%와 달리 '끝까지 읽음'만 잽니다 */}
       <div

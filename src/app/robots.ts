@@ -7,13 +7,13 @@ import { siteConfig } from '@/config/site'
  * 여기에 나열한 봇에는 `*`와 같은 disallow를 함께 적어 둡니다.
  */
 const aiCrawlers = [
-  'GPTBot', // OpenAI 학습·검색
+  'GPTBot', // OpenAI 모델 학습 (검색용은 OAI-SearchBot)
   'OAI-SearchBot', // ChatGPT 검색 인덱스
   'ChatGPT-User', // ChatGPT가 사용자의 요청으로 즉시 방문할 때
   'PerplexityBot',
   'ClaudeBot',
   'anthropic-ai',
-  'Google-Extended', // Gemini / AI 개요
+  'Google-Extended', // Gemini의 일부 학습·그라운딩 용도; Google 검색은 Googlebot
   'Bingbot', // Copilot
 ]
 

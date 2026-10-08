@@ -64,7 +64,7 @@ export const siteConfig = {
 
   seo: {
     /** 홈 검색 타이틀이자 카카오톡·X 공유 제목 (openGraph를 따로 선언하지 않은 404의 기본 제목이기도 합니다) */
-    title: "맘마 - AI 육아 에이전트 | 육아 기록·상담 앱",
+    title: "맘마(Mamma) | 무료 수유·수면 기록 & AI 육아 상담 앱",
     keywords: [
       "육아",
       "육아앱",

@@ -3,19 +3,21 @@ import Link from "next/link";
 import { siteConfig } from "@/config/site";
 import { baseOpenGraph, defaultOgImages } from "@/lib/seo";
 
+import { appDescription, appQuestions } from "@/content/app";
+
 const faqUrl = `${siteConfig.url}/faq`;
 
 export const metadata: Metadata = {
-  title: "자주 묻는 질문 | 맘마",
-  description: "맘마 앱에 대해 자주 묻는 질문과 답변을 확인하세요.",
+  title: "맘마 앱 FAQ | 무료 요금·수유 기록·AI 육아 상담·가족 공유",
+  description: "맘마 앱의 무료 기본 기능, 수유·수면 기록, 맘마톡 AI 상담, 여러 아이 관리와 가족 공유 지원 여부를 확인하세요. iPhone·Android 설치와 고객지원도 안내합니다.",
   alternates: {
     canonical: faqUrl,
     languages: { ko: faqUrl },
   },
   openGraph: {
     ...baseOpenGraph,
-    title: "자주 묻는 질문 | 맘마",
-    description: "맘마 앱에 대해 자주 묻는 질문과 답변을 확인하세요.",
+    title: "맘마 앱 FAQ | 무료 요금·수유 기록·AI 육아 상담·가족 공유",
+    description: "맘마 앱의 무료 기본 기능, 수유·수면 기록, 맘마톡 AI 상담, 여러 아이 관리와 가족 공유 지원 여부를 확인하세요. iPhone·Android 설치와 고객지원도 안내합니다.",
     url: faqUrl,
     type: "website",
     images: defaultOgImages,
@@ -23,10 +25,11 @@ export const metadata: Metadata = {
 };
 
 const faqs: { question: string; answerText: string; answer?: React.ReactNode }[] = [
+  ...appQuestions.slice(0, 3).map((item) => ({ question: item.question, answerText: item.answer, answer: <>{item.answer} <Link href={item.href} className="text-rose-500 underline underline-offset-2">{item.label} →</Link></> })),
   {
     question: "맘마 앱은 어떤 앱인가요?",
     answerText:
-      "맘마는 태어나는 순간부터 초등학교 졸업까지, 아이의 모든 성장을 함께하는 스마트 육아 앱입니다. 수유·수면·성장 기록부터 AI 육아 조언, 육아 일기까지 한 곳에서 관리할 수 있습니다.",
+      appDescription,
   },
   {
     question: "육아 에이전트가 뭔가요?",
@@ -36,7 +39,7 @@ const faqs: { question: string; answerText: string; answer?: React.ReactNode }[]
   {
     question: "맘마톡은 일반 AI 챗봇과 무엇이 다른가요?",
     answerText:
-      "일반 AI 챗봇은 아이의 기록을 모르기 때문에 월령과 상황을 매번 직접 설명해야 하고, 답변도 일반론에 머뭅니다. 맘마톡은 앱에 쌓인 수유·수면·성장 기록과 아이의 월령을 자동으로 참고해 답하므로, 같은 질문이라도 우리 아이 기준의 답을 받을 수 있습니다.",
+      "앱의 아이 기록과 연동되지 않은 AI 챗봇에는 월령과 최근 상황을 직접 제공해야 합니다. 기능은 서비스마다 다릅니다. 맘마톡은 맘마에 쌓인 육아 기록과 아이의 월령을 참고해 답변합니다. AI 답변은 의료진의 진단·처방을 대신하지 않습니다.",
   },
   {
     question: "맘마 앱은 무료로 사용할 수 있나요?",
@@ -117,7 +120,7 @@ export default function FaqPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqPageSchema) }}
       />
       <div className="mb-10">
-        <h1 className="text-3xl font-bold text-neutral-900 mb-3">자주 묻는 질문</h1>
+        <h1 className="text-3xl font-bold text-neutral-900 mb-3">맘마 앱 자주 묻는 질문</h1>
         <p className="text-neutral-500">
           맘마 앱 사용에 관해 자주 묻는 질문을 모았습니다. 원하시는 답변을 찾지 못하셨다면{" "}
           <Link

@@ -33,6 +33,20 @@ export default function TeamPage() {
       </div>
 
       <div className="space-y-8">
+        <section id="editorial-policy" className="scroll-mt-24 rounded-lg border border-neutral-200 bg-white p-6">
+          <h2 className="mb-3 text-lg font-semibold text-neutral-900">맘마 편집팀과 콘텐츠 안내</h2>
+          <p className="text-sm leading-relaxed text-neutral-600">
+            맘마 블로그는 {siteConfig.company}가 운영하고 맘마 편집팀이 작성·편집합니다. 서비스 책임자는 {siteConfig.business.representative}입니다.
+            앱 사용 안내와 육아 정보를 제공하며, 의료기관이나 의료진의 진료 서비스가 아닙니다.
+          </p>
+          <ul className="mt-4 list-disc space-y-2 pl-5 text-sm leading-relaxed text-neutral-600">
+            <li>글의 게시일과 실제 내용이 수정된 날짜를 구분해 표시합니다.</li>
+            <li>자료를 인용한 경우 본문에 원문 링크를 표시합니다. 출처 표시는 해당 글의 참고 자료이며 의료진의 검수를 의미하지 않습니다.</li>
+            <li>맘마 기능과 요금은 공식 기능 소개·다운로드·FAQ에서 확인할 수 있습니다. 다른 앱과 비교할 때는 각 서비스의 최신 안내도 확인해 주세요.</li>
+            <li>건강 관련 정보와 AI 답변은 진단·처방을 대신하지 않습니다. 아이의 상태와 치료에 관한 판단은 의료진에게 상담해 주세요.</li>
+          </ul>
+          <Link href="/contact" className="mt-4 inline-block text-sm text-primary-600 underline underline-offset-4">콘텐츠 오류·수정 요청하기 →</Link>
+        </section>
         <section className="rounded-lg border border-neutral-200 bg-white p-6">
           <h2 className="mb-3 text-lg font-semibold text-neutral-900">맘마를 만드는 사람들</h2>
           <p className="text-sm leading-relaxed text-neutral-600">
